@@ -1,8 +1,8 @@
 {
-  "name": "react-webpack-node",
-  "version": "3.4.1",
-  "description": "Your One-Stop solution for a full-stack app with ES6/ES2015 React.js featuring universal Redux, React Router, React Router Redux Hot reloading, CSS modules, Express 4.x, and multiple ORMs.",
-  "repository": "https://github.com/choonkending/react-webpack-node",
+  "name": "door-quote-automator",
+  "version": "1.0",
+  "description": "door quote automator",
+  "repository": "https://github.com/mohammed52/door-quote-automator",
   "main": "index.js",
   "scripts": {
     "sequelize": "node_modules/.bin/sequelize",
