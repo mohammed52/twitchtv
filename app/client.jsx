@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import createRoutes from './routes';
 import * as types from './types';
 import configureStore from './store/configureStore';
@@ -31,10 +32,15 @@ function onUpdate() {
     return;
   }
 
-  store.dispatch({ type: types.CREATE_REQUEST });
+  store.dispatch({
+    type: types.CREATE_REQUEST
+  });
   fetchDataForRoute(this.state)
     .then((data) => {
-      return store.dispatch({ type: types.REQUEST_SUCCESS, data });
+      return store.dispatch({
+        type: types.REQUEST_SUCCESS,
+        data
+      });
     });
 }
 
@@ -43,7 +49,8 @@ function onUpdate() {
 // Read more https://github.com/rackt/react-router/blob/latest/docs/Glossary.md#routeconfig
 render(
   <Provider store={store}>
-    <Router history={history} onUpdate={onUpdate}>
+    <Router history={history}
+            onUpdate={onUpdate}>
       {routes}
     </Router>
   </Provider>, document.getElementById('app'));
