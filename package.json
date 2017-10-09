@@ -1,6 +1,6 @@
 {
   "name": "door-quote-automator",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "door quote automator",
   "repository": "https://github.com/mohammed52/door-quote-automator",
   "main": "index.js",
