@@ -15,17 +15,9 @@ class Vote extends Component {
     const {newTopic, topics, typing, createTopic, destroyTopic, incrementCount, decrementCount} = this.props;
     return (
       <div className={cx('vote')}>
-        <EntryBox topic={newTopic} onEntryChange={typing} onEntrySave={createTopic} />
-        <MainSection topics={topics}
-                     onIncrement={incrementCount}
-                     onDecrement={decrementCount}
-                     onDestroy={destroyTopic} />
-        <Scoreboard topics={topics} />
-        <div className="container-fluid">
-          <h1>HERE I AM <button className="btn btn-link" type="button" onClick={this.destroyRestaurant}> <i className="fa fa-trash-o" aria-hidden="true" /> </button></h1>
-        </div>
+        hello world vote page
       </div>
-      );
+    );
   }
 }
 

@@ -17,9 +17,10 @@ const cx = classNames.bind(styles);
  * A better explanation of react-router is available here:
  * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
  */
-const App = ({ children }) => {
+const App = ({children}) => {
   return (
     <div className={cx('app')}>
+      hello world app containter
       <Navigation />
       <Message />
       {children}
