@@ -16,9 +16,9 @@ class Home extends Component {
     return (
       // <div className={cx('vote')}>
       <div>
-        hello world vote page
+        hello world vote page-1
       </div>
-      );
+    );
   }
 }
 
