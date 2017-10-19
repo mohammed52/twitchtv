@@ -10,7 +10,7 @@ import styles from '../css/components/vote';
 
 const cx = classNames.bind(styles);
 
-class Vote extends Component {
+class Home extends Component {
   render() {
     const {newTopic, topics, typing, createTopic, destroyTopic, incrementCount, decrementCount} = this.props;
     return (
@@ -18,11 +18,11 @@ class Vote extends Component {
       <div>
         hello world vote page
       </div>
-    );
+      );
   }
 }
 
-Vote.propTypes = {
+Home.propTypes = {
   topics: PropTypes.array.isRequired,
   typing: PropTypes.func.isRequired,
   createTopic: PropTypes.func.isRequired,
@@ -47,4 +47,4 @@ export default connect(mapStateToProps, {
   incrementCount,
   decrementCount,
   destroyTopic
-})(Vote);
+})(Home);
