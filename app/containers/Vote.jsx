@@ -14,7 +14,8 @@ class Vote extends Component {
   render() {
     const {newTopic, topics, typing, createTopic, destroyTopic, incrementCount, decrementCount} = this.props;
     return (
-      <div className={cx('vote')}>
+      // <div className={cx('vote')}>
+      <div>
         hello world vote page
       </div>
     );
