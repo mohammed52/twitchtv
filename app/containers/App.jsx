@@ -42,17 +42,25 @@ const App = ({children}) => {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#"><img src={MEK} width="90" height="20"/></a>
+            <a href="#"><img src={MEK}
+                             width="90"
+                             height="20"/></a>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav>
+        <Nav pullRight>
+          <span class="navbar-text"
+                centered><strong>How About This</strong></span>
+          <NavItem eventKey={1}
+                   disabled>
+            <strong>Helpline: 021-34530931</strong>
+          </NavItem>
         </Nav>
       </Navbar>
       hello world app containter //
       <Message />
       {children}
     </div>
-    );
+  );
 };
 
 App.propTypes = {
