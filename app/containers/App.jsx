@@ -48,15 +48,12 @@ const App = ({children}) => {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav pullRight>
-          <span class="navbar-text"
-                centered><strong>How About This</strong></span>
           <NavItem eventKey={1}
                    disabled>
             <strong>Helpline: 021-34530931</strong>
           </NavItem>
         </Nav>
       </Navbar>
-      hello world app containter //
       <Message />
       {children}
     </div>

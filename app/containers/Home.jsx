@@ -16,7 +16,9 @@ class Home extends Component {
     return (
       // <div className={cx('vote')}>
       <div>
-        hello world vote page-1
+        <div className="container-fluid testbg-1 alignCenter">
+          <h1 className="testbg-2">Do you have a requirement for Metal Doors?</h1>
+        </div>
       </div>
     );
   }

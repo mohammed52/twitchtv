@@ -24,11 +24,17 @@ body {
 
 /* Add your global styles below... */
 
-/* ex:
+ /*ex:*/
 
 :global {
   & .red { color: red; }
   & .blue { color: blue; }
+  & .testbg-1{
+  	border: 1px solid lightgreen;
+  }
+& .testbg-2{
+  	border: 1px solid lightblue;
+  }
 }
 
-*/
+
