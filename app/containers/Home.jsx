@@ -6,7 +6,8 @@ import EntryBox from '../components/EntryBox';
 import MainSection from '../components/MainSection';
 import Scoreboard from '../components/Scoreboard';
 import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
-import styles from '../css/components/vote';
+import styles from '../css/components/homeStyles';
+import testStyles from '../css/components/testStyles';
 
 const cx = classNames.bind(styles);
 
@@ -16,8 +17,8 @@ class Home extends Component {
     return (
       // <div className={cx('vote')}>
       <div>
-        <div className="container-fluid testbg-1 alignCenter">
-          <h1 className="testbg-2">Do you have a requirement for Metal Doors?</h1>
+        <div className={[testStyles.testbg2, "container-fluid"].join(' ')}>
+          <h1 className={[testStyles.testbg1].join(' ')}>Do you have a requirement for Metal Doors?</h1>
         </div>
       </div>
     );
