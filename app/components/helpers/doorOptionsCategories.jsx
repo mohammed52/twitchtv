@@ -1,11 +1,11 @@
-import * as types from '../types';
+import * as types from '../../types';
 
 export const doorOptionsCategories = [
   {
     categoryName: types.CAT_DOORS,
     categoryTitle: types.CAT_DOORS_TITLE,
     categorySubTitle: types.CAT_DOORS_SUBTITLE,
-    optionType: types.OPT_TYPE_IMAGE,
+    categoryType: types.CAT_TYPE_IMAGE_SELECT,
     nextCategory: types.CAT_CONTACT_DETAILS,
     options: [
       {

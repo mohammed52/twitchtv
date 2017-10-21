@@ -34,7 +34,6 @@ export const CAT_DOORS_SUBTITLE = '(Single Doors, Double Doors, Multiple Locking
 export const OPT_SINGLE_DOOR = 'OPT_SINGLE_DOOR';
 export const OPT_DOUBLE_DOOR = 'OPT_DOUBLE_DOOR';
 
-export const OPT_TYPE_IMAGE = 'OPT_TYPE_IMAGE';
-export const OPT_TYPE_TEXT_INPUT = 'OPT_TYPE_TEXT_INPUT';
+export const CAT_TYPE_IMAGE_SELECTION = 'CAT_TYPE_IMAGE_SELECTION';
 
 export const CAT_CONTACT_DETAILS = 'CAT_CONTACT_DETAILS';

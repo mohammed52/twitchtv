@@ -5,27 +5,28 @@ import classNames from 'classnames/bind';
 // import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
 // import styles from '../css/components/ProductCategoryStyles';
 import testStyles from '../css/components/testStyles';
-// import OptionComponent from ''
+import doorOptionsCategories from './helpers/doorOptionsCategories';
+
 
 // const cx = classNames.bind(styles);
 
-class ProductCategory extends Component {
+class CategoryImageComponent extends Component {
+
   render() {
-    for (var i = 0; i < this.props.options.length; i++) {
-      // this.props.options[i]
-    }
+    debugger
+    // const currentCategoryOption = doorOptionsCategories[this.props.categoryIndex];
 
     return (
       // <div className={cx('vote')}>
       <div>
-        ProductCategory
+        {doorOptionsCategories}
       </div>
-      );
+    );
   }
 }
 
-ProductCategory.propTypes = {
-  options: PropTypes.array.isRequired,
+CategoryImageComponent.propTypes = {
+  categoryIndex: PropTypes.number.isRequired,
 // topics: PropTypes.array.isRequired,
 // typing: PropTypes.func.isRequired,
 // createTopic: PropTypes.func.isRequired,
@@ -50,4 +51,4 @@ export default connect(mapStateToProps, {
   // incrementCount,
   // decrementCount,
   // destroyTopic
-})(ProductCategory);
+})(CategoryImageComponent);

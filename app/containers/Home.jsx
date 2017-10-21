@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 // import EntryBox from '../components/EntryBox';
 // import MainSection from '../components/MainSection';
 // import Scoreboard from '../components/Scoreboard';
-import ProductCategory from '../components/ProductCategory';
+import CategoryImageComponent from '../components/CategoryImageComponent';
 // import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
 import styles from '../css/components/homeStyles';
 import testStyles from '../css/components/testStyles';
@@ -13,8 +13,10 @@ import testStyles from '../css/components/testStyles';
 const cx = classNames.bind(styles);
 
 class Home extends Component {
+
   render() {
     // const {newTopic, topics, typing, createTopic, destroyTopic, incrementCount, decrementCount} = this.props;
+
     return (
       // <div className={cx('vote')}>
       <div>
@@ -22,9 +24,9 @@ class Home extends Component {
           <h2 className={[testStyles.testbg1, styles.pageTitle].join(' ')}>Do you have a requirement for Metal Doors?</h2>
           <h3 className={[testStyles.testbg1, styles.pageTitle].join(' ')}>Select a Door to get Started</h3>
         </div>
-        <ProductCategory options={["single door", "double door"]}/>
+        <CategoryImageComponent categoryIndex="0" />
       </div>
-      );
+    );
   }
 }
 
