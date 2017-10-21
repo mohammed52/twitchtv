@@ -1,3 +1,21 @@
+
+export const CAT_DOORS = 'CAT_DOORS';
+export const CAT_DOORS_TITLE = 'Metal / Steel Door';
+export const CAT_DOORS_SUBTITLE = '(Single Doors, Double Doors, Multiple Locking options and accessories)';
+export const OPT_SINGLE_DOOR = 'OPT_SINGLE_DOOR';
+export const OPT_DOUBLE_DOOR = 'OPT_DOUBLE_DOOR';
+
+export const CAT_TYPE_IMAGE_SELECTION = 'CAT_TYPE_IMAGE_SELECTION';
+
+export const CAT_CONTACT_DETAILS = 'CAT_CONTACT_DETAILS';
+
+
+
+
+
+
+
+
 export const DISMISS_MESSAGE = 'DISMISS_MESSAGE';
 
 export const CREATE_REQUEST = 'CREATE_REQUEST';
@@ -27,13 +45,3 @@ export const SIGNUP_ERROR_USER = 'SIGNUP_ERROR_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const LOGOUT_SUCCESS_USER = 'LOGOUT_SUCCESS_USER';
 export const LOGOUT_ERROR_USER = 'LOGOUT_ERROR_USER';
-
-export const CAT_DOORS = 'CAT_DOORS';
-export const CAT_DOORS_TITLE = 'Metal / Door';
-export const CAT_DOORS_SUBTITLE = '(Single Doors, Double Doors, Multiple Locking options and accessories)';
-export const OPT_SINGLE_DOOR = 'OPT_SINGLE_DOOR';
-export const OPT_DOUBLE_DOOR = 'OPT_DOUBLE_DOOR';
-
-export const CAT_TYPE_IMAGE_SELECTION = 'CAT_TYPE_IMAGE_SELECTION';
-
-export const CAT_CONTACT_DETAILS = 'CAT_CONTACT_DETAILS';

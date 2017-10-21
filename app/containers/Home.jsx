@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 class Home extends Component {
 
   render() {
-    // const {newTopic, topics, typing, createTopic, destroyTopic, incrementCount, decrementCount} = this.props;
+    let startingIndex = 0;
 
     return (
       // <div className={cx('vote')}>
@@ -24,9 +24,9 @@ class Home extends Component {
           <h2 className={[testStyles.testbg1, styles.pageTitle].join(' ')}>Do you have a requirement for Metal Doors?</h2>
           <h3 className={[testStyles.testbg1, styles.pageTitle].join(' ')}>Select a Door to get Started</h3>
         </div>
-        <CategoryImageComponent categoryIndex="0" />
+        <CategoryImageComponent categoryIndex={startingIndex} />
       </div>
-    );
+      );
   }
 }
 

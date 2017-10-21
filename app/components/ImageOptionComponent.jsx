@@ -6,37 +6,28 @@ import classNames from 'classnames/bind';
 // import styles from '../css/components/ProductCategoryStyles';
 import testStyles from '../css/components/testStyles';
 import { doorOptionsCategories } from './helpers/doorOptionsCategories';
-import ImageOptionComponent from './ImageOptionComponent';
 
 // const cx = classNames.bind(styles);
 
-class CategoryImageComponent extends Component {
+class ImageOptionComponent extends Component {
 
   render() {
-    let optionsObject = doorOptionsCategories
-    let currentCategory = doorOptionsCategories[this.props.categoryIndex];
-    let options = currentCategory.options;
 
-    let imageOptionCompArr = []
-    for (var i = 0; i < options.length; i++) {
-      let currentImageOption = options[i];
-
-      imageOptionCompArr.push(
-        <ImageOptionComponent key={"imageOptionCompArr" + i} option={currentImageOption} />
-      )
-    }
+    let option = this.props.option;
 
     return (
       // <div className={cx('vote')}>
       <div>
-        {imageOptionCompArr}
+        {option.imageUrl}
+        <img src={option.imageUrl} alt={option.name} />
       </div>
       );
   }
 }
 
-CategoryImageComponent.propTypes = {
-  categoryIndex: PropTypes.number.isRequired,
+ImageOptionComponent.propTypes = {
+  option: PropTypes.object.isRequired
+// categoryIndex: PropTypes.number.isRequired,
 // topics: PropTypes.array.isRequired,
 // typing: PropTypes.func.isRequired,
 // createTopic: PropTypes.func.isRequired,
@@ -61,4 +52,4 @@ export default connect(mapStateToProps, {
   // incrementCount,
   // decrementCount,
   // destroyTopic
-})(CategoryImageComponent);
+})(ImageOptionComponent);
