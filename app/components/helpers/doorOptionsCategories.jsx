@@ -10,11 +10,11 @@ export const doorOptionsCategories = [
     options: [
       {
         name: types.OPT_SINGLE_DOOR,
-        imageUrl: '../images/doors/single-door'
+        imageUrl: require('../../images/doors/optSingleDoor.png')
       },
       {
         name: types.OPT_DOUBLE_DOOR,
-        imageUrl: '../images/doors/double-door'
+        imageUrl: require('../../images/doors/optDoubleDoor.png')
       }
     ]
   }

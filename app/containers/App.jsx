@@ -29,12 +29,6 @@ const cx = classNames.bind(styles);
  * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
  */
 const App = ({children}) => {
-  var icon = (
-  <span class="logo"><a href="/"><img src={MEK}
-                                      height="33"
-                                      width="120"
-                                      alt="text here" /></a></span>
-  );
 
   return (
     // <div className={cx('app')}>
