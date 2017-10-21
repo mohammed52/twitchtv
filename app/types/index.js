@@ -28,4 +28,13 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const LOGOUT_SUCCESS_USER = 'LOGOUT_SUCCESS_USER';
 export const LOGOUT_ERROR_USER = 'LOGOUT_ERROR_USER';
 
-export const OPTION_TYPE_IMAGE = 'OPTION_TYPE_IMAGE'
+export const CAT_DOORS = 'CAT_DOORS';
+export const CAT_DOORS_TITLE = 'Metal / Door';
+export const CAT_DOORS_SUBTITLE = '(Single Doors, Double Doors, Multiple Locking options and accessories)';
+export const OPT_SINGLE_DOOR = 'OPT_SINGLE_DOOR';
+export const OPT_DOUBLE_DOOR = 'OPT_DOUBLE_DOOR';
+
+export const OPT_TYPE_IMAGE = 'OPT_TYPE_IMAGE';
+export const OPT_TYPE_TEXT_INPUT = 'OPT_TYPE_TEXT_INPUT';
+
+export const CAT_CONTACT_DETAILS = 'CAT_CONTACT_DETAILS';
