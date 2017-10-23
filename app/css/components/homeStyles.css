@@ -1,5 +1,8 @@
 @import 'testStyles';
 
+.homeWrapper{
+  margin: 0 5vw 0 5vw;
+}
 
 .pageTitle {
   text-align: center;

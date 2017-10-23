@@ -21,20 +21,18 @@ class CategoryImageComponent extends Component {
       let currentImageOption = options[i];
 
       imageOptionCompArr.push(
-        <ImageOptionComponent key={"imageOptionCompArr" + i}
-                              option={currentImageOption}
-                              className={[styles.testRed, "imageOptionComponentWrapper"].join(' ')} />
+        <ImageOptionComponent key={"imageOptionCompArr" + i} option={currentImageOption} className={[styles.testRed, "imageOptionComponentWrapper"].join(' ')} />
       )
     }
 
     return (
       <div>
-        <div className={[styles.testBlue, "categoryImageWrapper"].join(' ')}>
+        <div className={[styles.testBlue, styles.categoryImageWrapper].join(' ')}>
           {imageOptionCompArr}
         </div>
       </div>
 
-    );
+      );
   }
 }
 

@@ -18,12 +18,16 @@ class ImageOptionComponent extends Component {
 
     return (
       // <div className={cx('vote')}>
-      <div>
-        <img src={option.imageUrl}
-             alt={option.name}
-             className={[styles.opionImage, styles.testBlue].join(' ')} />
+      <div className={[styles.ImageOptionWrapper, styles.testRed].join(' ')}>
+        <img src={option.imageUrl} alt={option.name} className={[styles.opionImage, styles.testBlue, 'img-responsive'].join(' ')} />
+        <div className={[styles.headerText].join(' ')}>
+          {option.headerText}
+        </div>
+        <div className={[styles.subHeaderText].join(' ')}>
+          {option.subHeaderText}
+        </div>
       </div>
-    );
+      );
   }
 }
 

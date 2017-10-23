@@ -2,8 +2,13 @@
 export const CAT_DOORS = 'CAT_DOORS';
 export const CAT_DOORS_TITLE = 'Metal / Steel Door';
 export const CAT_DOORS_SUBTITLE = '(Single Doors, Double Doors, Multiple Locking options and accessories)';
-export const OPT_SINGLE_DOOR = 'OPT_SINGLE_DOOR';
-export const OPT_DOUBLE_DOOR = 'OPT_DOUBLE_DOOR';
+export const OPT_SINGLE_DOOR_ID = 'OPT_SINGLE_DOOR_ID';
+export const OPT_SINGLE_DOOR_HEADERTEXT = 'Single Door';
+export const OPT_SINGLE_DOOR_SUBHEADERTEXT = 'Door and Frame';
+
+export const OPT_DOUBLE_DOOR_ID = 'OPT_DOUBLE_DOOR_ID';
+export const OPT_DOUBLE_DOOR_HEADERTEXT = 'Double Door';
+export const OPT_DOUBLE_DOOR_SUBHEADERTEXT = 'Door and Frame';
 
 export const CAT_TYPE_IMAGE_SELECTION = 'CAT_TYPE_IMAGE_SELECTION';
 

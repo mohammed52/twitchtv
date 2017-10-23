@@ -1,4 +1,4 @@
-/*:root {
+:root {
 
   --colorBlack:               #000;
   --colorWhite:               #fff;
@@ -14,5 +14,6 @@
   --colorCrimson:             #ed193a;
   --colorDarkerCrimson:       color(var(--colorCrimson) blackness(+20%));
 
+  --colorGreyText:            #3B3333;
+  --MEKgreen:                 #008234;
 }
-*/

@@ -9,28 +9,40 @@ export const doorOptionsCategories = [
     nextCategory: types.CAT_CONTACT_DETAILS,
     options: [
       {
-        name: types.OPT_SINGLE_DOOR,
-        imageUrl: require('../../images/doors/optSingleDoor.png')
+        id: types.OPT_SINGLE_DOOR,
+        imageUrl: require('../../images/doors/optSingleDoor.png'),
+        headerText: types.OPT_SINGLE_DOOR_HEADERTEXT,
+        subHeaderText: types.OPT_SINGLE_DOOR_SUBHEADERTEXT
       },
       {
-        name: types.OPT_DOUBLE_DOOR,
-        imageUrl: require('../../images/doors/optDoubleDoor.png')
-      },
-    {
-        name: types.OPT_SINGLE_DOOR,
-        imageUrl: require('../../images/doors/optSingleDoor.png')
+        id: types.OPT_DOUBLE_DOOR,
+        imageUrl: require('../../images/doors/optDoubleDoor.png'),
+        headerText: types.OPT_DOUBLE_DOOR_HEADERTEXT,
+        subHeaderText: types.OPT_DOUBLE_DOOR_SUBHEADERTEXT
       },
       {
-        name: types.OPT_DOUBLE_DOOR,
-        imageUrl: require('../../images/doors/optDoubleDoor.png')
-      },
-    {
-        name: types.OPT_SINGLE_DOOR,
-        imageUrl: require('../../images/doors/optSingleDoor.png')
+        id: types.OPT_SINGLE_DOOR,
+        imageUrl: require('../../images/doors/optSingleDoor.png'),
+        headerText: types.OPT_SINGLE_DOOR_HEADERTEXT,
+        subHeaderText: types.OPT_SINGLE_DOOR_SUBHEADERTEXT
       },
       {
-        name: types.OPT_DOUBLE_DOOR,
-        imageUrl: require('../../images/doors/optDoubleDoor.png')
+        id: types.OPT_DOUBLE_DOOR,
+        imageUrl: require('../../images/doors/optDoubleDoor.png'),
+        headerText: types.OPT_DOUBLE_DOOR_HEADERTEXT,
+        subHeaderText: types.OPT_DOUBLE_DOOR_SUBHEADERTEXT
+      },
+      {
+        id: types.OPT_SINGLE_DOOR,
+        imageUrl: require('../../images/doors/optSingleDoor.png'),
+        headerText: types.OPT_SINGLE_DOOR_HEADERTEXT,
+        subHeaderText: types.OPT_SINGLE_DOOR_SUBHEADERTEXT
+      },
+      {
+        id: types.OPT_DOUBLE_DOOR,
+        imageUrl: require('../../images/doors/optDoubleDoor.png'),
+        headerText: types.OPT_DOUBLE_DOOR_HEADERTEXT,
+        subHeaderText: types.OPT_DOUBLE_DOOR_SUBHEADERTEXT
       },
     ]
   }
