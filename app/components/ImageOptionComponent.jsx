@@ -21,7 +21,7 @@ class ImageOptionComponent extends Component {
       <div>
         <img src={option.imageUrl}
              alt={option.name}
-             className={[styles.testBlue].join(' ')} />
+             className={[styles.opionImage, styles.testBlue].join(' ')} />
       </div>
     );
   }

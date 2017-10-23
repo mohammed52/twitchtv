@@ -1,1 +1,6 @@
 @import 'testStyles';
+
+.opionImage{
+	width: 200px;
+	height: 200px;
+}
