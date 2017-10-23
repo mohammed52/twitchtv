@@ -10,23 +10,49 @@ import CategoryImageComponent from '../components/CategoryImageComponent';
 import styles from '../css/components/homeStyles';
 import testStyles from '../css/components/testStyles';
 
-const cx = classNames.bind(styles);
+// const cx = classNames.bind(styles);
 
 class Home extends Component {
 
   render() {
     let startingIndex = 0;
-
     return (
-      // <div className={cx('vote')}>
       <div>
-        <div className={[testStyles.testbg2, "container-fluid"].join(' ')}>
-          <h2 className={[testStyles.testbg1, styles.pageTitle].join(' ')}>Do you have a requirement for Metal Doors?</h2>
-          <h3 className={[testStyles.testbg1, styles.pageTitle].join(' ')}>Select a Door to get Started</h3>
+        let's do this
+        <div>
+          <ul className="categoryImageWrapper">
+            <li className="imageOptionComponentWrapper">
+              1
+            </li>
+            <li className="imageOptionComponentWrapper">
+              2
+            </li>
+            <li className="imageOptionComponentWrapper">
+              3
+            </li>
+            <li className="imageOptionComponentWrapper">
+              4
+            </li>
+            <li className="imageOptionComponentWrapper">
+              5
+            </li>
+            <li className="imageOptionComponentWrapper">
+              6
+            </li>
+          </ul>
         </div>
-        <CategoryImageComponent categoryIndex={startingIndex} />
       </div>
-      );
+    );
+
+  // return (
+  //   <div>
+  //     <div className={[testStyles.testOrange, "container-fluid"].join(' ')}>
+  //       <h2 className={[testStyles.testRed, styles.pageTitle].join(' ')}>Do you have a requirement for Metal Doors?</h2>
+  //       <h3 className={[testStyles.testBlue, styles.pageTitle].join(' ')}>Select a Door to get Started</h3>
+  //     </div>
+  //     <CategoryImageComponent categoryIndex={startingIndex} />
+  //   </div>
+  // );
   }
 }
 

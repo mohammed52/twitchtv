@@ -1,4 +1,4 @@
-@import '../common/typography';
+/*@import '../common/typography';
 
 .header {
   @apply --heading;
@@ -7,3 +7,4 @@
 
 .description { @apply --normal; }
 .contribute { @apply --small; }
+*/

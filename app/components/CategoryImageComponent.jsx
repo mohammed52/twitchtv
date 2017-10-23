@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 // import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
-// import styles from '../css/components/ProductCategoryStyles';
+import styles from '../css/components/CategoryImageStyles';
 import testStyles from '../css/components/testStyles';
 import { doorOptionsCategories } from './helpers/doorOptionsCategories';
 import ImageOptionComponent from './ImageOptionComponent';
@@ -22,16 +22,20 @@ class CategoryImageComponent extends Component {
       let currentImageOption = options[i];
 
       imageOptionCompArr.push(
-        <ImageOptionComponent key={"imageOptionCompArr" + i} option={currentImageOption} />
+        <ImageOptionComponent key={"imageOptionCompArr" + i}
+                              option={currentImageOption}
+                              className={[testStyles.testRed, "imageOptionComponentWrapper"].join(' ')} />
       )
     }
 
     return (
-      // <div className={cx('vote')}>
       <div>
-        {imageOptionCompArr}
+        <div className={[testStyles.testBlue, "categoryImageWrapper"].join(' ')}>
+          {imageOptionCompArr}
+        </div>
       </div>
-      );
+
+    );
   }
 }
 

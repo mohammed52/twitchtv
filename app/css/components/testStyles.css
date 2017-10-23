@@ -1,9 +1,12 @@
-.testbg1{
-  	border: 1px solid lightgreen;
+.testGreen{
+  	border: 1px solid green;
   }
-  .testbg2{
-  	border: 1px solid lightblue;
+  .testBlue{
+  	border: 1px solid blue;
   }
-  .testbg3{
+  .testOrange{
   	border: 1px solid orange;
+  }
+  .testRed{
+  	border: 1px solid red;
   }

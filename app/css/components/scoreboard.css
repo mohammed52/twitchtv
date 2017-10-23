@@ -1,4 +1,4 @@
-@import '../common/typography';
+/*@import '../common/typography';
 @import '../common/layout';
 @import '../common/card';
 
@@ -28,3 +28,4 @@
   @apply --flexNotMoreThan200;
   font-size: var(--fontMedium);
 }
+*/
