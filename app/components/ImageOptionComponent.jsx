@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 // import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
 // import styles from '../css/components/ImageOptionStyles';
-import styles from '../css/components/CategoryImageStyles';
-import testStyles from '../css/components/testStyles';
+import styles from '../css/components/ImageOptionStyles';
 import { doorOptionsCategories } from './helpers/doorOptionsCategories';
 // import optSingleDoor from '../images/doors/optSingleDoor.png';
 import MEK from '../images/MEK.png';
@@ -18,20 +17,13 @@ class ImageOptionComponent extends Component {
     const option = this.props.option;
 
     return (
-      <div className={[testStyles.testRed, "imageOptionComponentWrapper"].join(' ')}>
-        1
+      // <div className={cx('vote')}>
+      <div>
+        <img src={option.imageUrl}
+             alt={option.name}
+             className={[styles.testBlue].join(' ')} />
       </div>
     );
-
-
-  // return (
-  //   // <div className={cx('vote')}>
-  //   <div className={[testStyles.testbg2].join(' ')}>
-  //     <img src={option.imageUrl}
-  //          alt={option.name}
-  //          className={[testStyles.testbg3].join(' ')} />
-  //   </div>
-  // );
   }
 }
 

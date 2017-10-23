@@ -15,22 +15,6 @@ export const doorOptionsCategories = [
       {
         name: types.OPT_DOUBLE_DOOR,
         imageUrl: require('../../images/doors/optDoubleDoor.png')
-      },
-      {
-        name: types.OPT_SINGLE_DOOR,
-        imageUrl: require('../../images/doors/optSingleDoor.png')
-      },
-      {
-        name: types.OPT_DOUBLE_DOOR,
-        imageUrl: require('../../images/doors/optDoubleDoor.png')
-      },
-      {
-        name: types.OPT_SINGLE_DOOR,
-        imageUrl: require('../../images/doors/optSingleDoor.png')
-      },
-      {
-        name: types.OPT_DOUBLE_DOOR,
-        imageUrl: require('../../images/doors/optDoubleDoor.png')
       }
     ]
   }

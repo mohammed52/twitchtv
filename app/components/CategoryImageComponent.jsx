@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 // import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
 import styles from '../css/components/CategoryImageStyles';
-import testStyles from '../css/components/testStyles';
 import { doorOptionsCategories } from './helpers/doorOptionsCategories';
 import ImageOptionComponent from './ImageOptionComponent';
 
@@ -24,13 +23,13 @@ class CategoryImageComponent extends Component {
       imageOptionCompArr.push(
         <ImageOptionComponent key={"imageOptionCompArr" + i}
                               option={currentImageOption}
-                              className={[testStyles.testRed, "imageOptionComponentWrapper"].join(' ')} />
+                              className={[styles.testRed, "imageOptionComponentWrapper"].join(' ')} />
       )
     }
 
     return (
       <div>
-        <div className={[testStyles.testBlue, "categoryImageWrapper"].join(' ')}>
+        <div className={[styles.testBlue, "categoryImageWrapper"].join(' ')}>
           {imageOptionCompArr}
         </div>
       </div>

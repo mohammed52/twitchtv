@@ -10,18 +10,20 @@ import { App, Home, Dashboard, About, LoginOrRegister } from './pages';
  */
 export default (store) => {
   const requireAuth = (nextState, replace, callback) => {
-    const { user: { authenticated }} = store.getState();
+    const {user: {authenticated}} = store.getState();
     if (!authenticated) {
       replace({
         pathname: '/login',
-        state: { nextPathname: nextState.location.pathname }
+        state: {
+          nextPathname: nextState.location.pathname
+        }
       });
     }
     callback();
   };
 
   const redirectAuth = (nextState, replace, callback) => {
-    const { user: { authenticated }} = store.getState();
+    const {user: {authenticated}} = store.getState();
     if (authenticated) {
       replace({
         pathname: '/'
@@ -30,11 +32,10 @@ export default (store) => {
     callback();
   };
   return (
-    <Route path="/" component={App}>
-      <IndexRoute component={Home} fetchData={fetchVoteData} />
-      <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
-      <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
-      <Route path="about" component={About} />
+    <Route path="/"
+           component={App}>
+      <IndexRoute component={Home}
+                  fetchData={fetchVoteData} />
     </Route>
   );
 };

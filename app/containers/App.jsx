@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import Navigation from '../containers/Navigation';
-import Message from '../containers/Message';
+// import Navigation from '../containers/Navigation';
+// import Message from '../containers/Message';
 import styles from '../css/main';
 import MEK from '../images/MEK.png';
 import favicon from '../images/favicon.png';
@@ -29,35 +29,26 @@ var MenuItem = ReactBootstrap.MenuItem;
  * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
  */
 const App = ({children}) => {
-
   return (
     <div>
-      Is this working to?
+      <Navbar>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <a href="#"><img src={MEK}
+                             width="90"
+                             height="20"/></a>
+          </Navbar.Brand>
+        </Navbar.Header>
+        <Nav pullRight>
+          <NavItem eventKey={1}
+                   disabled>
+            <strong>Helpline: 021-34530931</strong>
+          </NavItem>
+        </Nav>
+      </Navbar>
       {children}
     </div>
   );
-
-// return (
-//   <div>
-//     <Navbar>
-//       <Navbar.Header>
-//         <Navbar.Brand>
-//           <a href="#"><img src={MEK}
-//                            width="90"
-//                            height="20"/></a>
-//         </Navbar.Brand>
-//       </Navbar.Header>
-//       <Nav pullRight>
-//         <NavItem eventKey={1}
-//                  disabled>
-//           <strong>Helpline: 021-34530931</strong>
-//         </NavItem>
-//       </Nav>
-//     </Navbar>
-//     <Message />
-//     {children}
-//   </div>
-// );
 };
 
 App.propTypes = {
