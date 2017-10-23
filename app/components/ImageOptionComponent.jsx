@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 // import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
 // import styles from '../css/components/ImageOptionStyles';
-import styles from '../css/components/ImageOptionStyles.css';
+import styles from '../css/components/ImageOptionStyles';
 import { doorOptionsCategories } from './helpers/doorOptionsCategories';
 // import optSingleDoor from '../images/doors/optSingleDoor.png';
 import MEK from '../images/MEK.png';

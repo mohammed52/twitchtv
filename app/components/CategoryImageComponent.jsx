@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 // import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
-import styles from '../css/components/CategoryImageStyles.css';
+import styles from '../css/components/CategoryImageStyles';
 import { doorOptionsCategories } from './helpers/doorOptionsCategories';
 import ImageOptionComponent from './ImageOptionComponent';
 
