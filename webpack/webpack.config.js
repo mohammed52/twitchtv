@@ -78,7 +78,7 @@ module.exports = (env = {}) => {
   };
 
   const devBrowserRender = {
-    devtool: 'eval',
+    devtool: 'eval-source-map',
     context: PATHS.app, // 'app'
     entry: {
       app: ['./client', hotMiddlewareScript]
@@ -103,7 +103,7 @@ module.exports = (env = {}) => {
   };
 
   const devServerRender = {
-    devtool: 'sourcemap',
+    devtool: 'eval-source-map',
     context: PATHS.app, // 'app'
     entry: {
       server: '../server/index'
