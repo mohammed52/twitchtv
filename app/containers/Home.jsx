@@ -19,7 +19,7 @@ class Home extends Component {
     return (
       <div className={[styles.homeWrapper].join(' ')}>
         <div className={[styles.testOrange, "container-fluid"].join(' ')}>
-          <h2 className={[styles.testRed, styles.pageTitle].join(' ')}>Do you have a requirement for Metal Doors?</h2>
+          <h2 className={[styles.testRed, styles.pageTitle].join(' ')}>Get instant quotes for Metal Doors!</h2>
           <h3 className={[styles.testBlue, styles.pageTitle].join(' ')}>Select a Door to get Started</h3>
         </div>
         <CategoryImageComponent categoryIndex={startingIndex} />
