@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import * as types from '../types';
+import _ from 'lodash';
 
 const topic = (state = {},
   action
@@ -53,12 +54,18 @@ const topics = (state = [],
   }
 };
 
-const doorType = (state = '',
+const selectedOptions = (state = {},
   action
 ) => {
   switch (action.type) {
-    //   case types.TYPING:
-    //     return action.newTopic;
+    case types.SAVE_CATEGORY_OPTION:
+      let newState = {
+        ...state
+      }
+
+      newState[action.data.categoryId] = action.data.optionId
+
+      return newState
     //   case types.CREATE_TOPIC_REQUEST:
     //     return '';
     default:
@@ -66,8 +73,8 @@ const doorType = (state = '',
   }
 };
 
-const selectedOptionsReducer = combineReducers({
-  doorType
-});
+// const selectedOptions = combineReducers({
+//   selectedOptions
+// });
 
-export default selectedOptionsReducer;
+export default selectedOptions;

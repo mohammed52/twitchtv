@@ -1,5 +1,5 @@
 
-export const CAT_DOORS = 'CAT_DOORS';
+export const CAT_DOORS_ID = 'CAT_DOORS_ID';
 export const CAT_DOORS_TITLE = 'Metal / Steel Door';
 export const CAT_DOORS_SUBTITLE = '(Single Doors, Double Doors, Multiple Locking options and accessories)';
 export const OPT_SINGLE_DOOR_ID = 'OPT_SINGLE_DOOR_ID';
@@ -14,7 +14,8 @@ export const CAT_TYPE_IMAGE_SELECTION = 'CAT_TYPE_IMAGE_SELECTION';
 
 export const CAT_CONTACT_DETAILS = 'CAT_CONTACT_DETAILS';
 
-
+//selectedOptions constants
+export const SAVE_CATEGORY_OPTION = 'SAVE_CATEGORY_OPTION'
 
 
 

@@ -5,20 +5,30 @@ import classNames from 'classnames/bind';
 // import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
 // import styles from '../css/components/ImageOptionStyles';
 import styles from '../css/components/ImageOptionStyles';
-import { doorOptionsCategories } from './helpers/doorOptionsCategories';
+import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
 // import optSingleDoor from '../images/doors/optSingleDoor.png';
 import MEK from '../images/MEK.png';
 
 
 
 class ImageOptionComponent extends Component {
+  constructor(props) {
+    super(props)
+    this.saveOption = this.saveOption.bind(this)
+  }
+  saveOption() {
+    // console.log("saveOption: " + this.props.option.optionId);
+    const saveSelectedOptionInStore = this.props.saveSelectedOptionInStore
+
+    saveSelectedOptionInStore(this.props.option.optionId)
+  }
 
   render() {
     const option = this.props.option;
 
     return (
       // <div className={cx('vote')}>
-      <div className={[styles.ImageOptionWrapper, styles.testRed].join(' ')}>
+      <div className={[styles.ImageOptionWrapper, styles.testRed].join(' ')} onClick={this.saveOption}>
         <img src={option.imageUrl} alt={option.name} className={[styles.opionImage, styles.testBlue, 'img-responsive'].join(' ')} />
         <div className={[styles.headerText].join(' ')}>
           {option.headerText}
@@ -32,10 +42,10 @@ class ImageOptionComponent extends Component {
 }
 
 ImageOptionComponent.propTypes = {
-  option: PropTypes.object.isRequired
+  option: PropTypes.object.isRequired,
+  saveSelectedOptionInStore: PropTypes.func.isRequired,
 // categoryIndex: PropTypes.number.isRequired,
 // topics: PropTypes.array.isRequired,
-// typing: PropTypes.func.isRequired,
 // createTopic: PropTypes.func.isRequired,
 // destroyTopic: PropTypes.func.isRequired,
 // incrementCount: PropTypes.func.isRequired,
