@@ -54,17 +54,20 @@ class ImageCategoryComponent extends Component {
     return (
       <div>
         <div className={[styles.testBlue, styles.categoryImageWrapper].join(' ')}>
+          <div className={[styles.categoryHeader].join(' ')}>
+            {this.props.category.categoryHeader}
+          </div>
           {imageOptionCompArr}
         </div>
       </div>
 
-      );
+    );
   }
 }
 
 ImageCategoryComponent.propTypes = {
   category: PropTypes.object.isRequired,
-  selected: PropTypes.bool.isRequired,
+  selected: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
 
   setSelectedOption: PropTypes.func.isRequired,

@@ -1,37 +1,58 @@
 import { combineReducers } from 'redux';
 import * as types from '../types';
 import _ from 'lodash';
+import MASTER_OPTIONS from '../components/helpers/MASTER_OPTIONS'
+import initializeSelectedOptions from './helpers/initializeSelectedOptions'
 
-const topic = (state = {},
+const selectedOption = (state = {},
   action
 ) => {
   switch (action.type) {
-    // case types.CREATE_TOPIC_REQUEST:
-    //   return {
-    //     id: action.id,
-    //     count: action.count,
-    //     text: action.text
-    //   };
-    // case types.INCREMENT_COUNT:
-    //   if (state.id === action.id) {
-    //     return {
-    //       ...state,
-    //       count: state.count + 1
-    //     };
-    //   }
-    //   return state;
-    // case types.DECREMENT_COUNT:
-    //   if (state.id === action.id) {
-    //     return {
-    //       ...state,
-    //       count: state.count - 1
-    //     };
-    //   }
-    //   return state;
+    case types.SAVE_CATEGORY_OPTION:
+      if (state.categoryId === action.data.categoryId) {
+        return {
+          ...state,
+          optionId: action.data.optionId,
+          selected: true
+        };
+      }
+      return state;
     default:
       return state;
   }
-};
+}
+
+
+// const topic = (state = {},
+//   action
+// ) => {
+//   switch (action.type) {
+// case types.CREATE_TOPIC_REQUEST:
+//   return {
+//     id: action.id,
+//     count: action.count,
+//     text: action.text
+//   };
+// case types.INCREMENT_COUNT:
+//   if (state.id === action.id) {
+//     return {
+//       ...state,
+//       count: state.count + 1
+//     };
+//   }
+//   return state;
+// case types.DECREMENT_COUNT:
+//   if (state.id === action.id) {
+//     return {
+//       ...state,
+//       count: state.count - 1
+//     };
+//   }
+//   return state;
+// default:
+//   return state;
+//   }
+// };
 
 const topics = (state = [],
   action
@@ -54,23 +75,19 @@ const topics = (state = [],
   }
 };
 
-const selectedOptions = (state = {},
+
+
+const selectedOptions = (state = initializeSelectedOptions(),
   action
 ) => {
   switch (action.type) {
     case types.SAVE_CATEGORY_OPTION:
-      let newState = {
-        ...state
-      }
-
-      newState[action.data.categoryId] = action.data.optionId
-
-      return newState
-    //   case types.CREATE_TOPIC_REQUEST:
-    //     return '';
+      return state.map(t => selectedOption(t, action));
     default:
       return state;
   }
+
+
 };
 
 // const selectedOptions = combineReducers({

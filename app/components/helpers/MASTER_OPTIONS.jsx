@@ -6,6 +6,7 @@ export const MASTER_OPTIONS = [
     categoryType: types.CAT_TYPE_IMAGE_SELECTION,
 
     categoryTitle: types.CAT_DOORS_TITLE,
+    categoryHeader: "SELECT DOOR TYPE: ",
     categorySubTitle: types.CAT_DOORS_SUBTITLE,
     nextCategory: types.CAT_CONTACT_DETAILS,
     options: [
@@ -25,7 +26,9 @@ export const MASTER_OPTIONS = [
   },
   {
     categoryId: types.CAT_CONTACT_DETAILS_ID,
-    categoryType: types.CAT_TYPE_CONTACT_DETAILS
+    categoryType: types.CAT_TYPE_CONTACT_DETAILS,
+    categoryHeader: "CONTACT INFO: "
+
   }
 
 ];

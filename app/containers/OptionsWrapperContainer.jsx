@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import { setSelectedOption } from '../actions/selectedOptionsActions';
 import ImageCategoryComponent from '../components/ImageCategoryComponent';
+import ContactComponent from '../components/ContactComponent';
 import { MASTER_OPTIONS } from '../components/helpers/MASTER_OPTIONS';
 // import loadCategoryComponents from './helpers/loadCategoryComponents';
 import * as types from '../types';
@@ -17,7 +18,9 @@ class OptionsWrapperContainer extends Component {
     let tmpSelectedOptionsArr = []
     for (var i = 0; i < MASTER_OPTIONS.length; i++) {
       tmpSelectedOptionsArr.push({
-        isSelected: false
+        isSelected: false,
+        categoryId: MASTER_OPTIONS[i].categoryId,
+        optionId: null
       })
     }
 
@@ -40,6 +43,9 @@ class OptionsWrapperContainer extends Component {
     this.setState({
       selectedOptions: tmpSelectedOptionsArr
     })
+
+    const setSelectedOption = this.props.setSelectedOption
+    setSelectedOption(categoryId, optionId, index)
   }
 
   render() {
@@ -48,33 +54,38 @@ class OptionsWrapperContainer extends Component {
 
     for (var i = 0; i < MASTER_OPTIONS.length; i++) {
       const category = MASTER_OPTIONS[i]
-      switch (category.categoryType) {
-        case types.CAT_TYPE_IMAGE_SELECTION: {
-          categoryComponents.push(
-            <ImageCategoryComponent key={"categoryComponents" + "ImageCategoryComponent" + i}
-                                    category={category}
-                                    selected={this.state.selectedOptions[i]}
-                                    setSelectedOption={this.setSelectedOption}
-                                    index={i} />);
-          break;
-        }
-        case types.CAT_TYPE_CONTACT_DETAILS: {
-          // if (selectedOptionsArray) {}
-          categoryComponents.push(<div key={"categoryComponents" + "CategoryContactDetailsComponent" + i}>
-                                    Contact Component
-                                  </div>)
+      if (i === 0 || (i > 0 && this.state.selectedOptions[i - 1].isSelected)) {
 
+        switch (category.categoryType) {
+          case types.CAT_TYPE_IMAGE_SELECTION: {
+            categoryComponents.push(
+              <ImageCategoryComponent key={"categoryComponents" + "ImageCategoryComponent" + i}
+                                      category={category}
+                                      selected={this.state.selectedOptions[i]}
+                                      setSelectedOption={this.setSelectedOption}
+                                      index={i} />);
+            break;
+          }
+          case types.CAT_TYPE_CONTACT_DETAILS: {
+            // if (selectedOptionsArray) {}
+            categoryComponents.push(
+              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i}
+                                category={category} />
+            )
+
+          }
+          default:
+            break;
         }
-        default:
-          break;
       }
+
     }
 
     return (
       <div>
         {categoryComponents}
       </div>
-      );
+    );
   }
 }
 

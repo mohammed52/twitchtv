@@ -3,12 +3,13 @@ import { authService } from '../services';
 
 import * as types from '../types';
 
-function setOption(categoryId, optionId) {
+function setOption(categoryId, optionId, index) {
   return {
     type: types.SAVE_CATEGORY_OPTION,
     data: {
       categoryId,
-      optionId
+      optionId,
+      index
     }
   };
 }
@@ -120,9 +121,9 @@ function setOption(categoryId, optionId) {
 //   };
 // }
 
-export function setSelectedOption(categoryId, optionId) {
+export function setSelectedOption(categoryId, optionId, index) {
   return (dispatch) => {
-    dispatch(setOption(categoryId, optionId));
+    dispatch(setOption(categoryId, optionId, index));
   };
 
 }
