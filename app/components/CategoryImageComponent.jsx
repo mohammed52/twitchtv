@@ -6,6 +6,8 @@ import styles from '../css/components/CategoryImageStyles.css';
 import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
 import ImageOptionComponent from './ImageOptionComponent';
 
+import { optionIsSelectedInCategory } from './helpers/categoryHelpers'
+
 // const cx = classNames.bind(styles);
 
 class CategoryImageComponent extends Component {
@@ -26,15 +28,20 @@ class CategoryImageComponent extends Component {
     let currentCategory = MASTER_OPTIONS[this.props.categoryIndex];
     let options = currentCategory.options;
 
+    const selectedOptions = this.props.selectedOptions;
+
     let imageOptionCompArr = []
     for (var i = 0; i < options.length; i++) {
       let currentImageOption = options[i];
+
+
 
       imageOptionCompArr.push(
         <ImageOptionComponent key={"imageOptionCompArr" + i}
                               option={currentImageOption}
                               className={[styles.testRed, "imageOptionComponentWrapper"].join(' ')}
-                              saveSelectedOptionInStore={this.saveSelectedOptionInStore} />
+                              saveSelectedOptionInStore={this.saveSelectedOptionInStore}
+                              isSelected={optionIsSelectedInCategory(currentImageOption.optionId, currentCategory.categoryId, this.props.selectedOptions)} />
       )
     }
 
@@ -45,7 +52,7 @@ class CategoryImageComponent extends Component {
         </div>
       </div>
 
-      );
+    );
   }
 }
 

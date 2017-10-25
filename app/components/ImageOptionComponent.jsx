@@ -26,10 +26,21 @@ class ImageOptionComponent extends Component {
   render() {
     const option = this.props.option;
 
+    let wrapperStyle = "";
+    if (this.props.isSelected) {
+      wrapperStyle = [styles.ImageOptionWrapperSelected, styles.testRed].join(' ')
+    } else {
+      wrapperStyle = [styles.ImageOptionWrapperUnselected, styles.testRed].join(' ')
+
+    }
+
     return (
       // <div className={cx('vote')}>
-      <div className={[styles.ImageOptionWrapper, styles.testRed].join(' ')} onClick={this.saveOption}>
-        <img src={option.imageUrl} alt={option.name} className={[styles.opionImage, styles.testBlue, 'img-responsive'].join(' ')} />
+      <div className={wrapperStyle}
+           onClick={this.saveOption}>
+        <img src={option.imageUrl}
+             alt={option.name}
+             className={[styles.opionImage, styles.testBlue, 'img-responsive'].join(' ')} />
         <div className={[styles.headerText].join(' ')}>
           {option.headerText}
         </div>
@@ -37,13 +48,14 @@ class ImageOptionComponent extends Component {
           {option.subHeaderText}
         </div>
       </div>
-      );
+    );
   }
 }
 
 ImageOptionComponent.propTypes = {
   option: PropTypes.object.isRequired,
   saveSelectedOptionInStore: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired,
 // categoryIndex: PropTypes.number.isRequired,
 // topics: PropTypes.array.isRequired,
 // createTopic: PropTypes.func.isRequired,

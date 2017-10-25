@@ -19,31 +19,7 @@ export const MASTER_OPTIONS = [
         imageUrl: require('../../images/doors/optDoubleDoor.png'),
         headerText: types.OPT_DOUBLE_DOOR_HEADERTEXT,
         subHeaderText: types.OPT_DOUBLE_DOOR_SUBHEADERTEXT
-      },
-      {
-        optionId: types.OPT_SINGLE_DOOR_ID,
-        imageUrl: require('../../images/doors/optSingleDoor.png'),
-        headerText: types.OPT_SINGLE_DOOR_HEADERTEXT,
-        subHeaderText: types.OPT_SINGLE_DOOR_SUBHEADERTEXT
-      },
-      {
-        optionId: types.OPT_DOUBLE_DOOR_ID,
-        imageUrl: require('../../images/doors/optDoubleDoor.png'),
-        headerText: types.OPT_DOUBLE_DOOR_HEADERTEXT,
-        subHeaderText: types.OPT_DOUBLE_DOOR_SUBHEADERTEXT
-      },
-      {
-        optionId: types.OPT_SINGLE_DOOR_ID,
-        imageUrl: require('../../images/doors/optSingleDoor.png'),
-        headerText: types.OPT_SINGLE_DOOR_HEADERTEXT,
-        subHeaderText: types.OPT_SINGLE_DOOR_SUBHEADERTEXT
-      },
-      {
-        optionId: types.OPT_DOUBLE_DOOR_ID,
-        imageUrl: require('../../images/doors/optDoubleDoor.png'),
-        headerText: types.OPT_DOUBLE_DOOR_HEADERTEXT,
-        subHeaderText: types.OPT_DOUBLE_DOOR_SUBHEADERTEXT
-      },
+      }
     ]
   }
 ];

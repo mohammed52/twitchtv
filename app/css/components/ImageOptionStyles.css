@@ -1,17 +1,25 @@
 @import 'testStyles';
 @import '../common/colors';
 
-.ImageOptionWrapper{
+.ImageOptionWrapperUnselected{
   height: 250px;
   width: 200px;
   margin: 1vw;
   border: 5px solid lightgrey;
 }
 
-.ImageOptionWrapper:hover{
+.ImageOptionWrapperUnselected:hover{
   border-color: var(--MEKgreen);
   cursor: pointer;
 }
+
+.ImageOptionWrapperSelected{
+  height: 250px;
+  width: 200px;
+  margin: 1vw;
+  border: 5px solid var(--MEKgreen);
+}
+
 
 .opionImage{
 	width: 200px;
