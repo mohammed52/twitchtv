@@ -1,0 +1,102 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import classNames from 'classnames/bind';
+import { setSelectedOption } from '../actions/selectedOptionsActions';
+import ImageCategoryComponent from '../components/ImageCategoryComponent';
+import { MASTER_OPTIONS } from '../components/helpers/MASTER_OPTIONS';
+// import loadCategoryComponents from './helpers/loadCategoryComponents';
+import * as types from '../types';
+
+class OptionsWrapperContainer extends Component {
+
+  constructor(props) {
+    super(props)
+    this.setSelectedOption = this.setSelectedOption.bind(this);
+
+    let tmpSelectedOptionsArr = []
+    for (var i = 0; i < MASTER_OPTIONS.length; i++) {
+      tmpSelectedOptionsArr.push({
+        isSelected: false
+      })
+    }
+
+    this.state = {
+      selectedOptions: tmpSelectedOptionsArr,
+      totalOptions: MASTER_OPTIONS.length
+    }
+  }
+
+  setSelectedOption(categoryId, optionId, index) {
+
+    let tmpSelectedOptionsArr = this.state.selectedOptions
+
+    tmpSelectedOptionsArr[index] = {
+      isSelected: true,
+      categoryId,
+      optionId
+    }
+
+    this.setState({
+      selectedOptions: tmpSelectedOptionsArr
+    })
+  }
+
+  render() {
+    // const categoryComponents = loadCategoryComponents(this.state.selectedOptions)
+    let categoryComponents = []
+
+    for (var i = 0; i < MASTER_OPTIONS.length; i++) {
+      const category = MASTER_OPTIONS[i]
+      switch (category.categoryType) {
+        case types.CAT_TYPE_IMAGE_SELECTION: {
+          categoryComponents.push(
+            <ImageCategoryComponent key={"categoryComponents" + "ImageCategoryComponent" + i}
+                                    category={category}
+                                    selected={this.state.selectedOptions[i]}
+                                    setSelectedOption={this.setSelectedOption}
+                                    index={i} />);
+          break;
+        }
+        case types.CAT_TYPE_CONTACT_DETAILS: {
+          // if (selectedOptionsArray) {}
+          categoryComponents.push(<div key={"categoryComponents" + "CategoryContactDetailsComponent" + i}>
+                                    Contact Component
+                                  </div>)
+
+        }
+        default:
+          break;
+      }
+    }
+
+    return (
+      <div>
+        {categoryComponents}
+      </div>
+      );
+  }
+}
+
+OptionsWrapperContainer.propTypes = {
+  // topics: PropTypes.array.isRequired,
+  // typing: PropTypes.func.isRequired,
+  // createTopic: PropTypes.func.isRequired,
+  // destroyTopic: PropTypes.func.isRequired,
+  // incrementCount: PropTypes.func.isRequired,
+  // decrementCount: PropTypes.func.isRequired,
+  // newTopic: PropTypes.string
+};
+
+function mapStateToProps(state) {
+  return {
+    // topics: state.topic.topics,
+    // newTopic: state.topic.newTopic
+  };
+}
+
+// Read more about where to place `connect` here:
+// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
+export default connect(mapStateToProps, {
+  setSelectedOption,
+})(OptionsWrapperContainer);

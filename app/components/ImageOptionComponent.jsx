@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import classNames from 'classnames/bind';
-// import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
-// import styles from '../css/components/ImageOptionStyles';
+
 import styles from '../css/components/ImageOptionStyles';
-import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
-// import optSingleDoor from '../images/doors/optSingleDoor.png';
+
 import MEK from '../images/MEK.png';
-
-
 
 class ImageOptionComponent extends Component {
   constructor(props) {
@@ -36,11 +31,8 @@ class ImageOptionComponent extends Component {
 
     return (
       // <div className={cx('vote')}>
-      <div className={wrapperStyle}
-           onClick={this.saveOption}>
-        <img src={option.imageUrl}
-             alt={option.name}
-             className={[styles.opionImage, styles.testBlue, 'img-responsive'].join(' ')} />
+      <div className={wrapperStyle} onClick={this.saveOption}>
+        <img src={option.imageUrl} alt={option.name} className={[styles.opionImage, styles.testBlue, 'img-responsive'].join(' ')} />
         <div className={[styles.headerText].join(' ')}>
           {option.headerText}
         </div>
@@ -48,7 +40,7 @@ class ImageOptionComponent extends Component {
           {option.subHeaderText}
         </div>
       </div>
-    );
+      );
   }
 }
 

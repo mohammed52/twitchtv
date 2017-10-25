@@ -2,29 +2,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-// import EntryBox from '../components/EntryBox';
-// import MainSection from '../components/MainSection';
-// import Scoreboard from '../components/Scoreboard';
-import CategoryImageComponent from '../components/CategoryImageComponent';
-// import { createTopic, typing, incrementCount, decrementCount, destroyTopic } from '../actions/topics';
+import OptionsWrapperContainer from './OptionsWrapperContainer'
 import styles from '../css/components/homeStyles';
-
-// const cx = classNames.bind(styles);
 
 class Home extends Component {
 
   render() {
+
     let startingIndex = 0;
 
     return (
       <div className={[styles.homeWrapper].join(' ')}>
         <div className={[styles.testOrange, "container-fluid"].join(' ')}>
           <h2 className={[styles.testRed, styles.pageTitle].join(' ')}>Get instant quotes for Metal Doors!</h2>
-          <h3 className={[styles.testBlue, styles.pageTitle].join(' ')}>Select a Door to get Started</h3>
+          <h3 className={[styles.testBlue, styles.pageSubTitle].join(' ')}>Select a Door to get Started</h3>
+          <OptionsWrapperContainer />
         </div>
-        <CategoryImageComponent categoryIndex={startingIndex} />
       </div>
-    );
+      );
   }
 }
 

@@ -3,9 +3,10 @@ import * as types from '../../types';
 export const MASTER_OPTIONS = [
   {
     categoryId: types.CAT_DOORS_ID,
+    categoryType: types.CAT_TYPE_IMAGE_SELECTION,
+
     categoryTitle: types.CAT_DOORS_TITLE,
     categorySubTitle: types.CAT_DOORS_SUBTITLE,
-    categoryType: types.CAT_TYPE_IMAGE_SELECT,
     nextCategory: types.CAT_CONTACT_DETAILS,
     options: [
       {
@@ -21,5 +22,10 @@ export const MASTER_OPTIONS = [
         subHeaderText: types.OPT_DOUBLE_DOOR_SUBHEADERTEXT
       }
     ]
+  },
+  {
+    categoryId: types.CAT_CONTACT_DETAILS_ID,
+    categoryType: types.CAT_TYPE_CONTACT_DETAILS
   }
+
 ];

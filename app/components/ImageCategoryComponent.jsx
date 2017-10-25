@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setSelectedOption } from '../actions/selectedOptionsActions';
+// import { setSelectedOption } from '../actions/selectedOptionsActions';
 import styles from '../css/components/CategoryImageStyles.css';
 import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
 import ImageOptionComponent from './ImageOptionComponent';
@@ -10,7 +10,7 @@ import { optionIsSelectedInCategory } from './helpers/categoryHelpers'
 
 // const cx = classNames.bind(styles);
 
-class CategoryImageComponent extends Component {
+class ImageCategoryComponent extends Component {
   constructor(props) {
     super(props);
     this.saveSelectedOptionInStore = this.saveSelectedOptionInStore.bind(this);
@@ -19,29 +19,35 @@ class CategoryImageComponent extends Component {
   saveSelectedOptionInStore(optionId) {
 
     const setSelectedOption = this.props.setSelectedOption
-
-    setSelectedOption(MASTER_OPTIONS[this.props.categoryIndex].categoryId, optionId);
+    setSelectedOption(this.props.category.categoryId, optionId, this.props.index);
   }
 
   render() {
-    let optionsObject = MASTER_OPTIONS
-    let currentCategory = MASTER_OPTIONS[this.props.categoryIndex];
-    let options = currentCategory.options;
 
-    const selectedOptions = this.props.selectedOptions;
+    // let optionsObject = MASTER_OPTIONS
+    // let currentCategory = MASTER_OPTIONS[this.props.categoryIndex];
+    let options = this.props.category.options;
+
+    // const selectedOptions = this.props.selectedOptions;
 
     let imageOptionCompArr = []
     for (var i = 0; i < options.length; i++) {
       let currentImageOption = options[i];
 
+      let tmpIsOptionSelected = false;
 
+      if (this.props.selected.isSelected &&
+        this.props.selected.categoryId === this.props.selected.categoryId &&
+        this.props.selected.optionId === currentImageOption.optionId) {
+        tmpIsOptionSelected = true
+      }
 
       imageOptionCompArr.push(
         <ImageOptionComponent key={"imageOptionCompArr" + i}
                               option={currentImageOption}
-                              className={[styles.testRed, "imageOptionComponentWrapper"].join(' ')}
+                              className={[styles.testRed].join(' ')}
                               saveSelectedOptionInStore={this.saveSelectedOptionInStore}
-                              isSelected={optionIsSelectedInCategory(currentImageOption.optionId, currentCategory.categoryId, this.props.selectedOptions)} />
+                              isSelected={tmpIsOptionSelected} />
       )
     }
 
@@ -52,13 +58,18 @@ class CategoryImageComponent extends Component {
         </div>
       </div>
 
-    );
+      );
   }
 }
 
-CategoryImageComponent.propTypes = {
-  categoryIndex: PropTypes.number.isRequired,
-  selectedOptions: PropTypes.object,
+ImageCategoryComponent.propTypes = {
+  category: PropTypes.object.isRequired,
+  selected: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
+
+  setSelectedOption: PropTypes.func.isRequired,
+
+// selectedOptions: PropTypes.object,
 // topics: PropTypes.array.isRequired,
 // typing: PropTypes.func.isRequired,
 // createTopic: PropTypes.func.isRequired,
@@ -77,5 +88,5 @@ function mapStateToProps(state) {
 // Read more about where to place `connect` here:
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps, {
-  setSelectedOption,
-})(CategoryImageComponent);
+  // setSelectedOption,
+})(ImageCategoryComponent);

@@ -7,3 +7,17 @@
 .pageTitle {
   text-align: center;
 }
+
+.pageSubTitle{
+  text-align: center;
+}    
+
+@media(max-width : 480px){
+  .pageTitle {
+    font-size: 8vw;
+  }
+
+  .pageSubTitle{
+    font-size: 6vw;
+}
+}
