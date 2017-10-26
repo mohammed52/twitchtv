@@ -13,13 +13,13 @@ class Home extends Component {
 
     return (
       <div className={[styles.homeWrapper].join(' ')}>
-        <div className={[styles.testOrange, "container-fluid"].join(' ')}>
-          <h2 className={[styles.testRed, styles.pageTitle].join(' ')}>Get instant quotes for Metal Doors!</h2>
-          <h3 className={[styles.testBlue, styles.pageSubTitle].join(' ')}>Select a Door to get Started</h3>
+        <div className={["container-fluid"].join(' ')}>
+          <h2 className={[styles.pageTitle].join(' ')}>Get instant quotes for Metal Doors!</h2>
+          <h3 className={[styles.pageSubTitle].join(' ')}>Select a Door to get Started</h3>
           <OptionsWrapperContainer />
         </div>
       </div>
-      );
+    );
   }
 }
 

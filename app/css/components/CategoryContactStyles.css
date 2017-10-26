@@ -2,5 +2,14 @@
 @import 'commonCategoryStyles';
 @import '../common/colors';
 
+.contactForm{
+	margin: 10px 0 20px 0;
+}
 
+.inputField{
+	max-width: 300px;
+}
 
+.wrapperContactForm{
+	align-items: center;
+}

@@ -53,10 +53,11 @@ class ImageCategoryComponent extends Component {
 
     return (
       <div>
-        <div className={[styles.testBlue, styles.categoryImageWrapper].join(' ')}>
+        <div className={[styles.categoryImageWrapper].join(' ')}>
           <div className={[styles.categoryHeader].join(' ')}>
             {this.props.category.categoryHeader}
           </div>
+          <br/>
           {imageOptionCompArr}
         </div>
       </div>

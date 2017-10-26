@@ -20,25 +20,47 @@ class ContactComponent extends Component {
         <div className={[styles.categoryHeader].join(' ')}>
           {this.props.category.categoryHeader}
         </div>
-        <div className={[styles.label].join(' ')}>
-          <label htmlFor="">
-            {"Company Name:  "}
-          </label>
-          <input type="text" />
-          <br/>
-          <label htmlFor="">
-            {"Email:  "}
-          </label>
-          <input type="text" />
-          <br/>
-          <label htmlFor="">
-            {"Tel:  "}
-          </label>
-          <input type="text" />
-          <br/>
-          <button>
-            Get Quote!
-          </button>
+        <div className={[styles.wrapperContactForm].join(' ')}>
+          <form role="form"
+                data-toggle="validator"
+                className={[styles.contactForm].join(' ')}>
+            <div className="form-group">
+              <label htmlFor="inputCompanyName">
+                Company Name
+              </label>
+              <input type="text"
+                     className={[styles.inputField, "form-control"].join(' ')}
+                     id="inputCompanyName"
+                     placeholder="My Company Name Pvt Ltd."
+                     required/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleInputEmail1">
+                Email address
+              </label>
+              <input type="email"
+                     className={[styles.inputField, "form-control"].join(' ')}
+                     id="exampleInputEmail1"
+                     aria-describedby="emailHelp"
+                     placeholder="Enter email"
+                     data-error="Bruh, that email address is invalid"
+                     required/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputTelephone">
+                Telephone
+              </label>
+              <input type="text"
+                     className={[styles.inputField, "form-control"].join(' ')}
+                     id="inputTelephone"
+                     placeholder="+92 313 7590210"
+                     required/>
+            </div>
+            <button type="submit"
+                    className="btn btn-primary">
+              Submit
+            </button>
+          </form>
         </div>
       </div>
 

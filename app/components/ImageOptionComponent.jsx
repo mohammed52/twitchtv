@@ -31,8 +31,11 @@ class ImageOptionComponent extends Component {
 
     return (
       // <div className={cx('vote')}>
-      <div className={wrapperStyle} onClick={this.saveOption}>
-        <img src={option.imageUrl} alt={option.name} className={[styles.opionImage, styles.testBlue, 'img-responsive'].join(' ')} />
+      <div className={wrapperStyle}
+           onClick={this.saveOption}>
+        <img src={option.imageUrl}
+             alt={option.name}
+             className={[styles.opionImage, 'img-responsive'].join(' ')} />
         <div className={[styles.headerText].join(' ')}>
           {option.headerText}
         </div>
@@ -40,7 +43,7 @@ class ImageOptionComponent extends Component {
           {option.subHeaderText}
         </div>
       </div>
-      );
+    );
   }
 }
 
