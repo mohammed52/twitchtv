@@ -34,17 +34,21 @@ class ContactComponent extends Component {
                      placeholder="My Company Name Pvt Ltd."
                      required/>
             </div>
-            <div className="form-group">
+            <div className="form-group has-success">
               <label htmlFor="exampleInputEmail1">
                 Email address
               </label>
               <input type="email"
-                     className={[styles.inputField, "form-control"].join(' ')}
+                     className={[styles.inputField, "form-control form-control-success"].join(' ')}
                      id="exampleInputEmail1"
                      aria-describedby="emailHelp"
                      placeholder="Enter email"
                      data-error="Bruh, that email address is invalid"
                      required/>
+              <div className="form-control-feedback">
+                Success! You've done it.
+              </div>
+              <small className="form-text text-muted">Example help text that remains unchanged.</small>
             </div>
             <div className="form-group">
               <label htmlFor="inputTelephone">
@@ -55,6 +59,23 @@ class ContactComponent extends Component {
                      id="inputTelephone"
                      placeholder="+92 313 7590210"
                      required/>
+            </div>
+            <div className="form-group row has-success">
+              <label htmlFor="inputHorizontalSuccess"
+                     className="col-sm-2 col-form-label">
+                Email
+              </label>
+              <div className="col-sm-10">
+                <input type="email"
+                       className="form-control form-control-success"
+                       id="inputHorizontalSuccess"
+                       placeholder="name@example.com" />
+                <br/>
+                <div className="form-control-feedback">
+                  Success! You've done it.
+                </div>
+                <small className="form-text text-muted">Example help text that remains unchanged.</small>
+              </div>
             </div>
             <button type="submit"
                     className="btn btn-primary">
