@@ -9,6 +9,12 @@ import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
 class ContactComponent extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      companyName: "",
+      email: "",
+      telephone: ""
+    }
   }
 
   render() {
@@ -21,71 +27,45 @@ class ContactComponent extends Component {
           {this.props.category.categoryHeader}
         </div>
         <div className={[styles.wrapperContactForm].join(' ')}>
-          <form role="form"
-                data-toggle="validator"
-                className={[styles.contactForm].join(' ')}>
+          <form role="form" data-toggle="validator" className={[styles.contactForm].join(' ')}>
             <div className="form-group">
-              <label htmlFor="inputCompanyName">
-                Company Name
+              <label className="control-label">
+                Focused
               </label>
-              <input type="text"
-                     className={[styles.inputField, "form-control"].join(' ')}
-                     id="inputCompanyName"
-                     placeholder="My Company Name Pvt Ltd."
-                     required/>
+              <input className="form-control"
+                     id="focusedInput"
+                     type="text"
+                     value="Click to focus..." />
             </div>
-            <div className="form-group has-success">
-              <label htmlFor="exampleInputEmail1">
-                Email address
+            <div className="form-group has-success has-feedback">
+              <label className="control-label" htmlFor="inputSuccess">
+                Input with success and glyphicon
               </label>
-              <input type="email"
-                     className={[styles.inputField, "form-control form-control-success"].join(' ')}
-                     id="exampleInputEmail1"
-                     aria-describedby="emailHelp"
-                     placeholder="Enter email"
-                     data-error="Bruh, that email address is invalid"
-                     required/>
-              <div className="form-control-feedback">
-                Success! You've done it.
-              </div>
-              <small className="form-text text-muted">Example help text that remains unchanged.</small>
+              <input type="text" className={[styles.inputField, "form-control"].join(' ')} id="inputSuccess" />
+              <span className="glyphicon glyphicon-ok form-control-feedback"></span>
             </div>
-            <div className="form-group">
-              <label htmlFor="inputTelephone">
-                Telephone
+            <div className="form-group has-warning has-feedback">
+              <label className="control-label" htmlFor="inputWarning">
+                Input with warning and glyphicon
               </label>
-              <input type="text"
-                     className={[styles.inputField, "form-control"].join(' ')}
-                     id="inputTelephone"
-                     placeholder="+92 313 7590210"
-                     required/>
+              <input type="text" className="form-control" id="inputWarning" />
+              <span className="glyphicon glyphicon-warning-sign form-control-feedback"></span>
             </div>
-            <div className="form-group row has-success">
-              <label htmlFor="inputHorizontalSuccess"
-                     className="col-sm-2 col-form-label">
-                Email
+            <div className="form-group has-error has-feedback">
+              <label className="control-label" htmlFor="inputError">
+                Input with error and glyphicon
               </label>
-              <div className="col-sm-10">
-                <input type="email"
-                       className="form-control form-control-success"
-                       id="inputHorizontalSuccess"
-                       placeholder="name@example.com" />
-                <br/>
-                <div className="form-control-feedback">
-                  Success! You've done it.
-                </div>
-                <small className="form-text text-muted">Example help text that remains unchanged.</small>
-              </div>
+              <input type="text" className="form-control" id="inputError" />
+              <span className="glyphicon glyphicon-remove form-control-feedback"></span>
             </div>
-            <button type="submit"
-                    className="btn btn-primary">
+            <button type="submit" className="btn btn-primary">
               Submit
             </button>
           </form>
         </div>
       </div>
 
-    );
+      );
   }
 }
 

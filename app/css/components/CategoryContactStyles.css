@@ -4,10 +4,11 @@
 
 .contactForm{
 	margin: 10px 0 20px 0;
+  max-width: 400px;
 }
 
 .inputField{
-	max-width: 300px;
+	/*max-width: 300px;*/
 }
 
 .wrapperContactForm{
