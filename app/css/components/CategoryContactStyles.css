@@ -14,3 +14,15 @@
 .wrapperContactForm{
 	align-items: center;
 }
+
+.errorMessage{
+	left: 0;
+	position: static;
+	width: 100%;
+	text-align: left;
+	margin: 0;
+	display: block;
+	height: auto;
+	font-size: 12px;
+	line-height: 20px;
+}

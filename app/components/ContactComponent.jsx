@@ -27,9 +27,21 @@ class ContactComponent extends Component {
           {this.props.category.categoryHeader}
         </div>
         <div className={[styles.wrapperContactForm].join(' ')}>
-          <form role="form" data-toggle="validator" className={[styles.contactForm].join(' ')}>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div>
+          sample input styles=>>>>
+        </div>
+        <div className={[styles.wrapperContactForm].join(' ')}>
+          <form role="form"
+                data-toggle="validator"
+                className={[styles.contactForm].join(' ')}>
             <div className="form-group">
-              <label className="control-label">
+              <label className="control-label"
+                     htmlFor="focusedInput">
                 Focused
               </label>
               <input className="form-control"
@@ -38,34 +50,48 @@ class ContactComponent extends Component {
                      value="Click to focus..." />
             </div>
             <div className="form-group has-success has-feedback">
-              <label className="control-label" htmlFor="inputSuccess">
+              <label className="control-label"
+                     htmlFor="inputSuccess">
                 Input with success and glyphicon
               </label>
-              <input type="text" className={[styles.inputField, "form-control"].join(' ')} id="inputSuccess" />
+              <input type="text"
+                     className={[styles.inputField, "form-control"].join(' ')}
+                     id="inputSuccess" />
               <span className="glyphicon glyphicon-ok form-control-feedback"></span>
             </div>
             <div className="form-group has-warning has-feedback">
-              <label className="control-label" htmlFor="inputWarning">
+              <label className="control-label"
+                     htmlFor="inputWarning">
                 Input with warning and glyphicon
               </label>
-              <input type="text" className="form-control" id="inputWarning" />
+              <input type="text"
+                     className="form-control"
+                     id="inputWarning" />
               <span className="glyphicon glyphicon-warning-sign form-control-feedback"></span>
             </div>
             <div className="form-group has-error has-feedback">
-              <label className="control-label" htmlFor="inputError">
+              <label className="control-label"
+                     htmlFor="inputError">
                 Input with error and glyphicon
               </label>
-              <input type="text" className="form-control" id="inputError" />
+              <input type="text"
+                     className="form-control"
+                     id="inputError" />
               <span className="glyphicon glyphicon-remove form-control-feedback"></span>
+              <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
+                Shucks, check the formatting of that and try again.
+              </div>
+              <small className="form-text text-muted">Example help text that remains unchanged.</small>
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit"
+                    className="btn btn-primary">
               Submit
             </button>
           </form>
         </div>
       </div>
 
-      );
+    );
   }
 }
 
