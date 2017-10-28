@@ -10,16 +10,122 @@ class ContactComponent extends Component {
   constructor(props) {
     super(props);
 
+    this.onCompanyNameChange = this.onCompanyNameChange.bind(this);
+    this.onEmailChange = this.onEmailChange.bind(this);
+    this.onTelephoneChange = this.onTelephoneChange.bind(this);
+    this.submitContactForm = this.submitContactForm.bind(this);
+    this.getFormGroupCompanyName = this.getFormGroupCompanyName.bind(this);
+
+    this.verifyCompanyName = this.verifyCompanyName.bind(this);
+
+
     this.state = {
       companyName: "",
       email: "",
-      telephone: ""
+      telephone: "",
+
+      companyNameStatus: {
+        isValid: true
+      },
+      emailStatus: {
+        isValid: true
+      },
+      telephoneStatus: {
+        isValid: true
+      }
     }
   }
 
+  verifyCompanyName() {
+    if (this.state.companyName == "") {
+      this.setState({
+        companyNameStatus: {
+          isValid: false,
+          message: "Company name is Required"
+        }
+      })
+    } else {
+      this.setState({
+        companyNameStatus: {
+          isValid: true
+        }
+      })
+    }
+  }
+  submitContactForm() {
+    console.log("submitContactForm");
+    this.verifyCompanyName();
+
+  }
+
+
+  onCompanyNameChange(event) {
+    console.log("onCompanyNameChange");
+
+    this.setState({
+      companyName: event.target.value
+    }, () => {
+      this.verifyCompanyName()
+    })
+
+
+
+  }
+
+  onEmailChange(event) {
+    console.log("onEmailChange");
+    this.setState({
+      email: event.target.value
+    })
+
+  }
+  onTelephoneChange(event) {
+    console.log("onTelephoneChange");
+    this.setState({
+      telephone: event.target.value
+    })
+
+  }
+
+  getFormGroupCompanyName(companyNameIsValid) {
+    if (companyNameIsValid) {
+
+      return (
+        <div className="form-group">
+          <label className="control-label" htmlFor="idCompanyName">
+            Company Name
+          </label>
+          <input className="form-control"
+                 id="idCompanyName"
+                 type="text"
+                 defaultValue={this.state.companyName}
+                 onChange={this.onCompanyNameChange} />
+        </div>
+      )
+    } else {
+      return (
+        <div className="form-group has-error has-feedback">
+          <label className="control-label" htmlFor="idCompanyName">
+            Company Name
+          </label>
+          <input type="text"
+                 className="form-control"
+                 id="idCompanyName"
+                 defaultValue={this.state.companyName}
+                 onChange={this.onCompanyNameChange} />
+          <span className="glyphicon glyphicon-remove form-control-feedback"></span>
+          <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
+            {this.state.companyNameStatus.message}
+          </div>
+        </div>
+      )
+    }
+  }
+
+
   render() {
 
-
+    const formGroupCompanyName = this.getFormGroupCompanyName(this.state.companyNameStatus.isValid);
 
     return (
       <div>
@@ -27,6 +133,12 @@ class ContactComponent extends Component {
           {this.props.category.categoryHeader}
         </div>
         <div className={[styles.wrapperContactForm].join(' ')}>
+          <form role="form" data-toggle="validator" className={[styles.contactForm].join(' ')}>
+            {formGroupCompanyName}
+            <button type="button" className="btn btn-primary" onClick={this.submitContactForm}>
+              Submit
+            </button>
+          </form>
         </div>
         <br/>
         <br/>
@@ -36,12 +148,9 @@ class ContactComponent extends Component {
           sample input styles=>>>>
         </div>
         <div className={[styles.wrapperContactForm].join(' ')}>
-          <form role="form"
-                data-toggle="validator"
-                className={[styles.contactForm].join(' ')}>
+          <form role="form" data-toggle="validator" className={[styles.contactForm].join(' ')}>
             <div className="form-group">
-              <label className="control-label"
-                     htmlFor="focusedInput">
+              <label className="control-label" htmlFor="focusedInput">
                 Focused
               </label>
               <input className="form-control"
@@ -50,48 +159,35 @@ class ContactComponent extends Component {
                      value="Click to focus..." />
             </div>
             <div className="form-group has-success has-feedback">
-              <label className="control-label"
-                     htmlFor="inputSuccess">
+              <label className="control-label" htmlFor="inputSuccess">
                 Input with success and glyphicon
               </label>
-              <input type="text"
-                     className={[styles.inputField, "form-control"].join(' ')}
-                     id="inputSuccess" />
+              <input type="text" className={[styles.inputField, "form-control"].join(' ')} id="inputSuccess" />
               <span className="glyphicon glyphicon-ok form-control-feedback"></span>
             </div>
             <div className="form-group has-warning has-feedback">
-              <label className="control-label"
-                     htmlFor="inputWarning">
+              <label className="control-label" htmlFor="inputWarning">
                 Input with warning and glyphicon
               </label>
-              <input type="text"
-                     className="form-control"
-                     id="inputWarning" />
+              <input type="text" className="form-control" id="inputWarning" />
               <span className="glyphicon glyphicon-warning-sign form-control-feedback"></span>
             </div>
             <div className="form-group has-error has-feedback">
-              <label className="control-label"
-                     htmlFor="inputError">
+              <label className="control-label" htmlFor="inputError">
                 Input with error and glyphicon
               </label>
-              <input type="text"
-                     className="form-control"
-                     id="inputError" />
+              <input type="text" className="form-control" id="inputError" />
               <span className="glyphicon glyphicon-remove form-control-feedback"></span>
               <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
                 Shucks, check the formatting of that and try again.
               </div>
               <small className="form-text text-muted">Example help text that remains unchanged.</small>
             </div>
-            <button type="submit"
-                    className="btn btn-primary">
-              Submit
-            </button>
           </form>
         </div>
       </div>
 
-    );
+      );
   }
 }
 
