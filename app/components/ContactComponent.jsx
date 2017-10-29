@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // import { setSelectedOption } from '../actions/selectedOptionsActions';
 import styles from '../css/components/CategoryContactStyles.css';
 import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
-
+import { validateEmail } from './helpers/validateEmail'
 
 class ContactComponent extends Component {
   constructor(props) {
@@ -13,16 +13,28 @@ class ContactComponent extends Component {
     this.onCompanyNameChange = this.onCompanyNameChange.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onTelephoneChange = this.onTelephoneChange.bind(this);
+    this.onYourNameChange = this.onYourNameChange.bind(this);
+
     this.submitContactForm = this.submitContactForm.bind(this);
+
     this.getFormGroupCompanyName = this.getFormGroupCompanyName.bind(this);
+    this.getFormGroupEmail = this.getFormGroupEmail.bind(this);
+    this.getFormGroupYourName = this.getFormGroupYourName.bind(this);
+    this.getFormGroupTelephone = this.getFormGroupTelephone.bind(this);
 
     this.verifyCompanyName = this.verifyCompanyName.bind(this);
+    this.verifyEmail = this.verifyEmail.bind(this);
+    this.verifyTelephone = this.verifyTelephone.bind(this);
+    this.verifyYourName = this.verifyYourName.bind(this);
 
 
     this.state = {
+      yourName: "",
       companyName: "",
       email: "",
       telephone: "",
+
+      enableValidation: false,
 
       companyNameStatus: {
         isValid: true
@@ -32,7 +44,10 @@ class ContactComponent extends Component {
       },
       telephoneStatus: {
         isValid: true
-      }
+      },
+      yourNameStatus: {
+        isValid: true
+      },
     }
   }
 
@@ -52,10 +67,75 @@ class ContactComponent extends Component {
       })
     }
   }
+
+  verifyYourName() {
+    if (this.state.telephone == "") {
+      this.setState({
+        yourNameStatus: {
+          isValid: false,
+          message: "Your Name is Required"
+        }
+      })
+    } else {
+      this.setState({
+        yourNameStatus: {
+          isValid: true
+        }
+      })
+    }
+  }
+
+  verifyTelephone() {
+    if (this.state.telephone == "") {
+      this.setState({
+        telephoneStatus: {
+          isValid: false,
+          message: "Telephone is Required"
+        }
+      })
+    } else {
+      this.setState({
+        telephoneStatus: {
+          isValid: true
+        }
+      })
+    }
+  }
+
+  verifyEmail() {
+    if (this.state.email == "") {
+      this.setState({
+        emailStatus: {
+          isValid: false,
+          message: "Email is Required"
+        }
+      })
+    } else if (!validateEmail(this.state.email)) {
+      this.setState({
+        emailStatus: {
+          isValid: false,
+          message: "Email is Not Valid"
+        }
+      })
+    } else {
+      this.setState({
+        emailStatus: {
+          isValid: true
+        }
+      })
+    }
+  }
+
   submitContactForm() {
     console.log("submitContactForm");
-    this.verifyCompanyName();
-
+    this.setState({
+      enableValidation: true
+    }, () => {
+      this.verifyCompanyName();
+      this.verifyEmail();
+      this.verifyTelephone();
+      this.verifyYourName();
+    })
   }
 
 
@@ -71,28 +151,45 @@ class ContactComponent extends Component {
 
 
   }
+  onYourNameChange(event) {
+    console.log("onYourNameChange");
+
+    this.setState({
+      yourName: event.target.value
+    }, () => {
+      this.verifyYourName()
+    })
+
+
+
+  }
 
   onEmailChange(event) {
     console.log("onEmailChange");
+
     this.setState({
       email: event.target.value
+    }, () => {
+      this.verifyEmail()
     })
 
   }
   onTelephoneChange(event) {
-    console.log("onTelephoneChange");
     this.setState({
       telephone: event.target.value
+    }, () => {
+      this.verifyTelephone()
     })
 
   }
 
-  getFormGroupCompanyName(companyNameIsValid) {
-    if (companyNameIsValid) {
+  getFormGroupCompanyName() {
+    if (this.state.companyNameStatus.isValid || !this.state.enableValidation) {
 
       return (
         <div className="form-group">
-          <label className="control-label" htmlFor="idCompanyName">
+          <label className="control-label"
+                 htmlFor="idCompanyName">
             Company Name
           </label>
           <input className="form-control"
@@ -102,30 +199,145 @@ class ContactComponent extends Component {
                  onChange={this.onCompanyNameChange} />
         </div>
       )
-    } else {
+    }
+
+    return (
+      <div className="form-group has-error has-feedback">
+        <label className="control-label"
+               htmlFor="idCompanyName">
+          Company Name
+        </label>
+        <input type="text"
+               className="form-control"
+               id="idCompanyName"
+               defaultValue={this.state.companyName}
+               onChange={this.onCompanyNameChange} />
+        <span className="glyphicon glyphicon-remove form-control-feedback"></span>
+        <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
+          {this.state.companyNameStatus.message}
+        </div>
+      </div>
+    )
+
+  }
+  getFormGroupYourName() {
+    if (this.state.yourNameStatus.isValid || !this.state.enableValidation) {
+
       return (
-        <div className="form-group has-error has-feedback">
-          <label className="control-label" htmlFor="idCompanyName">
-            Company Name
+        <div className="form-group">
+          <label className="control-label"
+                 htmlFor="idYourName">
+            Your Name
           </label>
-          <input type="text"
-                 className="form-control"
-                 id="idCompanyName"
-                 defaultValue={this.state.companyName}
-                 onChange={this.onCompanyNameChange} />
-          <span className="glyphicon glyphicon-remove form-control-feedback"></span>
-          <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
-            {this.state.companyNameStatus.message}
-          </div>
+          <input className="form-control"
+                 id="idYourName"
+                 type="text"
+                 defaultValue={this.state.yourName}
+                 onChange={this.onYourNameChange} />
         </div>
       )
     }
+
+    return (
+      <div className="form-group has-error has-feedback">
+        <label className="control-label"
+               htmlFor="idYourName">
+          Your Name
+        </label>
+        <input type="text"
+               className="form-control"
+               id="idYourName"
+               defaultValue={this.state.yourName}
+               onChange={this.onYourNameChange} />
+        <span className="glyphicon glyphicon-remove form-control-feedback"></span>
+        <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
+          {this.state.yourNameStatus.message}
+        </div>
+      </div>
+    )
+
+  }
+  getFormGroupTelephone() {
+    if (this.state.telephoneStatus.isValid || !this.state.enableValidation) {
+
+      return (
+        <div className="form-group">
+          <label className="control-label"
+                 htmlFor="idTelephone">
+            Telephone
+          </label>
+          <input className="form-control"
+                 id="idTelephone"
+                 type="text"
+                 defaultValue={this.state.telephone}
+                 onChange={this.onTelephoneChange} />
+        </div>
+      )
+    }
+
+    return (
+      <div className="form-group has-error has-feedback">
+        <label className="control-label"
+               htmlFor="idTelephone">
+          Telephone
+        </label>
+        <input type="text"
+               className="form-control"
+               id="idTelephone"
+               defaultValue={this.state.telephone}
+               onChange={this.onTelephoneChange} />
+        <span className="glyphicon glyphicon-remove form-control-feedback"></span>
+        <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
+          {this.state.telephoneStatus.message}
+        </div>
+      </div>
+    )
+
+  }
+
+  getFormGroupEmail() {
+    if (this.state.emailStatus.isValid || !this.state.enableValidation) {
+      return (
+        <div className="form-group">
+          <label className="control-label"
+                 htmlFor="idEmail">
+            Email
+          </label>
+          <input className="form-control"
+                 id="idEmail"
+                 type="text"
+                 defaultValue={this.state.email}
+                 onChange={this.onEmailChange} />
+        </div>
+      )
+    }
+
+    return (
+      <div className="form-group has-error has-feedback">
+        <label className="control-label"
+               htmlFor="idCompanyName">
+          Email
+        </label>
+        <input type="text"
+               className="form-control"
+               id="idEmail"
+               defaultValue={this.state.email}
+               onChange={this.onEmailChange} />
+        <span className="glyphicon glyphicon-remove form-control-feedback"></span>
+        <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
+          {this.state.emailStatus.message}
+        </div>
+      </div>
+    )
   }
 
 
   render() {
 
-    const formGroupCompanyName = this.getFormGroupCompanyName(this.state.companyNameStatus.isValid);
+    const formGroupCompanyName = this.getFormGroupCompanyName();
+    const formGroupYourName = this.getFormGroupYourName();
+    const formGroupTelephone = this.getFormGroupTelephone();
+    const formGroupEmail = this.getFormGroupEmail();
 
     return (
       <div>
@@ -133,9 +345,16 @@ class ContactComponent extends Component {
           {this.props.category.categoryHeader}
         </div>
         <div className={[styles.wrapperContactForm].join(' ')}>
-          <form role="form" data-toggle="validator" className={[styles.contactForm].join(' ')}>
+          <form role="form"
+                data-toggle="validator"
+                className={[styles.contactForm].join(' ')}>
+            {formGroupYourName}
             {formGroupCompanyName}
-            <button type="button" className="btn btn-primary" onClick={this.submitContactForm}>
+            {formGroupEmail}
+            {formGroupTelephone}
+            <button type="button"
+                    className="btn btn-primary"
+                    onClick={this.submitContactForm}>
               Submit
             </button>
           </form>
@@ -148,9 +367,12 @@ class ContactComponent extends Component {
           sample input styles=>>>>
         </div>
         <div className={[styles.wrapperContactForm].join(' ')}>
-          <form role="form" data-toggle="validator" className={[styles.contactForm].join(' ')}>
+          <form role="form"
+                data-toggle="validator"
+                className={[styles.contactForm].join(' ')}>
             <div className="form-group">
-              <label className="control-label" htmlFor="focusedInput">
+              <label className="control-label"
+                     htmlFor="focusedInput">
                 Focused
               </label>
               <input className="form-control"
@@ -159,24 +381,33 @@ class ContactComponent extends Component {
                      value="Click to focus..." />
             </div>
             <div className="form-group has-success has-feedback">
-              <label className="control-label" htmlFor="inputSuccess">
+              <label className="control-label"
+                     htmlFor="inputSuccess">
                 Input with success and glyphicon
               </label>
-              <input type="text" className={[styles.inputField, "form-control"].join(' ')} id="inputSuccess" />
+              <input type="text"
+                     className={[styles.inputField, "form-control"].join(' ')}
+                     id="inputSuccess" />
               <span className="glyphicon glyphicon-ok form-control-feedback"></span>
             </div>
             <div className="form-group has-warning has-feedback">
-              <label className="control-label" htmlFor="inputWarning">
+              <label className="control-label"
+                     htmlFor="inputWarning">
                 Input with warning and glyphicon
               </label>
-              <input type="text" className="form-control" id="inputWarning" />
+              <input type="text"
+                     className="form-control"
+                     id="inputWarning" />
               <span className="glyphicon glyphicon-warning-sign form-control-feedback"></span>
             </div>
             <div className="form-group has-error has-feedback">
-              <label className="control-label" htmlFor="inputError">
+              <label className="control-label"
+                     htmlFor="inputError">
                 Input with error and glyphicon
               </label>
-              <input type="text" className="form-control" id="inputError" />
+              <input type="text"
+                     className="form-control"
+                     id="inputError" />
               <span className="glyphicon glyphicon-remove form-control-feedback"></span>
               <div className={["form-control-feedback", styles.errorMessage].join(' ')}>
                 Shucks, check the formatting of that and try again.
@@ -187,7 +418,7 @@ class ContactComponent extends Component {
         </div>
       </div>
 
-      );
+    );
   }
 }
 
