@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
 import { setSelectedOption } from '../actions/selectedOptionsActions';
 import ImageCategoryComponent from '../components/ImageCategoryComponent';
 import ContactComponent from '../components/ContactComponent';
 import { MASTER_OPTIONS } from '../components/helpers/MASTER_OPTIONS';
 // import loadCategoryComponents from './helpers/loadCategoryComponents';
+import styles from '../css/components/CategoryWrapperStyles';
 import * as types from '../types';
 
 class OptionsWrapperContainer extends Component {
@@ -69,8 +72,7 @@ class OptionsWrapperContainer extends Component {
           case types.CAT_TYPE_CONTACT_DETAILS: {
             // if (selectedOptionsArray) {}
             categoryComponents.push(
-              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i}
-                                category={category} />
+              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i} category={category} />
             )
 
           }
@@ -83,9 +85,14 @@ class OptionsWrapperContainer extends Component {
 
     return (
       <div>
-        {categoryComponents}
+        <ReactCSSTransitionGroup transitionName={styles}
+                                 transitionEnterTimeout={5000}
+                                 transitionLeaveTimeout={5000}
+                                 transitionAppearTimeout={5000}>
+          {categoryComponents}
+        </ReactCSSTransitionGroup>
       </div>
-    );
+      );
   }
 }
 

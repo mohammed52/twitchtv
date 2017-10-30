@@ -88,6 +88,7 @@
     "postcss-reporter": "^3.0.0",
     "prop-types": "^15.5.4",
     "react": "^15.5.3",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-addons-test-utils": "^15.5.0",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.5.3",
