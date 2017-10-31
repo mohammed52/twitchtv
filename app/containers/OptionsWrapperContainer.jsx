@@ -33,6 +33,10 @@ class OptionsWrapperContainer extends Component {
     }
   }
 
+  componentDidMount() {
+    console.log("OptionsWrapperContainer componentDidMount");
+  }
+
   setSelectedOption(categoryId, optionId, index) {
 
     let tmpSelectedOptionsArr = this.state.selectedOptions
@@ -72,7 +76,8 @@ class OptionsWrapperContainer extends Component {
           case types.CAT_TYPE_CONTACT_DETAILS: {
             // if (selectedOptionsArray) {}
             categoryComponents.push(
-              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i} category={category} />
+              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i}
+                                category={category} />
             )
 
           }
@@ -92,7 +97,7 @@ class OptionsWrapperContainer extends Component {
           {categoryComponents}
         </ReactCSSTransitionGroup>
       </div>
-      );
+    );
   }
 }
 

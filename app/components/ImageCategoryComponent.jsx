@@ -16,6 +16,10 @@ class ImageCategoryComponent extends Component {
     this.saveSelectedOptionInStore = this.saveSelectedOptionInStore.bind(this);
   }
 
+  componentDidMount() {
+    console.log("ImageCategoryComponent componentDidMount");
+  }
+
   saveSelectedOptionInStore(optionId) {
 
     const setSelectedOption = this.props.setSelectedOption
