@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 // import Navigation from '../containers/Navigation';
@@ -28,28 +28,66 @@ var MenuItem = ReactBootstrap.MenuItem;
  * A better explanation of react-router is available here:
  * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
  */
-const App = ({children}) => {
-  return (
-    <div>
-      <Navbar>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#"><img src={MEK}
-                             width="90"
-                             height="20"/></a>
-          </Navbar.Brand>
-        </Navbar.Header>
-        <Nav pullRight>
-          <NavItem eventKey={1}
-                   disabled>
-            <strong>Helpline: 021-34530931</strong>
-          </NavItem>
-        </Nav>
-      </Navbar>
-      {children}
-    </div>
-  );
-};
+// const App = ({children}) => {
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      cssHasLoaded: false
+    }
+    this.handleLoad = this.handleLoad.bind(this);
+  }
+
+  componentDidMount() {
+
+    console.log("AppContainer componentDidMount");
+
+    window.addEventListener('load', this.handleLoad);
+  }
+  handleLoad() {
+    console.log("handleLoad"); //  $ is available here
+    this.setState({
+      cssHasLoaded: true
+    })
+  }
+
+  componentDidUpdate() {
+    console.log("AppContainer componentDidUpdate");
+    const ss = document.styleSheets
+    console.log("ss.length", ss.length);
+  }
+
+  render() {
+
+    return (
+      <div>
+        {!this.state.cssHasLoaded ? <div className={styles.loading}>
+                                      Loading...
+                                    </div> :
+         <div className={styles.mainWrapper}>
+           <Navbar>
+             <Navbar.Header>
+               <Navbar.Brand>
+                 <a href="#"><img src={MEK} width="90" height="20" /></a>
+               </Navbar.Brand>
+             </Navbar.Header>
+             <Nav pullRight>
+               <NavItem eventKey={1} disabled>
+                 <strong>Helpline: 021-34530931</strong>
+               </NavItem>
+             </Nav>
+           </Navbar>
+           {this.props.children}
+         </div>}
+        <div className={styles.loading}>
+          Loading...
+        </div>
+      </div>
+      );
+  }
+  ;
+}
 
 App.propTypes = {
   children: PropTypes.object

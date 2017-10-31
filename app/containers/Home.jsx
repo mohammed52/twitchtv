@@ -7,6 +7,14 @@ import styles from '../css/components/homeStyles';
 
 class Home extends Component {
 
+  componentDidMount() {
+    console.log("HomeContainer componentDidMount");
+  }
+
+  componentDidUpdate() {
+    console.log("HomeContainer componentDidUpdate");
+  }
+
   render() {
 
     let startingIndex = 0;
@@ -19,7 +27,7 @@ class Home extends Component {
           <OptionsWrapperContainer />
         </div>
       </div>
-    );
+      );
   }
 }
 
