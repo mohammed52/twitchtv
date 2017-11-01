@@ -9,6 +9,8 @@ import renderMiddleware from './render/middleware';
 
 const app = express();
 
+// using SendGrid's v3 Node.js Library
+
 /*
  * Database-specific setup
  * - connect to MongoDB using mongoose
@@ -26,9 +28,14 @@ if (isDebug) {
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
   const webpackConfig = require('../webpack/webpack.config');
-  const devBrowserConfig = webpackConfig({ browser: true });
+  const devBrowserConfig = webpackConfig({
+    browser: true
+  });
   const compiler = webpack(devBrowserConfig);
-  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: devBrowserConfig.output.publicPath }));
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: devBrowserConfig.output.publicPath
+  }));
   app.use(webpackHotMiddleware(compiler));
 }
 
