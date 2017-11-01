@@ -26,6 +26,7 @@ class ContactComponent extends Component {
     this.verifyEmail = this.verifyEmail.bind(this);
     this.verifyTelephone = this.verifyTelephone.bind(this);
     this.verifyYourName = this.verifyYourName.bind(this);
+    this.formInputValid = this.formInputValid.bind(this);
 
 
     this.state = {
@@ -139,8 +140,25 @@ class ContactComponent extends Component {
       this.verifyEmail();
       this.verifyTelephone();
       this.verifyYourName();
+
+      if (this.formInputValid()) {
+        console.log("send email");
+
+      }
     })
   }
+
+  formInputValid() {
+    if (this.state.companyNameStatus.isValid &&
+      this.state.emailStatus.isValid &&
+      this.state.telephoneStatus.isValid &&
+      this.state.yourNameStatus.isValid) {
+      return true
+    }
+    return false
+
+  }
+
 
 
   onCompanyNameChange(event) {

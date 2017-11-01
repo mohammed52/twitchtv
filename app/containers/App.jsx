@@ -16,6 +16,8 @@ var NavDropdown = ReactBootstrap.NavDropdown;
 var Nav = ReactBootstrap.Nav;
 var MenuItem = ReactBootstrap.MenuItem;
 
+// using SendGrid's v3 Node.js Library
+
 // const cx = classNames.bind(styles);
 
 
@@ -62,31 +64,28 @@ class App extends Component {
 
     return (
       <div>
-        {!this.state.cssHasLoaded ? <div className={styles.loading}>
-                                      Loading...
-                                    </div> :
+        {!this.state.cssHasLoaded ? <div/> :
          <div className={styles.mainWrapper}>
            <Navbar>
              <Navbar.Header>
                <Navbar.Brand>
-                 <a href="#"><img src={MEK} width="90" height="20" /></a>
+                 <a href="#"><img src={MEK}
+                                  width="90"
+                                  height="20" /></a>
                </Navbar.Brand>
              </Navbar.Header>
              <Nav pullRight>
-               <NavItem eventKey={1} disabled>
+               <NavItem eventKey={1}
+                        disabled>
                  <strong>Helpline: 021-34530931</strong>
                </NavItem>
              </Nav>
            </Navbar>
            {this.props.children}
          </div>}
-        <div className={styles.loading}>
-          Loading...
-        </div>
       </div>
-      );
+    );
   }
-  ;
 }
 
 App.propTypes = {
