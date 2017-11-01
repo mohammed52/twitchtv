@@ -4409,6 +4409,10 @@ lodash@4.12.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
+"lodash@^3.0.1 || ^2.0.0":
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+
 lodash@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-1.0.2.tgz#8f57560c83b59fc270bd3d561b690043430e2551"
@@ -4575,7 +4579,7 @@ mime@1.3.x:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.3.6.tgz#591d84d3653a6b0b4a3b9df8de5aa8108e72e5e0"
 
-mime@1.4.1, mime@^1.3.4:
+mime@1.4.1, mime@^1.2.9, mime@^1.3.4:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
 
@@ -4801,6 +4805,12 @@ node-pre-gyp@^0.6.36:
     semver "^5.3.0"
     tar "^2.2.1"
     tar-pack "^3.4.0"
+
+nodemailer-sendgrid-transport@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nodemailer-sendgrid-transport/-/nodemailer-sendgrid-transport-0.2.0.tgz#a516593bfe3d1f278cfe17060e1db23658a8f4fc"
+  dependencies:
+    sendgrid "^1.8.0"
 
 nodemailer@^4.3.1:
   version "4.3.1"
@@ -6537,7 +6547,7 @@ request@2.81.0:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@^2.79.0, request@^2.81.0:
+request@^2.60.0, request@^2.79.0, request@^2.81.0:
   version "2.83.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
@@ -6716,6 +6726,15 @@ send@0.16.1:
     range-parser "~1.2.0"
     statuses "~1.3.1"
 
+sendgrid@^1.8.0:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/sendgrid/-/sendgrid-1.9.2.tgz#d407e6a206b0a2a6964246dd9c0641c10bf02f19"
+  dependencies:
+    lodash "^3.0.1 || ^2.0.0"
+    mime "^1.2.9"
+    request "^2.60.0"
+    smtpapi "^1.2.0"
+
 sequelize-cli@^2.7.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/sequelize-cli/-/sequelize-cli-2.8.0.tgz#4304cce60e499169603f838dedbab421c9849e74"
@@ -6856,6 +6875,10 @@ sliced@0.0.5:
 sliced@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
+
+smtpapi@^1.2.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/smtpapi/-/smtpapi-1.3.1.tgz#187429eb4ed27df4a3cffd23f0e0245cdfe687d4"
 
 sntp@1.x.x:
   version "1.0.9"
