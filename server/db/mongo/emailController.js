@@ -17,8 +17,8 @@ export function sendEmail(req, res) {
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: 'apikey', // generated ethereal user
-        pass: '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' // generated ethereal password
+        user: process.env.SENDGRID_APIKEY, // generated ethereal user
+        pass: process.env.SENDGRID_PWD // generated ethereal password
       }
     });
 
