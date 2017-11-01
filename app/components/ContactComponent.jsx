@@ -6,6 +6,12 @@ import styles from '../css/components/CategoryContactStyles.css';
 import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
 import { validateEmail } from './helpers/validateEmail'
 
+import { emailService } from '../services'
+
+
+
+
+
 class ContactComponent extends Component {
   constructor(props) {
     super(props);
@@ -38,16 +44,16 @@ class ContactComponent extends Component {
       enableValidation: false,
 
       companyNameStatus: {
-        isValid: true
+        isValid: false
       },
       emailStatus: {
-        isValid: true
+        isValid: false
       },
       telephoneStatus: {
-        isValid: true
+        isValid: false
       },
       yourNameStatus: {
-        isValid: true
+        isValid: false
       },
     }
   }
@@ -74,7 +80,7 @@ class ContactComponent extends Component {
   }
 
   verifyYourName() {
-    if (this.state.telephone == "") {
+    if (this.state.yourName == "") {
       this.setState({
         yourNameStatus: {
           isValid: false,
@@ -143,6 +149,13 @@ class ContactComponent extends Component {
 
       if (this.formInputValid()) {
         console.log("send email");
+        emailService().sendTestEmail().then(res => {
+          console.log("MAP response");
+
+        }).catch(() => {
+          console.log("MAP error");
+        })
+
 
       }
     })
@@ -206,12 +219,11 @@ class ContactComponent extends Component {
   }
 
   getFormGroupCompanyName() {
-    if (this.state.companyNameStatus.isValid || !this.state.enableValidation) {
+    if ((this.state.companyNameStatus.isValid && this.state.enableValidation) || !this.state.enableValidation) {
 
       return (
         <div className="form-group">
-          <label className="control-label"
-                 htmlFor="idCompanyName">
+          <label className="control-label" htmlFor="idCompanyName">
             Company Name
           </label>
           <input className="form-control"
@@ -225,8 +237,7 @@ class ContactComponent extends Component {
 
     return (
       <div className="form-group has-error has-feedback">
-        <label className="control-label"
-               htmlFor="idCompanyName">
+        <label className="control-label" htmlFor="idCompanyName">
           Company Name
         </label>
         <input type="text"
@@ -243,12 +254,11 @@ class ContactComponent extends Component {
 
   }
   getFormGroupYourName() {
-    if (this.state.yourNameStatus.isValid || !this.state.enableValidation) {
+    if ((this.state.yourNameStatus.isValid && this.state.enableValidation) || !this.state.enableValidation) {
 
       return (
         <div className="form-group">
-          <label className="control-label"
-                 htmlFor="idYourName">
+          <label className="control-label" htmlFor="idYourName">
             Your Name
           </label>
           <input className="form-control"
@@ -262,8 +272,7 @@ class ContactComponent extends Component {
 
     return (
       <div className="form-group has-error has-feedback">
-        <label className="control-label"
-               htmlFor="idYourName">
+        <label className="control-label" htmlFor="idYourName">
           Your Name
         </label>
         <input type="text"
@@ -280,12 +289,11 @@ class ContactComponent extends Component {
 
   }
   getFormGroupTelephone() {
-    if (this.state.telephoneStatus.isValid || !this.state.enableValidation) {
+    if ((this.state.telephoneStatus.isValid && this.state.enableValidation) || !this.state.enableValidation) {
 
       return (
         <div className="form-group">
-          <label className="control-label"
-                 htmlFor="idTelephone">
+          <label className="control-label" htmlFor="idTelephone">
             Telephone
           </label>
           <input className="form-control"
@@ -299,8 +307,7 @@ class ContactComponent extends Component {
 
     return (
       <div className="form-group has-error has-feedback">
-        <label className="control-label"
-               htmlFor="idTelephone">
+        <label className="control-label" htmlFor="idTelephone">
           Telephone
         </label>
         <input type="text"
@@ -318,11 +325,10 @@ class ContactComponent extends Component {
   }
 
   getFormGroupEmail() {
-    if (this.state.emailStatus.isValid || !this.state.enableValidation) {
+    if ((this.state.emailStatus.isValid && this.state.enableValidation) || !this.state.enableValidation) {
       return (
         <div className="form-group">
-          <label className="control-label"
-                 htmlFor="idEmail">
+          <label className="control-label" htmlFor="idEmail">
             Email
           </label>
           <input className="form-control"
@@ -336,8 +342,7 @@ class ContactComponent extends Component {
 
     return (
       <div className="form-group has-error has-feedback">
-        <label className="control-label"
-               htmlFor="idCompanyName">
+        <label className="control-label" htmlFor="idCompanyName">
           Email
         </label>
         <input type="text"
@@ -367,23 +372,19 @@ class ContactComponent extends Component {
           {this.props.category.categoryHeader}
         </div>
         <div className={[styles.wrapperContactForm].join(' ')}>
-          <form role="form"
-                data-toggle="validator"
-                className={[styles.contactForm].join(' ')}>
+          <form role="form" data-toggle="validator" className={[styles.contactForm].join(' ')}>
             {formGroupYourName}
             {formGroupCompanyName}
             {formGroupEmail}
             {formGroupTelephone}
-            <button type="button"
-                    className="btn btn-primary"
-                    onClick={this.submitContactForm}>
+            <button type="button" className="btn btn-primary" onClick={this.submitContactForm}>
               Submit
             </button>
           </form>
         </div>
       </div>
 
-    );
+      );
   }
 }
 

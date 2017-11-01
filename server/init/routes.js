@@ -52,4 +52,8 @@ export default (app) => {
   } else {
     console.warn(unsupportedMessage('topics routes'));
   }
+
+  app.get('/testemail', (req, res) => {
+    console.log("MAP ok this is working");
+  });
 };
