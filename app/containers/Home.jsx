@@ -22,12 +22,12 @@ class Home extends Component {
     return (
       <div className={[styles.homeWrapper].join(' ')}>
         <div className={["container-fluid"].join(' ')}>
-          <h2 className={[styles.pageTitle].join(' ')}>Get instant quotes for Metal Doors!</h2>
+          <h2 className={[styles.pageTitle].join(' ')}>Get INSTANT quotes for Metal Doors!</h2>
           <h3 className={[styles.pageSubTitle].join(' ')}>Select a Door to get Started</h3>
           <OptionsWrapperContainer />
         </div>
       </div>
-      );
+    );
   }
 }
 
