@@ -23,7 +23,7 @@ class Home extends Component {
       <div className={[styles.homeWrapper].join(' ')}>
         <div className={["container-fluid"].join(' ')}>
           <h2 className={[styles.pageTitle].join(' ')}>Get INSTANT quotes for Metal Doors!</h2>
-          <h3 className={[styles.pageSubTitle].join(' ')}>Select a Door to get Started</h3>
+          <h3 className={[styles.pageSubTitle].join(' ')}>Select a Door Type</h3>
           <OptionsWrapperContainer />
         </div>
       </div>
