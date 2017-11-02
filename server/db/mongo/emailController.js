@@ -28,7 +28,7 @@ export function sendEmail(req, res) {
       to: 'mohammed.petiwala52@gmail.com', // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world?', // plain text body
-      html: '<b>Hello world?</b>' // html body
+      html: '<b>Hello world?</b>Click <a href="http://localhost:5000/testemail">here</a> to go home.' // html body
     };
 
     // send mail with defined transport object
