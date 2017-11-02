@@ -3,17 +3,6 @@ import { authService } from '../services';
 
 import * as types from '../types';
 
-function setOption(categoryId, optionId, index) {
-  return {
-    type: types.SAVE_CATEGORY_OPTION,
-    data: {
-      categoryId,
-      optionId,
-      index
-    }
-  };
-}
-
 function setContactInfo(yourName, companyName, email, telephone) {
   return {
     type: types.SAVE_CONTACT_INFO,
@@ -134,14 +123,7 @@ function setContactInfo(yourName, companyName, email, telephone) {
 //   };
 // }
 
-export function setSelectedOption(categoryId, optionId, index) {
-  return (dispatch) => {
-    dispatch(setOption(categoryId, optionId, index));
-  };
-
-}
-
-export function saveContactInfoAndSendRequirements(yourName, companyName, email, telephone) {
+export function saveContactInfo(yourName, companyName, email, telephone) {
   return (dispatch) => {
     dispatch(setContactInfo(yourName, companyName, email, telephone));
   };

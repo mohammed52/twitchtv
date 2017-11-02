@@ -3,7 +3,7 @@
  */
 import passport from 'passport';
 import unsupportedMessage from '../db/unsupportedMessage';
-import { controllers, passport as passportConfig, sendEmail } from '../db';
+import { controllers, passport as passportConfig, emailController } from '../db';
 
 const usersController = controllers && controllers.users;
 const topicsController = controllers && controllers.topics;
@@ -53,10 +53,10 @@ export default (app) => {
     console.warn(unsupportedMessage('topics routes'));
   }
 
-  if (sendEmail) {
+  if (emailController) {
 
 
-    app.get('/testemail', sendEmail);
+    app.get('/testemail', emailController.sendEmail);
   } else {
     console.warn(unsupportedMessage('email controllers'));
   }

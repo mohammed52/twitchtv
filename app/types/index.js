@@ -1,4 +1,9 @@
 
+export const SAVE_CONTACT_INFO = 'SAVE_CONTACT_INFO';
+export const CAT_CONTACT_ID = 'CAT_CONTACT_ID';
+
+
+
 export const CAT_DOORS_ID = 'CAT_DOORS_ID';
 export const CAT_DOORS_TITLE = 'Metal / Steel Door';
 export const CAT_DOORS_SUBTITLE = '(Single Doors, Double Doors, Multiple Locking options and accessories)';

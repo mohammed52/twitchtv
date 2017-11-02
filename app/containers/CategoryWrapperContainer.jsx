@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { setSelectedOption } from '../actions/selectedOptionsActions';
+import { saveContactInfoAndSendRequirements } from '../actions/contactInfoActions';
 import ImageCategoryComponent from '../components/ImageCategoryComponent';
 import ContactComponent from '../components/ContactComponent';
 import { MASTER_OPTIONS } from '../components/helpers/MASTER_OPTIONS';
@@ -12,11 +13,12 @@ import { MASTER_OPTIONS } from '../components/helpers/MASTER_OPTIONS';
 import styles from '../css/components/CategoryWrapperStyles';
 import * as types from '../types';
 
-class OptionsWrapperContainer extends Component {
+class CategoryWrapperContainer extends Component {
 
   constructor(props) {
     super(props)
     this.setSelectedOption = this.setSelectedOption.bind(this);
+    this.saveContactInfo = this.saveContactInfo.bind(this);
 
     let tmpSelectedOptionsArr = []
     for (var i = 0; i < MASTER_OPTIONS.length; i++) {
@@ -34,7 +36,12 @@ class OptionsWrapperContainer extends Component {
   }
 
   componentDidMount() {
-    console.log("OptionsWrapperContainer componentDidMount");
+    console.log("CategoryWrapperContainer componentDidMount");
+  }
+
+  saveContactInfo(yourName, companyName, email, telephone) {
+
+    this.props.saveContactInfoAndSendRequirements(yourName, companyName, email, telephone)
   }
 
   setSelectedOption(categoryId, optionId, index) {
@@ -76,8 +83,7 @@ class OptionsWrapperContainer extends Component {
           case types.CAT_TYPE_CONTACT_DETAILS: {
             // if (selectedOptionsArray) {}
             categoryComponents.push(
-              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i}
-                                category={category} />
+              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i} category={category} saveContactInfo={this.saveContactInfo} />
             )
 
           }
@@ -97,18 +103,19 @@ class OptionsWrapperContainer extends Component {
           {categoryComponents}
         </ReactCSSTransitionGroup>
       </div>
-    );
+      );
   }
 }
 
-OptionsWrapperContainer.propTypes = {
+CategoryWrapperContainer.propTypes = {
   // topics: PropTypes.array.isRequired,
   // typing: PropTypes.func.isRequired,
   // createTopic: PropTypes.func.isRequired,
   // destroyTopic: PropTypes.func.isRequired,
   // incrementCount: PropTypes.func.isRequired,
-  // decrementCount: PropTypes.func.isRequired,
-  // newTopic: PropTypes.string
+  saveContactInfoAndSendRequirements: PropTypes.func.isRequired,
+  setSelectedOption: PropTypes.func.isRequired,
+// newTopic: PropTypes.string
 };
 
 function mapStateToProps(state) {
@@ -122,4 +129,5 @@ function mapStateToProps(state) {
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps, {
   setSelectedOption,
-})(OptionsWrapperContainer);
+  saveContactInfoAndSendRequirements
+})(CategoryWrapperContainer);

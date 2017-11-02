@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import OptionsWrapperContainer from './OptionsWrapperContainer'
+import CategoryWrapperContainer from './CategoryWrapperContainer'
 import styles from '../css/components/homeStyles';
 
 class Home extends Component {
@@ -24,10 +24,10 @@ class Home extends Component {
         <div className={["container-fluid"].join(' ')}>
           <h2 className={[styles.pageTitle].join(' ')}>Get INSTANT quotes for Metal Doors!</h2>
           <h3 className={[styles.pageSubTitle].join(' ')}>Select a Door Type</h3>
-          <OptionsWrapperContainer />
+          <CategoryWrapperContainer />
         </div>
       </div>
-    );
+      );
   }
 }
 

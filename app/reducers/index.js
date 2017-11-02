@@ -4,6 +4,7 @@ import user from '../reducers/user';
 import topic from '../reducers/topic';
 import message from '../reducers/message';
 import selectedOptions from '../reducers/selectedOptionsReducer';
+import contactInfo from '../reducers/contactInfoReducer';
 import * as types from '../types';
 
 const isFetching = (state = false, action) => {
@@ -22,6 +23,7 @@ const isFetching = (state = false, action) => {
 // router state
 const rootReducer = combineReducers({
   selectedOptions,
+  contactInfo,
   routing
 });
 
