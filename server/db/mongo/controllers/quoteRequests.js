@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import QuoteRequest from '../models/QuoteRequests';
+import QuoteRequest from '../models/quoteRequests';
 
 /**
  * List

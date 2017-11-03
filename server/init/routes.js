@@ -3,10 +3,11 @@
  */
 import passport from 'passport';
 import unsupportedMessage from '../db/unsupportedMessage';
-import { controllers, passport as passportConfig, emailController, quoteRequestsController } from '../db';
+import { controllers, passport as passportConfig, emailController } from '../db';
 
 const usersController = controllers && controllers.users;
 const topicsController = controllers && controllers.topics;
+const quoteRequestsController = controllers && controllers.quoteRequests;
 
 export default (app) => {
   // user routes
@@ -55,10 +56,10 @@ export default (app) => {
 
   // quoteRequest routes
   if (quoteRequestsController) {
-    app.get('/quoteRequest', quoteRequestsController.all);
-    app.post('/quoteRequest/:id', quoteRequestsController.add);
-    app.put('/quoteRequest/:id', quoteRequestsController.update);
-    app.delete('/quoteRequest/:id', quoteRequestsController.remove);
+    app.get('/quoterequest', quoteRequestsController.all);
+    app.post('/quoterequest/:id', quoteRequestsController.add);
+    app.put('/quoterequest/:id', quoteRequestsController.update);
+    app.delete('/quoterequest/:id', quoteRequestsController.remove);
   } else {
     console.warn(unsupportedMessage('topics routes'));
   }

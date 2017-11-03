@@ -4,7 +4,7 @@
  */
 import mongoose from 'mongoose';
 
-const QuoteRequestsSchema = new mongoose.Schema({
+const QuoteRequestSchema = new mongoose.Schema({
   id: String,
   selectedOptions: Object,
   contactInfo: Object
@@ -12,5 +12,5 @@ const QuoteRequestsSchema = new mongoose.Schema({
 
 // Compiles the schema into a model, opening (or creating, if
 // nonexistent) the 'Topic' collection in the MongoDB database
-export default mongoose.model('quoteRequests', QuoteRequestsSchema);
+export default mongoose.model('QuoteRequest', QuoteRequestSchema);
 
