@@ -6,10 +6,6 @@ import styles from '../css/components/CategoryContactStyles.css';
 import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
 import { validateEmail } from './helpers/validateEmail'
 
-import { emailService } from '../services'
-
-import { setContact } from '../actions/selectedOptionsActions';
-
 class ContactComponent extends Component {
   constructor(props) {
     super(props);
@@ -391,7 +387,7 @@ class ContactComponent extends Component {
 
 ContactComponent.propTypes = {
   // index: PropTypes.number.isRequired,
-  category: PropTypes.object.isRequired,
+  // category: PropTypes.object.isRequired,
 
 
   // selectedOptions: PropTypes.object,

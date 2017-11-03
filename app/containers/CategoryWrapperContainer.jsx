@@ -9,85 +9,39 @@ import { saveContactInfo } from '../actions/contactInfoActions';
 import ImageCategoryComponent from '../components/ImageCategoryComponent';
 import ContactComponent from '../components/ContactComponent';
 import { MASTER_OPTIONS } from '../components/helpers/MASTER_OPTIONS';
-// import loadCategoryComponents from './helpers/loadCategoryComponents';
+import { CONTACT_FORM_OPTION } from '../components/helpers/MASTER_OPTIONS';
+import allOptionsSelected from './helpers/allOptionsSelected';
 import styles from '../css/components/CategoryWrapperStyles';
 import * as types from '../types';
 
 class CategoryWrapperContainer extends Component {
 
-  constructor(props) {
-    super(props)
-    this.setSelectedOption = this.setSelectedOption.bind(this);
-    this.saveContactInfo = this.saveContactInfo.bind(this);
-
-    let tmpSelectedOptionsArr = []
-    for (var i = 0; i < MASTER_OPTIONS.length; i++) {
-      tmpSelectedOptionsArr.push({
-        isSelected: false,
-        categoryId: MASTER_OPTIONS[i].categoryId,
-        optionId: null
-      })
-    }
-
-    this.state = {
-      selectedOptions: tmpSelectedOptionsArr,
-      totalOptions: MASTER_OPTIONS.length
-    }
-  }
-
   componentDidMount() {
     console.log("CategoryWrapperContainer componentDidMount");
   }
 
-  saveContactInfo(yourName, companyName, email, telephone) {
-
-    this.props.saveContactInfo(yourName, companyName, email, telephone)
-  }
-
-  setSelectedOption(categoryId, optionId, index) {
-
-    let tmpSelectedOptionsArr = this.state.selectedOptions
-
-    tmpSelectedOptionsArr[index] = {
-      isSelected: true,
-      categoryId,
-      optionId
-    }
-
-    this.setState({
-      selectedOptions: tmpSelectedOptionsArr
-    })
-
-    const setSelectedOption = this.props.setSelectedOption
-    setSelectedOption(categoryId, optionId, index)
-  }
-
   render() {
-    // const categoryComponents = loadCategoryComponents(this.state.selectedOptions)
     let categoryComponents = []
+    let contactComponent = [];
+    if (allOptionsSelected(this.props.selectedOptions)) {
+      contactComponent.push(
+        <ContactComponent key="ContactComponent" saveContactInfo={this.props.saveContactInfo} category={CONTACT_FORM_OPTION} />
+      )
+    }
 
     for (var i = 0; i < MASTER_OPTIONS.length; i++) {
       const category = MASTER_OPTIONS[i]
-      if (i === 0 || (i > 0 && this.state.selectedOptions[i - 1].isSelected)) {
+      if (i === 0 || (i > 0 && this.props.selectedOptions[i - 1].isSelected)) {
 
         switch (category.categoryType) {
           case types.CAT_TYPE_IMAGE_SELECTION: {
             categoryComponents.push(
               <ImageCategoryComponent key={"categoryComponents" + "ImageCategoryComponent" + i}
                                       category={category}
-                                      selected={this.state.selectedOptions[i]}
-                                      setSelectedOption={this.setSelectedOption}
+                                      selected={this.props.selectedOptions[i]}
+                                      setSelectedOption={this.props.setSelectedOption}
                                       index={i} />);
             break;
-          }
-          case types.CAT_TYPE_CONTACT_DETAILS: {
-            // if (selectedOptionsArray) {}
-            categoryComponents.push(
-              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i}
-                                category={category}
-                                saveContactInfo={this.saveContactInfo} />
-            )
-
           }
           default:
             break;
@@ -103,14 +57,15 @@ class CategoryWrapperContainer extends Component {
                                  transitionLeaveTimeout={5000}
                                  transitionAppearTimeout={5000}>
           {categoryComponents}
+          {contactComponent}
         </ReactCSSTransitionGroup>
       </div>
-    );
+      );
   }
 }
 
 CategoryWrapperContainer.propTypes = {
-  selectedOptions: PropTypes.object,
+  selectedOptions: PropTypes.array,
   contactInfo: PropTypes.object,
 
   // topics: PropTypes.array.isRequired,

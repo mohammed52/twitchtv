@@ -23,12 +23,14 @@ export const MASTER_OPTIONS = [
         subHeaderText: types.OPT_DOUBLE_DOOR_SUBHEADERTEXT
       }
     ]
-  },
-  {
-    categoryId: types.CAT_CONTACT_DETAILS_ID,
-    categoryType: types.CAT_TYPE_CONTACT_DETAILS,
-    categoryHeader: "CONTACT INFO: "
-
   }
-
 ];
+
+
+
+export const CONTACT_FORM_OPTION = {
+  categoryId: types.CAT_CONTACT_DETAILS_ID,
+  categoryType: types.CAT_TYPE_CONTACT_DETAILS,
+  categoryHeader: "CONTACT INFO: "
+
+};
