@@ -3,7 +3,7 @@
  */
 import passport from 'passport';
 import unsupportedMessage from '../db/unsupportedMessage';
-import { controllers, passport as passportConfig, emailController } from '../db';
+import { controllers, passport as passportConfig, emailController, quoteRequestsController } from '../db';
 
 const usersController = controllers && controllers.users;
 const topicsController = controllers && controllers.topics;
@@ -53,6 +53,16 @@ export default (app) => {
     console.warn(unsupportedMessage('topics routes'));
   }
 
+  // quoteRequest routes
+  if (quoteRequestsController) {
+    app.get('/quoteRequest', quoteRequestsController.all);
+    app.post('/quoteRequest/:id', quoteRequestsController.add);
+    app.put('/quoteRequest/:id', quoteRequestsController.update);
+    app.delete('/quoteRequest/:id', quoteRequestsController.remove);
+  } else {
+    console.warn(unsupportedMessage('topics routes'));
+  }
+
   if (emailController) {
 
 
@@ -60,4 +70,5 @@ export default (app) => {
   } else {
     console.warn(unsupportedMessage('email controllers'));
   }
+
 };
