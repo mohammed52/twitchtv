@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { setSelectedOption } from '../actions/selectedOptionsActions';
-import { saveContactInfoAndSendRequirements } from '../actions/contactInfoActions';
+import { saveContactInfo } from '../actions/contactInfoActions';
 import ImageCategoryComponent from '../components/ImageCategoryComponent';
 import ContactComponent from '../components/ContactComponent';
 import { MASTER_OPTIONS } from '../components/helpers/MASTER_OPTIONS';
@@ -41,7 +41,7 @@ class CategoryWrapperContainer extends Component {
 
   saveContactInfo(yourName, companyName, email, telephone) {
 
-    this.props.saveContactInfoAndSendRequirements(yourName, companyName, email, telephone)
+    this.props.saveContactInfo(yourName, companyName, email, telephone)
   }
 
   setSelectedOption(categoryId, optionId, index) {
@@ -83,7 +83,9 @@ class CategoryWrapperContainer extends Component {
           case types.CAT_TYPE_CONTACT_DETAILS: {
             // if (selectedOptionsArray) {}
             categoryComponents.push(
-              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i} category={category} saveContactInfo={this.saveContactInfo} />
+              <ContactComponent key={"categoryComponents" + "CategoryContactDetailsComponent" + i}
+                                category={category}
+                                saveContactInfo={this.saveContactInfo} />
             )
 
           }
@@ -103,17 +105,20 @@ class CategoryWrapperContainer extends Component {
           {categoryComponents}
         </ReactCSSTransitionGroup>
       </div>
-      );
+    );
   }
 }
 
 CategoryWrapperContainer.propTypes = {
+  selectedOptions: PropTypes.object,
+  contactInfo: PropTypes.object,
+
   // topics: PropTypes.array.isRequired,
   // typing: PropTypes.func.isRequired,
   // createTopic: PropTypes.func.isRequired,
   // destroyTopic: PropTypes.func.isRequired,
   // incrementCount: PropTypes.func.isRequired,
-  saveContactInfoAndSendRequirements: PropTypes.func.isRequired,
+  saveContactInfo: PropTypes.func.isRequired,
   setSelectedOption: PropTypes.func.isRequired,
 // newTopic: PropTypes.string
 };
@@ -122,6 +127,8 @@ function mapStateToProps(state) {
   return {
     // topics: state.topic.topics,
     // newTopic: state.topic.newTopic
+    selectedOptions: state.selectedOptions,
+    contactInfo: state.contactInfo
   };
 }
 
@@ -129,5 +136,5 @@ function mapStateToProps(state) {
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps, {
   setSelectedOption,
-  saveContactInfoAndSendRequirements
+  saveContactInfo
 })(CategoryWrapperContainer);

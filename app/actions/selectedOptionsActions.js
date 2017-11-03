@@ -140,10 +140,3 @@ export function setSelectedOption(categoryId, optionId, index) {
   };
 
 }
-
-export function saveContactInfoAndSendRequirements(yourName, companyName, email, telephone) {
-  return (dispatch) => {
-    dispatch(setContactInfo(yourName, companyName, email, telephone));
-  };
-
-}
