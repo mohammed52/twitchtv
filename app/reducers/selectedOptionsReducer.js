@@ -4,7 +4,7 @@ import _ from 'lodash';
 import MASTER_OPTIONS from '../components/helpers/MASTER_OPTIONS'
 import initializeSelectedOptions from './helpers/initializeSelectedOptions'
 
-const selectedOption = (state = {},
+const option = (state = {},
   action
 ) => {
   switch (action.type) {
@@ -17,6 +17,23 @@ const selectedOption = (state = {},
         };
       }
       return state;
+    default:
+      return state;
+  }
+}
+
+const contactInfo = (state = {},
+  action
+) => {
+  switch (action.type) {
+    case types.SAVE_CONTACT_INFO:
+      return {
+        ...state,
+        yourName: action.data.yourName,
+        companyName: action.data.companyName,
+        email: action.data.email,
+        telephone: action.data.telephone
+      }
     default:
       return state;
   }
@@ -54,44 +71,43 @@ const selectedOption = (state = {},
 //   }
 // };
 
-const topics = (state = [],
-  action
-) => {
-  switch (action.type) {
-    // case types.REQUEST_SUCCESS:
-    //   if (action.data) return action.data;
-    //   return state;
-    // case types.CREATE_TOPIC_REQUEST:
-    //   return [...state, topic(undefined, action)];
-    // case types.CREATE_TOPIC_FAILURE:
-    //   return state.filter(t => t.id !== action.id);
-    // case types.DESTROY_TOPIC:
-    //   return state.filter(t => t.id !== action.id);
-    // case types.INCREMENT_COUNT:
-    // case types.DECREMENT_COUNT:
-    //   return state.map(t => topic(t, action));
-    default:
-      return state;
-  }
-};
+// const topics = (state = [],
+//   action
+// ) => {
+//   switch (action.type) {
+// case types.REQUEST_SUCCESS:
+//   if (action.data) return action.data;
+//   return state;
+// case types.CREATE_TOPIC_REQUEST:
+//   return [...state, topic(undefined, action)];
+// case types.CREATE_TOPIC_FAILURE:
+//   return state.filter(t => t.id !== action.id);
+// case types.DESTROY_TOPIC:
+//   return state.filter(t => t.id !== action.id);
+// case types.INCREMENT_COUNT:
+// case types.DECREMENT_COUNT:
+//   return state.map(t => topic(t, action));
+//     default:
+//       return state;
+//   }
+// };
 
 
 
-const selectedOptions = (state = initializeSelectedOptions(),
+const options = (state = initializeSelectedOptions(),
   action
 ) => {
   switch (action.type) {
     case types.SAVE_CATEGORY_OPTION:
-      return state.map(t => selectedOption(t, action));
+      return state.map(t => option(t, action));
     default:
       return state;
   }
-
-
 };
 
-// const selectedOptions = combineReducers({
-//   selectedOptions
-// });
+const selectedOptions = combineReducers({
+  options,
+  contactInfo
+});
 
 export default selectedOptions;

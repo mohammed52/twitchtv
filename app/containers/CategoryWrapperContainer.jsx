@@ -82,8 +82,8 @@ function mapStateToProps(state) {
   return {
     // topics: state.topic.topics,
     // newTopic: state.topic.newTopic
-    selectedOptions: state.selectedOptions,
-    contactInfo: state.contactInfo
+    selectedOptions: state.selectedOptions.options,
+    contactInfo: state.selectedOptions.contactInfo
   };
 }
 
