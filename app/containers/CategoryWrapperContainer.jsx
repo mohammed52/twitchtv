@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { setSelectedOption, saveContactInfo } from '../actions/selectedOptionsActions';
+import { setSelectedOption, saveOptionsAndContact } from '../actions/selectedOptionsActions';
 
 import ImageCategoryComponent from '../components/ImageCategoryComponent';
 import ContactComponent from '../components/ContactComponent';
@@ -16,9 +16,23 @@ import * as types from '../types';
 
 class CategoryWrapperContainer extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.saveOptionsAndContact = this.saveOptionsAndContact.bind(this)
+  }
+
+  saveOptionsAndContact(yourName, companyName, email, telephone) {
+
+    this.props.saveOptionsAndContact(yourName, companyName, email, telephone, this.props.selectedOptions)
+
+  }
+
   componentDidMount() {
     console.log("CategoryWrapperContainer componentDidMount");
   }
+
+
 
   render() {
     let categoryComponents = []
@@ -26,7 +40,7 @@ class CategoryWrapperContainer extends Component {
     if (allOptionsSelected(this.props.selectedOptions)) {
       contactComponent.push(
         <ContactComponent key="ContactComponent"
-                          saveContactInfo={this.props.saveContactInfo}
+                          saveContactInfo={this.saveOptionsAndContact}
                           category={CONTACT_FORM_OPTION} />
       )
     }
@@ -76,7 +90,7 @@ CategoryWrapperContainer.propTypes = {
   // createTopic: PropTypes.func.isRequired,
   // destroyTopic: PropTypes.func.isRequired,
   // incrementCount: PropTypes.func.isRequired,
-  saveContactInfo: PropTypes.func.isRequired,
+  saveOptionsAndContact: PropTypes.func.isRequired,
   setSelectedOption: PropTypes.func.isRequired,
 // newTopic: PropTypes.string
 };
@@ -94,5 +108,5 @@ function mapStateToProps(state) {
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps, {
   setSelectedOption,
-  saveContactInfo
+  saveOptionsAndContact
 })(CategoryWrapperContainer);
