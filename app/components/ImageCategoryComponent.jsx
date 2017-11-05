@@ -40,7 +40,7 @@ class ImageCategoryComponent extends Component {
 
       let tmpIsOptionSelected = false;
 
-      if (this.props.selected.isSelected &&
+      if (this.props.selected.selected &&
         this.props.selected.categoryId === this.props.selected.categoryId &&
         this.props.selected.optionId === currentImageOption.optionId) {
         tmpIsOptionSelected = true

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { setSelectedOption } from '../actions/selectedOptionsActions';
-import { saveContactInfo } from '../actions/contactInfoActions';
+import { setSelectedOption, saveContactInfo } from '../actions/selectedOptionsActions';
+
 import ImageCategoryComponent from '../components/ImageCategoryComponent';
 import ContactComponent from '../components/ContactComponent';
 import { MASTER_OPTIONS } from '../components/helpers/MASTER_OPTIONS';
@@ -25,7 +25,9 @@ class CategoryWrapperContainer extends Component {
     let contactComponent = [];
     if (allOptionsSelected(this.props.selectedOptions)) {
       contactComponent.push(
-        <ContactComponent key="ContactComponent" saveContactInfo={this.props.saveContactInfo} category={CONTACT_FORM_OPTION} />
+        <ContactComponent key="ContactComponent"
+                          saveContactInfo={this.props.saveContactInfo}
+                          category={CONTACT_FORM_OPTION} />
       )
     }
 
@@ -40,7 +42,8 @@ class CategoryWrapperContainer extends Component {
                                       category={category}
                                       selected={this.props.selectedOptions[i]}
                                       setSelectedOption={this.props.setSelectedOption}
-                                      index={i} />);
+                                      index={i} />
+            );
             break;
           }
           default:
@@ -60,7 +63,7 @@ class CategoryWrapperContainer extends Component {
           {contactComponent}
         </ReactCSSTransitionGroup>
       </div>
-      );
+    );
   }
 }
 

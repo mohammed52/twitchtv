@@ -23,7 +23,7 @@ const isFetching = (state = false, action) => {
 // router state
 const rootReducer = combineReducers({
   selectedOptions,
-  contactInfo,
+  // contactInfo,
   routing
 });
 

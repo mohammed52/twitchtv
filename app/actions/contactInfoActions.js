@@ -3,18 +3,20 @@ import { authService } from '../services';
 
 import * as types from '../types';
 
-function setContactInfo(yourName, companyName, email, telephone) {
-  return {
-    type: types.SAVE_CONTACT_INFO,
-    data: {
-      yourName,
-      companyName,
-      email,
-      telephone,
-      categoryId: types.CAT_CONTACT_ID
-    }
-  }
-}
+// function setContactInfo(yourName, companyName, email, telephone) {
+//   return {
+//     type: types.SAVE_CONTACT_INFO,
+//     data: {
+//       yourName,
+//       companyName,
+//       email,
+//       telephone,
+//       categoryId: types.CAT_CONTACT_ID
+//     }
+//   }
+// }
+
+
 // function beginLogin() {
 //   return {
 //     type: types.MANUAL_LOGIN_USER
@@ -123,9 +125,9 @@ function setContactInfo(yourName, companyName, email, telephone) {
 //   };
 // }
 
-export function saveContactInfo(yourName, companyName, email, telephone) {
-  return (dispatch) => {
-    dispatch(setContactInfo(yourName, companyName, email, telephone));
-  };
+// export function saveContactInfo(yourName, companyName, email, telephone) {
+//   return (dispatch) => {
+//     dispatch(setContactInfo(yourName, companyName, email, telephone));
+//   };
 
-}
+// }
