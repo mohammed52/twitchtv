@@ -7,7 +7,7 @@ import { controllers, passport as passportConfig, emailController } from '../db'
 
 const usersController = controllers && controllers.users;
 const topicsController = controllers && controllers.topics;
-const quoteRequestsController = controllers && controllers.quoteRequests;
+const selectedOptionsController = controllers && controllers.selectedOptionsController;
 
 export default (app) => {
   // user routes
@@ -55,11 +55,11 @@ export default (app) => {
   }
 
   // quoteRequest routes
-  if (quoteRequestsController) {
-    app.get('/quoterequest', quoteRequestsController.all);
-    app.post('/quoterequest/:id', quoteRequestsController.add);
-    app.put('/quoterequest/:id', quoteRequestsController.update);
-    app.delete('/quoterequest/:id', quoteRequestsController.remove);
+  if (selectedOptionsController) {
+    app.get('/quoterequest', selectedOptionsController.all);
+    app.post('/quoterequest/:id', selectedOptionsController.add);
+    app.put('/quoterequest/:id', selectedOptionsController.update);
+    app.delete('/quoterequest/:id', selectedOptionsController.remove);
   } else {
     console.warn(unsupportedMessage('topics routes'));
   }

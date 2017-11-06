@@ -1,5 +1,5 @@
 export default function loadModels() {
   require('./topics');
   require('./user');
-  require('./quoteRequests');
+  require('./selectedOptionsModel');
 }

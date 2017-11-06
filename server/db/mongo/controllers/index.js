@@ -1,11 +1,11 @@
 import topics from './topics';
 import users from './users';
-import quoteRequests from './quoteRequests';
+import selectedOptionsController from './selectedOptionsController';
 
 export { topics, users };
 
 export default {
   topics,
   users,
-  quoteRequests
+  selectedOptionsController
 };
