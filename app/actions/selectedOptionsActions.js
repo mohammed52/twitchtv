@@ -49,10 +49,12 @@ export function saveOptionsAndContact(yourName, companyName, email, telephone, s
     }
     data.contactInfo = contactInfo
 
-    const id = new ObjectID();
-    console.log(id.toString());
+    const idObj = new ObjectID();
+    data.id = idObj.toString();
 
-    selectedOptionsService().createSelectedOptionsRequest({id, data})
+    selectedOptionsService().createSelectedOptionsRequest({
+      data
+    })
       .then((res) => {
         if (res.status === 200) {
           console.log("success");
