@@ -52,7 +52,7 @@ export function saveOptionsAndContact(yourName, companyName, email, telephone, s
     const id = new ObjectID();
     console.log(id.toString());
 
-    selectedOptionsService().createSelectedOptionsRequest(id, data)
+    selectedOptionsService().createSelectedOptionsRequest({id, data})
       .then((res) => {
         if (res.status === 200) {
           console.log("success");
