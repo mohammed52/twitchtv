@@ -3,25 +3,25 @@ import createRestApiClient from '../utils/createRestApiClient';
 
 export default () => {
   const client = createRestApiClient().withConfig({
-    baseURL: apiEndpoint
+    baseURL: apiEndpoint //apiEndpoint is http://localhost:5000 
   });
   return {
-    getSelectedOptionRequests: () => client.request({
+    getSelectedOptionsRequests: () => client.request({
       method: 'GET',
-      url: '/selectedoption'
+      url: '/selectedoptions'
     }),
-    deleteSelectedOptionRequest: ({id}) => client.request({
+    deleteSelectedOptionsRequest: ({id}) => client.request({
       method: 'DELETE',
-      url: `/selectedoption/${id}`
+      url: `/selectedoptions/${id}`
     }),
-    updateSelectedOptionRequest: ({id, data}) => client.request({
+    updateSelectedOptionsRequest: ({id, data}) => client.request({
       method: 'PUT',
-      url: `/selectedoption/${id}`,
+      url: `/selectedoptions/${id}`,
       data
     }),
-    createSelectedOptionRequest: ({id, data}) => client.request({
+    createSelectedOptionsRequest: ({id, data}) => client.request({
       method: 'POST',
-      url: `/selectedoption/${id}`,
+      url: `/selectedoptions/${id}`,
       data
     })
   };

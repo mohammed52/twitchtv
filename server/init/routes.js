@@ -54,12 +54,12 @@ export default (app) => {
     console.warn(unsupportedMessage('topics routes'));
   }
 
-  // quoteRequest routes
+  // selectedOptions routes
   if (selectedOptionsController) {
-    app.get('/quoterequest', selectedOptionsController.all);
-    app.post('/quoterequest/:id', selectedOptionsController.add);
-    app.put('/quoterequest/:id', selectedOptionsController.update);
-    app.delete('/quoterequest/:id', selectedOptionsController.remove);
+    app.get('/selectedoptions', selectedOptionsController.all);
+    app.post('/selectedoptions/:id', selectedOptionsController.add);
+    app.put('/selectedoptions/:id', selectedOptionsController.update);
+    app.delete('/selectedoptions/:id', selectedOptionsController.remove);
   } else {
     console.warn(unsupportedMessage('topics routes'));
   }
