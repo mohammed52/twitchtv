@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import SelectedOptions from '../models/selectedOptionsModel';
+import { sendEmail } from '../emailController';
 
 /**
  * List
@@ -25,7 +26,9 @@ export function add(req, res) {
       return res.status(400).send(err);
     }
 
-    return res.status(200).send('OK');
+    return sendEmail(req, res)
+
+  // return res.status(200).send('OK');
   });
 }
 
