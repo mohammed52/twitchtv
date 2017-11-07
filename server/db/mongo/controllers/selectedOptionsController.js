@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import SelectedOptions from '../models/selectedOptionsModel';
-import { sendEmail } from '../emailController';
+import { sendEmail } from '../../../email/emailController';
 
 /**
  * List
@@ -69,7 +69,7 @@ export function update(req, res) {
   }
 }
 
-/**
+/**     
  * Remove a topic
  */
 export function remove(req, res) {
