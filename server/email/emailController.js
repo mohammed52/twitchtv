@@ -1,3 +1,5 @@
+"use-strict";
+
 // import _ from 'lodash';
 import SelectedOptions from '../db/mongo/models/selectedOptionsModel';
 import nodemailerHelper from './nodemailerHelper'
@@ -27,10 +29,45 @@ export function sendEmail(req, res) {
 export function sendQuote(req, res) {
   console.log("MAP sendQuote is working");
 
-  controllers.selectedOptionsController.all(req, res).then((results) => {
-    console.log("results", results);
+  function resolveAfter2Seconds(x) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log("x", x);
+        resolve(x);
+      }, 2000);
+    });
+  }
 
-  })
+
+
+  const a = resolveAfter2Seconds(20);
+  console.log("a", a);
+
+  async function add(x) {
+    const a = resolveAfter2Seconds(20);
+    console.log("a", a);
+
+  }
+
+  // add(10).then((v) => {
+  //   console.log("v", v);
+  // })
+
+
+
+  async function add1(x) {
+    const a = await resolveAfter2Seconds(20);
+    const b = await resolveAfter2Seconds(30);
+    return x + a + b;
+  }
+
+  // add1(10).then(v => {
+  //   console.log(v); // prints 60 after 4 seconds.
+  // });
+
+
+  return controllers.selectedOptionsController.all(req, res)
+
   // .then((res) => {
 
   //   console.log("res");
