@@ -27,7 +27,7 @@ module.exports = (env = {}) => {
     devtool: 'source-map',
     context: PATHS.app, // 'app'
     entry: {
-      server: '../server/index'
+      server: ['babel-polyfill', '../server/index']
     },
     target: 'node',
     node,
@@ -55,7 +55,7 @@ module.exports = (env = {}) => {
     devtool: 'cheap-module-source-map',
     context: PATHS.app, // 'app'
     entry: {
-      app: ['./client']
+      app: ['babel-polyfill', './client']
     },
     node,
     output: {
@@ -81,7 +81,7 @@ module.exports = (env = {}) => {
     devtool: 'eval-source-map',
     context: PATHS.app, // 'app'
     entry: {
-      app: ['./client', hotMiddlewareScript]
+      app: ['babel-polyfill', './client', hotMiddlewareScript]
     },
     node,
     output: {
@@ -106,7 +106,7 @@ module.exports = (env = {}) => {
     devtool: 'eval-source-map',
     context: PATHS.app, // 'app'
     entry: {
-      server: '../server/index'
+      server: ['babel-polyfill', '../server/index']
     },
     target: 'node',
     node,

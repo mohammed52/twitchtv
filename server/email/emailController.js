@@ -61,9 +61,9 @@ export function sendQuote(req, res) {
     return x + a + b;
   }
 
-  // add1(10).then(v => {
-  //   console.log(v); // prints 60 after 4 seconds.
-  // });
+add1(10).then(v => {
+  console.log(v); // prints 60 after 4 seconds.
+});
 
 
   return controllers.selectedOptionsController.all(req, res)

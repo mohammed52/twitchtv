@@ -6,7 +6,8 @@ import initPassport from './init/passport';
 import initExpress from './init/express';
 import initRoutes from './init/routes';
 import renderMiddleware from './render/middleware';
-
+require("babel-core/register");
+require("babel-polyfill");
 const app = express();
 
 // using SendGrid's v3 Node.js Library
