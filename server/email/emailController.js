@@ -49,7 +49,7 @@ export function sendQuote(req, res) {
     };
 
     nodemailerHelper(mailOptions)
-    return res.redirect('/')
   }
   );
+  return res.redirect('/')
 }

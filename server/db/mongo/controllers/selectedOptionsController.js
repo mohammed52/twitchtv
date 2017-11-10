@@ -9,9 +9,11 @@ export function allSelectedOptions() {
     if (err) {
       console.log('Error in first query');
       return Error('Something went wrong getting the data');
+    // return res.status(500).send('Something went wrong getting the data');
     }
 
-    return selectedOptions;
+  // return selectedOptions;
+  // return res.json(selectedOptions);
   });
 }
 
@@ -101,6 +103,7 @@ export function remove(req, res) {
 }
 
 export default {
+  allSelectedOptions,
   all,
   add,
   update,
