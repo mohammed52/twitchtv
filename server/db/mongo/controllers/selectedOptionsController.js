@@ -6,13 +6,14 @@ import { sendEmail } from '../../../email/emailController';
  * List
  */
 export function all(req, res) {
-  SelectedOptions.find({}).exec((err, topics) => {
+  return SelectedOptions.find({}).exec((err, topics) => {
     if (err) {
       console.log('Error in first query');
       return res.status(500).send('Something went wrong getting the data');
     }
 
-    return res.json(topics);
+    // res.json(topics);
+    return topics;
   });
 }
 

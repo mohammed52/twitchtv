@@ -36,9 +36,10 @@ export function sendQuote(req, res) {
     return response
   }
 
-  getData(req, res).then((res) => {
+  getData(req, res).then((response) => {
     console.log('MAP RESPONSE RECEIVED')
     console.log("res", res);
+    console.log("response", response);
     let mailOptions = {
       from: '"Fred Foo 👻" <foo@blurdybloop.com>', // sender address
       to: 'mohammed.petiwala52@gmail.com', // list of receivers
