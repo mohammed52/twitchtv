@@ -2,18 +2,31 @@ import _ from 'lodash';
 import SelectedOptions from '../models/selectedOptionsModel';
 import { sendEmail } from '../../../email/emailController';
 
+// Server usage methods
+
+export function allSelectedOptions() {
+  return SelectedOptions.find({}).exec((err, selectedOptions) => {
+    if (err) {
+      console.log('Error in first query');
+      return Error('Something went wrong getting the data');
+    }
+
+    return selectedOptions;
+  });
+}
+
+
 /**
- * List
+ * SelectedOptions
  */
 export function all(req, res) {
-  return SelectedOptions.find({}).exec((err, topics) => {
+  return SelectedOptions.find({}).exec((err, selectedOptions) => {
     if (err) {
       console.log('Error in first query');
       return res.status(500).send('Something went wrong getting the data');
     }
 
-    // res.json(topics);
-    return topics;
+    return res.json(selectedOptions);
   });
 }
 

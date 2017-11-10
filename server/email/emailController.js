@@ -30,13 +30,13 @@ export function sendQuote(req, res) {
   console.log("MAP sendQuote is working");
 
 
-  async function getData(req, res) {
-    const response = await controllers.selectedOptionsController.all(req, res);
+  async function getData() {
+    const response = await controllers.selectedOptionsController.allSelectedOptions();
     console.log("response", response);
     return response
   }
 
-  getData(req, res).then((response) => {
+  getData().then((response) => {
     console.log('MAP RESPONSE RECEIVED')
     console.log("res", res);
     console.log("response", response);
@@ -52,41 +52,4 @@ export function sendQuote(req, res) {
     return res.redirect('/')
   }
   );
-
-
-  // function resolveAfter2Seconds(x) {
-  //   return new Promise(resolve => {
-  //     setTimeout(() => {
-  //       console.log("x", x);
-  //       resolve(x);
-  //     }, 2000);
-  //   });
-  // }
-
-
-
-  // const a = resolveAfter2Seconds(20);
-  // console.log("a", a);
-
-  // async function add(x) {
-  //   const a = resolveAfter2Seconds(20);
-  //   console.log("a", a);
-
-  // }
-
-  // add(10).then((v) => {
-  //   console.log("v", v);
-  // })
-
-
-
-  // async function add1(x) {
-  //   const a = await resolveAfter2Seconds(20);
-  //   const b = await resolveAfter2Seconds(30);
-  //   return x + a + b;
-  // }
-
-// add1(10).then(v => console.log(v) // prints 60 after 4 seconds.
-// );    
-// })
 }
