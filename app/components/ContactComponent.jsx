@@ -30,6 +30,9 @@ class ContactComponent extends Component {
     this.formInputValid = this.formInputValid.bind(this);
 
 
+    this.closeConfirmationModal = this.closeConfirmationModal.bind(this);
+
+
     this.state = {
       yourName: "Muhammad Abbas",
       companyName: "MEK",
@@ -50,7 +53,15 @@ class ContactComponent extends Component {
       yourNameStatus: {
         isValid: false
       },
+
+      showConfirmationModal: true,
     }
+  }
+
+  closeConfirmationModal() {
+    this.setState({
+      showConfirmationModal: false
+    })
   }
 
   componentDidMount() {
@@ -376,14 +387,7 @@ class ContactComponent extends Component {
             </button>
           </form>
         </div>
-                <RequirementsSentConfirmationModal onHide={this.closeSettingsModal}
-                       show={this.state.showSettingsModal}
-                       saveSettings={this.saveSettings}
-                       banks={this.props.banks}
-                       banksCardsSettings={this.state.banksCardsSettings}
-                       updateSettingsForBank={this.updateSettingsForBank}
-                       updateSettingsForCities={this.updateSettingsForCities}
-                       cities={this.props.cities} />
+        <RequirementsSentConfirmationModal onHide={this.closeConfirmationModal} show={this.state.showConfirmationModal} />
       </div>
 
       );
