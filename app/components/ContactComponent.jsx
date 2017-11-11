@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { setSelectedOption } from '../actions/selectedOptionsActions';
+import RequirementsSentConfirmationModal from './RequirementsSentConfirmationModal'
 import styles from '../css/components/CategoryContactStyles.css';
 import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
 import { validateEmail } from './helpers/validateEmail'
@@ -360,7 +361,7 @@ class ContactComponent extends Component {
     const formGroupEmail = this.getFormGroupEmail();
 
     return (
-      <div>
+      <div className={[styles.wrapperContactComponent].join(' ')}>
         <div className={[styles.categoryHeader].join(' ')}>
           {this.props.category.categoryHeader}
         </div>
@@ -375,6 +376,14 @@ class ContactComponent extends Component {
             </button>
           </form>
         </div>
+                <RequirementsSentConfirmationModal onHide={this.closeSettingsModal}
+                       show={this.state.showSettingsModal}
+                       saveSettings={this.saveSettings}
+                       banks={this.props.banks}
+                       banksCardsSettings={this.state.banksCardsSettings}
+                       updateSettingsForBank={this.updateSettingsForBank}
+                       updateSettingsForCities={this.updateSettingsForCities}
+                       cities={this.props.cities} />
       </div>
 
       );

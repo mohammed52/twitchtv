@@ -52,7 +52,7 @@ class CategoryWrapperContainer extends Component {
         switch (category.categoryType) {
           case types.CAT_TYPE_IMAGE_SELECTION: {
             categoryComponents.push(
-              <ImageCategoryComponent key={"categoryComponents" + "ImageCategoryComponent" + i}
+              <ImageCategoryComponent key={"categoryComponents-ImageCategoryComponent" + i}
                                       category={category}
                                       selected={this.props.selectedOptions[i]}
                                       setSelectedOption={this.props.setSelectedOption}
@@ -68,7 +68,7 @@ class CategoryWrapperContainer extends Component {
     }
 
     return (
-      <div>
+      <div className={[styles.categoryWrapper].join(' ')}>
         <ReactCSSTransitionGroup transitionName={styles}
                                  transitionEnterTimeout={5000}
                                  transitionLeaveTimeout={5000}

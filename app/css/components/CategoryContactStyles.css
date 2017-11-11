@@ -15,6 +15,11 @@
 	align-items: center;
 }
 
+.wrapperContactComponent {
+	position: relative;
+
+}
+
 .errorMessage{
 	left: 0;
 	position: static;

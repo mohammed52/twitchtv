@@ -2,30 +2,17 @@
 @import 'commonCategoryStyles';
 @import '../common/colors';
 
-/*.animAppear {
-  opacity: 0.01;
-}
- 
-.animAppear.animAppearActive{
-  opacity: 2;
-  transition: opacity 5s ease-in;
-}*/
 .enter {
   /*opacity: 0.01;*/
-  margin-top: 100%;
+  padding-top: 100%;
 }
 .enterActive {
   /*opacity: 2;*/
-  margin-top: 0px;
+  padding-top: 0;
   /*transition: opacity 1s ease-in;*/
   transition: all 200ms ease-out;
 }
-/*.leave { ... }
-.leaveActive { ... }*/
-/*.appear {
-  opacity: 0.01;
+
+.categoryWrapper {
+  overflow: hidden;
 }
-.appearActive {
-  opacity: 2;
-  transition: opacity 5s ease-in;
-}*/
