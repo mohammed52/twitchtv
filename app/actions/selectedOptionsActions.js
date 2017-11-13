@@ -5,6 +5,20 @@ import { ObjectID } from 'bson';
 
 import * as types from '../types';
 
+export function resetStore() {
+  return {
+    type: types.RESET_STORE
+  }
+}
+
+function updateRequirementEmailStatus(emailStatus) {
+  return {
+    type: types.REQ_EMAIL_STATUS_UPDATE,
+    data: {
+      status: emailStatus
+    }
+  }
+}
 
 function setOption(categoryId, optionId, index) {
   return {
@@ -76,6 +90,7 @@ export function saveOptionsAndContact(yourName, companyName, email, telephone, s
 
     // return selectedOptionsService().
     dispatch(setContactInfo(yourName, companyName, email, telephone));
+    dispatch(updateRequirementEmailStatus(types.REQ_EMAIL_STATUS_SENT));
   };
 
 }

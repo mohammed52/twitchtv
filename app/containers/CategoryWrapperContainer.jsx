@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import { setSelectedOption, saveOptionsAndContact } from '../actions/selectedOptionsActions';
+import { setSelectedOption, saveOptionsAndContact, resetStore } from '../actions/selectedOptionsActions';
 
 import ImageCategoryComponent from '../components/ImageCategoryComponent';
 import ContactComponent from '../components/ContactComponent';
@@ -41,7 +41,8 @@ class CategoryWrapperContainer extends Component {
       contactComponent.push(
         <ContactComponent key="ContactComponent"
                           saveContactInfo={this.saveOptionsAndContact}
-                          category={CONTACT_FORM_OPTION} />
+                          category={CONTACT_FORM_OPTION}
+                          resetStore={this.props.resetStore} />
       )
     }
 
@@ -77,7 +78,7 @@ class CategoryWrapperContainer extends Component {
           {contactComponent}
         </ReactCSSTransitionGroup>
       </div>
-    );
+      );
   }
 }
 
@@ -108,5 +109,6 @@ function mapStateToProps(state) {
 // https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps, {
   setSelectedOption,
-  saveOptionsAndContact
+  saveOptionsAndContact,
+  resetStore
 })(CategoryWrapperContainer);

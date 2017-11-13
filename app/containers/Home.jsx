@@ -7,6 +7,10 @@ import styles from '../css/components/homeStyles';
 
 class Home extends Component {
 
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     console.log("HomeContainer componentDidMount");
   }
@@ -14,6 +18,8 @@ class Home extends Component {
   componentDidUpdate() {
     console.log("HomeContainer componentDidUpdate");
   }
+
+
 
   render() {
 

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 // import { setSelectedOption } from '../actions/selectedOptionsActions';
 import RequirementsSentConfirmationModal from './RequirementsSentConfirmationModal'
 import styles from '../css/components/CategoryContactStyles.css';
 import { MASTER_OPTIONS } from './helpers/MASTER_OPTIONS';
 import { validateEmail } from './helpers/validateEmail'
+import * as types from '../types';
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
 
 class ContactComponent extends Component {
   constructor(props) {
@@ -28,6 +31,7 @@ class ContactComponent extends Component {
     this.verifyTelephone = this.verifyTelephone.bind(this);
     this.verifyYourName = this.verifyYourName.bind(this);
     this.formInputValid = this.formInputValid.bind(this);
+    this.onModalExit = this.onModalExit.bind(this);
 
 
     this.closeConfirmationModal = this.closeConfirmationModal.bind(this);
@@ -54,14 +58,23 @@ class ContactComponent extends Component {
         isValid: false
       },
 
-      showConfirmationModal: true,
+      showConfirmationModal: false,
     }
   }
 
+  onModalExit() {
+    console.log("onModalExit");
+  }
+
   closeConfirmationModal() {
+    console.log("closeConfirmationModal");
     this.setState({
       showConfirmationModal: false
     })
+    // browserHistory.push('testemail');
+    this.props.resetStore()
+    // window.location.reload();
+
   }
 
   componentDidMount() {
@@ -363,6 +376,16 @@ class ContactComponent extends Component {
     )
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log("nextProps.selectedOptions.requirementsEmailSentStatus", nextProps.selectedOptions.requirementsEmailSentStatus);
+    if (nextProps.selectedOptions.requirementsEmailSentStatus.status == types.REQ_EMAIL_STATUS_SENT) {
+      this.setState({
+        showConfirmationModal: true
+      })
+    }
+  }
+
+  componentWillUpdate(prevProps, prevState) {}
 
   render() {
 
@@ -387,7 +410,7 @@ class ContactComponent extends Component {
             </button>
           </form>
         </div>
-        <RequirementsSentConfirmationModal onHide={this.closeConfirmationModal} show={this.state.showConfirmationModal} />
+        <RequirementsSentConfirmationModal onHide={this.closeConfirmationModal} show={this.state.showConfirmationModal} onExit={this.onModalExit} />
       </div>
 
       );
@@ -406,12 +429,13 @@ ContactComponent.propTypes = {
   // destroyTopic: PropTypes.func.isRequired,
   // incrementCount: PropTypes.func.isRequired,
   saveContactInfo: PropTypes.func.isRequired,
+  resetStore: PropTypes.func.isRequired,
 // newTopic: PropTypes.string
 };
 
 function mapStateToProps(state) {
   return {
-    // selectedOptions: state.selectedOptions
+    selectedOptions: state.selectedOptions
   };
 }
 

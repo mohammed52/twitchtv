@@ -20,10 +20,18 @@ const isFetching = (state = false, action) => {
 
 // Combine reducers with routeReducer which keeps track of
 // router state
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   selectedOptions,
   // contactInfo,
   routing
-});
+})
+
+const rootReducer = (state, action) => {
+  if (action.type === 'RESET_STORE') {
+    state = undefined
+  }
+
+  return appReducer(state, action)
+};
 
 export default rootReducer;
