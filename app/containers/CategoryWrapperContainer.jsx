@@ -72,8 +72,9 @@ class CategoryWrapperContainer extends Component {
       <div className={[styles.categoryWrapper].join(' ')}>
         <ReactCSSTransitionGroup transitionName={styles}
                                  transitionEnterTimeout={5000}
-                                 transitionLeaveTimeout={5000}
-                                 transitionAppearTimeout={5000}>
+                                 transitionLeaveTimeout={500}
+                                 transitionAppearTimeout={5000}
+                                 transitionLeave={false}>
           {categoryComponents}
           {contactComponent}
         </ReactCSSTransitionGroup>

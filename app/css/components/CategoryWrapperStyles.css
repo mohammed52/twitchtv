@@ -13,6 +13,12 @@
   transition: all 200ms ease-out;
 }
 
-.categoryWrapper {
-  overflow: hidden;
+.leave{
+
 }
+.leaveActive{
+  transition: all 100ms;
+}
+/*.categoryWrapper {
+  overflow: hidden;
+}*/
