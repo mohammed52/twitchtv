@@ -59,6 +59,7 @@ class ContactComponent extends Component {
       },
 
       showConfirmationModal: false,
+      reset: false
     }
   }
 
@@ -72,8 +73,13 @@ class ContactComponent extends Component {
       showConfirmationModal: false
     })
     // browserHistory.push('testemail');
+    this.setState({
+      reset: true
+    })
     this.props.resetStore()
     // window.location.reload();
+    // window.scrollTo(0, 0)
+    this.props.resetComponents();
 
   }
 
@@ -157,6 +163,9 @@ class ContactComponent extends Component {
   }
 
   submitContactForm() {
+
+    this.refs.input.blur()
+
     this.setState({
       enableValidation: true
     }, () => {
@@ -385,7 +394,20 @@ class ContactComponent extends Component {
     }
   }
 
-  componentWillUpdate(prevProps, prevState) {}
+  componentWillUpdate(prevProps, prevState) {
+    console.log("ContactComponent componentWillUpdate");
+  }
+
+  componentDidUpdate() {
+    console.log("ContactComponent componendDidUpdate");
+    if (this.state.reset) {
+      this.setState({
+        reset: false
+      })
+      window.scrollTo(0, 0)
+    }
+
+  }
 
   render() {
 
@@ -405,7 +427,10 @@ class ContactComponent extends Component {
             {formGroupCompanyName}
             {formGroupEmail}
             {formGroupTelephone}
-            <button type="button" className="btn btn-primary" onClick={this.submitContactForm}>
+            <button type="button"
+                    className="btn btn-primary"
+                    onClick={this.submitContactForm}
+                    ref="input">
               Submit
             </button>
           </form>
@@ -430,6 +455,7 @@ ContactComponent.propTypes = {
   // incrementCount: PropTypes.func.isRequired,
   saveContactInfo: PropTypes.func.isRequired,
   resetStore: PropTypes.func.isRequired,
+  resetComponents: PropTypes.func.isRequired,
 // newTopic: PropTypes.string
 };
 

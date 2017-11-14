@@ -19,7 +19,20 @@ class CategoryWrapperContainer extends Component {
   constructor(props) {
     super(props)
 
+
     this.saveOptionsAndContact = this.saveOptionsAndContact.bind(this)
+    this.resetComponents = this.resetComponents.bind(this)
+
+    this.state = {
+      reset: false
+
+    }
+  }
+
+  resetComponents() {
+    this.setState({
+      reset: true
+    })
   }
 
   saveOptionsAndContact(yourName, companyName, email, telephone) {
@@ -32,7 +45,17 @@ class CategoryWrapperContainer extends Component {
     console.log("CategoryWrapperContainer componentDidMount");
   }
 
+  componendDidUpdate() {
+console.log("CategoryWrapperContainer componendDidUpdate");
+    if (this.state.reset) {
+      window.scrollTo(0, 0)
+    }
 
+    this.setState({
+      reset: false
+    })
+
+  }
 
   render() {
     let categoryComponents = []
@@ -42,7 +65,8 @@ class CategoryWrapperContainer extends Component {
         <ContactComponent key="ContactComponent"
                           saveContactInfo={this.saveOptionsAndContact}
                           category={CONTACT_FORM_OPTION}
-                          resetStore={this.props.resetStore} />
+                          resetStore={this.props.resetStore}
+                          resetComponents={this.resetComponents} />
       )
     }
 
