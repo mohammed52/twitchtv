@@ -5,6 +5,9 @@ import classNames from 'classnames/bind';
 import CategoryWrapperContainer from './CategoryWrapperContainer'
 import styles from '../css/components/homeStyles';
 
+// const scrape = require('website-scraper');
+// const phantomHtml = require('website-scraper-phantom');
+
 class Home extends Component {
 
   constructor(props) {
@@ -13,6 +16,11 @@ class Home extends Component {
 
   componentDidMount() {
     console.log("HomeContainer componentDidMount");
+    // scrape({
+    //   urls: ['https://www.instagram.com/gopro/'],
+    //   directory: '/path/to/save',
+    //   httpResponseHandler: phantomHtml
+    // }).then(console.log).catch(console.log);
   }
 
   componentDidUpdate() {
@@ -27,13 +35,20 @@ class Home extends Component {
 
     return (
       <div className={[styles.homeWrapper].join(' ')}>
+        <div>
+          <iframe src="http://www.bbc.com/news"
+                  frameBorder="1"></iframe>
+          <br/>
+          <iframe src="http://www.steelman.com.pk/"
+                  frameBorder="1"></iframe>
+        </div>
         <div className={["container-fluid"].join(' ')}>
           <h2 className={[styles.pageTitle].join(' ')}>Get INSTANT quotes for Metal Doors!</h2>
           <h3 className={[styles.pageSubTitle].join(' ')}>Select a Door Type</h3>
           <CategoryWrapperContainer />
         </div>
       </div>
-      );
+    );
   }
 }
 
