@@ -1,0 +1,62 @@
+.App {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  min-width: 300px;
+  background: white;
+}
+
+.headerTabs{
+  display: inline-block;
+  width: 100%;
+  /*padding: 0;*/
+}
+
+.singleTab{
+  width: 100%;
+}
+
+.nav-tabs>li{
+  width: 33.33%;
+}
+
+@media(max-width : 380px){
+  .App {
+    max-width: 380px;
+  }
+
+  .pageTitle {
+    font-size: 8vw;
+  }
+
+  .pageSubTitle{
+    font-size: 6vw;
+}
+}
+/*
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+*/

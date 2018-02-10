@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 // import Navigation from '../containers/Navigation';
 // import Message from '../containers/Message';
+
+import OnlineComponent from './OnlineComponent.js';
+import SearchBarComponent from './SearchBarComponent.js';
+
 import styles from '../css/main';
 import MEK from '../images/MEK.png';
 import favicon from '../images/favicon.png';
@@ -10,11 +14,8 @@ import favicon from '../images/favicon.png';
 
 
 var ReactBootstrap = require('react-bootstrap');
-var Navbar = ReactBootstrap.Navbar;
-var NavItem = ReactBootstrap.NavItem;
-var NavDropdown = ReactBootstrap.NavDropdown;
-var Nav = ReactBootstrap.Nav;
-var MenuItem = ReactBootstrap.MenuItem;
+var Tabs = ReactBootstrap.Tabs;
+var Tab = ReactBootstrap.Tab;
 
 // using SendGrid's v3 Node.js Library
 
@@ -39,6 +40,11 @@ class App extends Component {
       cssHasLoaded: false
     }
     this.handleLoad = this.handleLoad.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+
+    this.state = {
+      key: 1
+    }
   }
 
   componentDidMount() {
@@ -46,6 +52,13 @@ class App extends Component {
     console.log("AppContainer componentDidMount");
 
     window.addEventListener('load', this.handleLoad);
+    axios.get(`http://www.reddit.com/r/${this.props.subreddit}.json`)
+      .then(res => {
+        const posts = res.data.data.children.map(obj => obj.data);
+        this.setState({
+          posts
+        });
+      });
   }
   handleLoad() {
     console.log("handleLoad"); //  $ is available here
@@ -53,11 +66,16 @@ class App extends Component {
       cssHasLoaded: true
     })
   }
-
+  handleSelect(key) {
+    // alert(`selected ${key}`);
+    this.setState({
+      key
+    });
+  }
   componentDidUpdate() {
     console.log("AppContainer componentDidUpdate");
-    const ss = document.styleSheets
-    console.log("ss.length", ss.length);
+  // const ss = document.styleSheets
+  // console.log("ss.length", ss.length);
   }
 
   render() {
@@ -65,23 +83,32 @@ class App extends Component {
     return (
       <div>
         {!this.state.cssHasLoaded ? <div/> :
-         <div className={styles.mainWrapper}>
-           <Navbar>
-             <Navbar.Header>
-               <Navbar.Brand>
-                 <a href="#"><img src={MEK}
-                                  width="90"
-                                  height="20" /></a>
-               </Navbar.Brand>
-             </Navbar.Header>
-             <Nav pullRight>
-               <NavItem eventKey={1}
-                        disabled>
-                 <strong>Helpline: 021-34530931</strong>
-               </NavItem>
-             </Nav>
-           </Navbar>
-           {this.props.children}
+         <div className="App testGreen container">
+           Twitch Tv
+           <br/>
+           <br/>
+           <Tabs activeKey={this.state.key}
+                 onSelect={this.handleSelect}
+                 animation={false}
+                 id="controlled-tab-example"
+                 className="headerTabs testRed">
+             <Tab eventKey={1}
+                  title="Online"
+                  className="singleTab">
+               <SearchBarComponent />
+               <OnlineComponent />
+             </Tab>
+             <Tab eventKey={2}
+                  title="Offline"
+                  className="singleTab">
+               <SearchBarComponent /> Tab 2 content
+             </Tab>
+             <Tab eventKey={3}
+                  title="All"
+                  className="singleTab">
+               <SearchBarComponent /> Tab 3 content
+             </Tab>
+           </Tabs>
          </div>}
       </div>
     );

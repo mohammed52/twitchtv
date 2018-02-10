@@ -34,8 +34,7 @@ export default (store) => {
   return (
     <Route path="/"
            component={App}>
-      <IndexRoute component={Home}
-                  fetchData={fetchVoteData} />
+      <IndexRoute component={App} />
     </Route>
   );
 };
