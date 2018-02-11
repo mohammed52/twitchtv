@@ -4,10 +4,13 @@ import classNames from 'classnames/bind';
 // import Navigation from '../containers/Navigation';
 // import Message from '../containers/Message';
 
-import OnlineComponent from './OnlineComponent.js';
-import SearchBarComponent from './SearchBarComponent.js';
+import OnlineComponent from './OnlineComponent';
+import SearchBarComponent from './SearchBarComponent';
 
-import styles from '../css/main';
+import './main.css'
+import './App.css';
+
+// import styles from '../css/main';
 import MEK from '../images/MEK.png';
 import favicon from '../images/favicon.png';
 // import MEK from '../images/MEK.png';

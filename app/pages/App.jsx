@@ -12,6 +12,7 @@ class App extends Component {
     console.log("AppPage componentDidMount");
   }
   componentDidUpdate() {
+    debugger;
     console.log("AppPage componentDidUpdate");
   }
 
