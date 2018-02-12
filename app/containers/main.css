@@ -6,27 +6,20 @@ pink: #FFAA99
 orange: #FF8066
 */
 
+.testGreen{
+  border: 1px solid green;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background: #FFAA99;
 }
-:global {
-:global .testGreen{
-    border: 1px solid green;
-}
 
-:global .testBlue{
-    border: 1px solid blue;
-}
 
-:global .testOrange{
-    border: 1px solid orange;
-}
-
-:global .testRed{
+:global{
+  & .red{
     border: 1px solid red;
+  }
 }
-
-	}

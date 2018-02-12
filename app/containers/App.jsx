@@ -9,7 +9,9 @@ import OnlineComponent from './OnlineComponent';
 import SearchBarComponent from './SearchBarComponent';
 
 import './main.css'
+import styles from './main.css'
 import './App.css';
+import AppStyles from './App.css'
 
 // import styles from '../css/main';
 import MEK from '../images/MEK.png';
@@ -87,7 +89,7 @@ class App extends Component {
     return (
       <div>
         {!this.state.cssHasLoaded ? <div/> :
-         <div className="App testGreen container">
+         <div className="red">
            Twitch Tv
            <br/>
            <br/>
@@ -96,26 +98,20 @@ class App extends Component {
                  animation={false}
                  id="controlled-tab-example"
                  className="headerTabs testRed">
-             <Tab eventKey={1}
-                  title="Online"
-                  className="singleTab">
+             <Tab eventKey={1} title="Online" className="singleTab">
                <SearchBarComponent />
                <OnlineComponent />
              </Tab>
-             <Tab eventKey={2}
-                  title="Offline"
-                  className="singleTab">
+             <Tab eventKey={2} title="Offline" className="singleTab">
                <SearchBarComponent /> Tab 2 content
              </Tab>
-             <Tab eventKey={3}
-                  title="All"
-                  className="singleTab">
+             <Tab eventKey={3} title="All" className="singleTab">
                <SearchBarComponent /> Tab 3 content
              </Tab>
            </Tabs>
          </div>}
       </div>
-    );
+      );
   }
 }
 

@@ -5,7 +5,7 @@ const postcssCssnext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
 const PATHS = require('../paths');
 
-module.exports = ({ production = false, browser = false } = {}) => {
+module.exports = ({production = false, browser = false} = {}) => {
   /*
    * modules: boolean - Enable/Disable CSS Modules
    * importLoaders: number - Number of loaders applied before CSS loader
@@ -40,9 +40,15 @@ module.exports = ({ production = false, browser = false } = {}) => {
       options: {
         ident: 'postcss',
         plugins: [
-          postcssImport({ path: path.resolve(PATHS.app, './css') }),
-          postcssCssnext({ browsers: ['> 1%', 'last 2 versions'] }),
-          postcssReporter({ clearMessages: true })
+          postcssImport({
+            path: path.resolve(PATHS.app, './css')
+          }),
+          postcssCssnext({
+            browsers: ['> 1%', 'last 2 versions']
+          }),
+          postcssReporter({
+            clearMessages: true
+          })
         ]
       }
     }
@@ -55,7 +61,9 @@ module.exports = ({ production = false, browser = false } = {}) => {
         use: loaders
       });
     }
-    return [{ loader: 'style-loader' }, ...loaders];
+    return [{
+      loader: 'style-loader'
+    }, ...loaders];
   };
 
   const serverLoaders = createCssLoaders(false);
