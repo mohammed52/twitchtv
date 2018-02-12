@@ -48,8 +48,18 @@ class App extends Component {
     this.handleLoad = this.handleLoad.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
 
+    const channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+    const tmpChannelsStatusArr = [];
+
+    for (var i = 0; i < channels.length; i++) {
+      tmpChannelsStatusArr.push({
+        id: channels[i],
+        status: null
+      })
+    }
     this.state = {
-      key: 1
+      key: 1,
+      channlsStatusArr: tmpChannelsStatusArr
     }
   }
 
@@ -58,13 +68,19 @@ class App extends Component {
     console.log("AppContainer componentDidMount");
 
     window.addEventListener('load', this.handleLoad);
-    axios.get(`https://wind-bow.glitch.me/twitch-api/streams/ESL_SC2`)
-      .then(res => {
-        const posts = res.data.data.children.map(obj => obj.data);
-        this.setState({
-          posts
+
+    for (var i = 0; i < this.state.channelsStatusArr.length; i++) {
+      var tmpChannelsStatusArr = this.state.channelsStatusArr;
+      var tmpChannel = this.state.channelsStatusArr[i];
+
+      axios.get(`https://wind-bow.glitch.me/twitch-api/streams/` + tmpChannel.id)
+        .then(res => {
+          // this.setState({
+          //   posts
+          // });
         });
-      });
+    }
+
   }
   handleLoad() {
     console.log("handleLoad"); //  $ is available here

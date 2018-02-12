@@ -29,10 +29,13 @@ body {
 
 
 @media(max-width : 380px){
-:global(.myclass) {
+:global{
+& .myclass{
   background-color: grey;
 }
 }
+}
+/* can also use :global(.class){background: red;} for global styles*/
 
 :global{ 
   & .red{
