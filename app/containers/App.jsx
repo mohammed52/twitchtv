@@ -89,7 +89,7 @@ class App extends Component {
     return (
       <div>
         {!this.state.cssHasLoaded ? <div/> :
-         <div className="red">
+         <div className="container red myclass">
            Twitch Tv
            <br/>
            <br/>

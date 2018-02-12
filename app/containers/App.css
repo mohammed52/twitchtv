@@ -1,5 +1,5 @@
 :global {
-:global .App {
+& .App {
   margin-top: 20px;
   text-align: center;
   width: 100%;
@@ -8,31 +8,36 @@
   background: white;
 }
 
-:global .headerTabs{
+& .headerTabs{
   display: inline-block;
   width: 100%;
   /*padding: 0;*/
 }
 
-:global .singleTab{
+& .singleTab{
   width: 100%;
 }
 
-:global .nav-tabs>li{
+& .nav-tabs>li{
   width: 33.33%;
 }
+}
 
-@media(max-width : 380px){
-  .App {
+global{
+& @media(max-width : 380px){
+  
+
+  & .App {
     max-width: 380px;
   }
 
-  .pageTitle {
+  & .pageTitle {
     font-size: 8vw;
   }
 
-  .pageSubTitle{
+  & .pageSubTitle{
     font-size: 6vw;
+}
 }
 }
 /*
@@ -61,4 +66,3 @@
   to { transform: rotate(360deg); }
 }
 */
-}

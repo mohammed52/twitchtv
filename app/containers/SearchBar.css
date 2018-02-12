@@ -1,11 +1,11 @@
 :global {
-:global .search {
+
+& .search {
   position: relative;
   color: #aaa;
   font-size: 16px;
 }
-
-:global .search input {
+& .search input {
 /*  width: 250px;
   height: 32px;
 
@@ -15,8 +15,8 @@
   box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;*/
 }
 
-:global .search input { text-indent: 22px;}
-:global .search .fa-search { 
+& .search input { text-indent: 22px;}
+& .search .fa-search { 
   position: absolute;
   top: 10px;
   left: 10px;
