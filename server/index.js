@@ -10,8 +10,6 @@ require("babel-core/register");
 require("babel-polyfill");
 const app = express();
 
-const scrape = require('website-scraper');
-const phantomHtml = require('website-scraper-phantom');
 
 // using SendGrid's v3 Node.js Library
 
@@ -20,7 +18,7 @@ const phantomHtml = require('website-scraper-phantom');
  * - connect to MongoDB using mongoose
  * - register mongoose Schema
  */
-connect();
+// connect();
 
 /*
  * REMOVE if you do not need passport configuration
@@ -53,7 +51,7 @@ initExpress(app);
  *
  * Note: Some of these routes have passport and database model dependencies
  */
-initRoutes(app);
+// initRoutes(app);
 
 /*
  * This is where the magic happens. We take the locals data we have already
@@ -68,13 +66,5 @@ app._router.stack.forEach(function(r) {
     console.log(r.route.path)
   }
 })
-
-scrape({
-  urls: ['https://www.instagram.com/gopro/'],
-  directory: '/tmp1/',
-  httpResponseHandler: phantomHtml
-}).then((obj) => {
-  console.log(obj)
-}).catch(console.log);
 
 app.listen(app.get('port'));
