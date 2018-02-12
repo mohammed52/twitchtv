@@ -1,4 +1,5 @@
-.App {
+:global {
+:global .App {
   margin-top: 20px;
   text-align: center;
   width: 100%;
@@ -7,17 +8,17 @@
   background: white;
 }
 
-.headerTabs{
+:global .headerTabs{
   display: inline-block;
   width: 100%;
   /*padding: 0;*/
 }
 
-.singleTab{
+:global .singleTab{
   width: 100%;
 }
 
-.nav-tabs>li{
+:global .nav-tabs>li{
   width: 33.33%;
 }
 
@@ -60,3 +61,4 @@
   to { transform: rotate(360deg); }
 }
 */
+}

@@ -12,19 +12,21 @@ body {
   font-family: sans-serif;
   background: #FFAA99;
 }
-
-.testGreen{
+:global {
+:global .testGreen{
     border: 1px solid green;
 }
 
-.testBlue{
+:global .testBlue{
     border: 1px solid blue;
 }
 
-.testOrange{
+:global .testOrange{
     border: 1px solid orange;
 }
 
-.testRed{
+:global .testRed{
     border: 1px solid red;
 }
+
+	}

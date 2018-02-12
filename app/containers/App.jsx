@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import axios from 'axios'
 // import Navigation from '../containers/Navigation';
 // import Message from '../containers/Message';
 
@@ -55,7 +56,7 @@ class App extends Component {
     console.log("AppContainer componentDidMount");
 
     window.addEventListener('load', this.handleLoad);
-    axios.get(`http://www.reddit.com/r/${this.props.subreddit}.json`)
+    axios.get(`https://wind-bow.glitch.me/twitch-api/streams/ESL_SC2`)
       .then(res => {
         const posts = res.data.data.children.map(obj => obj.data);
         this.setState({
