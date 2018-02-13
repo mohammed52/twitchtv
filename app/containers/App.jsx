@@ -5,16 +5,14 @@ import axios from 'axios'
 // import Navigation from '../containers/Navigation';
 // import Message from '../containers/Message';
 
-import OnlineComponent from './OnlineComponent';
+import OnlineChannelsComponent from './OnlineChannelsComponent';
+import OfflineChannelsComponent from './OfflineChannelsComponent';
+import AllChannelsComponent from './AllChannelsComponent';
 import SearchBarComponent from './SearchBarComponent';
 
-import './main.css'
 import styles from './main.css'
-import './App.css';
 import AppStyles from './App.css'
 
-// import styles from '../css/main';
-import MEK from '../images/MEK.png';
 import favicon from '../images/favicon.png';
 // import MEK from '../images/MEK.png';
 
@@ -59,7 +57,7 @@ class App extends Component {
     }
     this.state = {
       key: 1,
-      channlsStatusArr: tmpChannelsStatusArr
+      channelsStatusArr: tmpChannelsStatusArr
     }
   }
 
@@ -69,15 +67,17 @@ class App extends Component {
 
     window.addEventListener('load', this.handleLoad);
 
-    for (var i = 0; i < this.state.channelsStatusArr.length; i++) {
-      var tmpChannelsStatusArr = this.state.channelsStatusArr;
-      var tmpChannel = this.state.channelsStatusArr[i];
 
-      axios.get(`https://wind-bow.glitch.me/twitch-api/streams/` + tmpChannel.id)
-        .then(res => {
-          // this.setState({
-          //   posts
-          // });
+    var tmpChannelsStatusArr = this.state.channelsStatusArr;
+    for (let i = 0; i < this.state.channelsStatusArr.length - 1; i++) {
+
+      axios.get(`https://wind-bow.glitch.me/twitch-api/streams/` + tmpChannelsStatusArr[i].id)
+        .then((res) => {
+          console.log("response rec", res)
+          tmpChannelsStatusArr[i].status = res.data;
+          this.setState({
+            channelsStatusArr: tmpChannelsStatusArr
+          });
         });
     }
 
@@ -105,7 +105,7 @@ class App extends Component {
     return (
       <div>
         {!this.state.cssHasLoaded ? <div/> :
-         <div className="container red myclass">
+         <div className="container red myclass red2">
            Twitch Tv
            <br/>
            <br/>
@@ -114,20 +114,28 @@ class App extends Component {
                  animation={false}
                  id="controlled-tab-example"
                  className="headerTabs testRed">
-             <Tab eventKey={1} title="Online" className="singleTab">
+             <Tab eventKey={1}
+                  title="Online"
+                  className="singleTab">
                <SearchBarComponent />
-               <OnlineComponent />
+               <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
              </Tab>
-             <Tab eventKey={2} title="Offline" className="singleTab">
-               <SearchBarComponent /> Tab 2 content
+             <Tab eventKey={2}
+                  title="Offline"
+                  className="singleTab">
+               <SearchBarComponent />
+               <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
              </Tab>
-             <Tab eventKey={3} title="All" className="singleTab">
-               <SearchBarComponent /> Tab 3 content
+             <Tab eventKey={3}
+                  title="All"
+                  className="singleTab">
+               <SearchBarComponent />
+               <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
              </Tab>
            </Tabs>
          </div>}
       </div>
-      );
+    );
   }
 }
 

@@ -8,7 +8,7 @@ var Button = ReactBootstrap.Button;
 var Tabs = ReactBootstrap.Tabs;
 var Tab = ReactBootstrap.Tab;
 
-class OnlineComponent extends Component {
+class OfflineChannelsComponent extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -17,10 +17,10 @@ class OnlineComponent extends Component {
   render() {
     return (
       <div>
-        Online Component
+        OfflineChannelsComponent
       </div>
     );
   }
 }
 
-export default OnlineComponent;
+export default OfflineChannelsComponent;

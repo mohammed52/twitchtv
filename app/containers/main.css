@@ -19,13 +19,7 @@ body {
 
 
 
-@media(max-width : 380px){
-  :global(.red){
-  border: 1px solid red;
-  max-width: 380px;
-  min-width: 300px;
-  }
-}
+
 
 
 @media(max-width : 380px){
@@ -65,4 +59,12 @@ body {
 & .nav-tabs>li{
   width: 33.33%;
 }
+}
+
+@media(max-width : 380px){
+  :global(.red2){
+  border: 1px solid red;
+  max-width: 380px;
+  min-width: 300px;
+  }
 }
