@@ -69,7 +69,7 @@ class App extends Component {
 
 
     var tmpChannelsStatusArr = this.state.channelsStatusArr;
-    for (let i = 0; i < this.state.channelsStatusArr.length - 1; i++) {
+    for (let i = 0; i < this.state.channelsStatusArr.length; i++) {
 
       axios.get(`https://wind-bow.glitch.me/twitch-api/streams/` + tmpChannelsStatusArr[i].id)
         .then((res) => {
@@ -105,7 +105,7 @@ class App extends Component {
     return (
       <div>
         {!this.state.cssHasLoaded ? <div/> :
-         <div className="container red myclass red2">
+         <div className="App container red myclass red2">
            Twitch Tv
            <br/>
            <br/>
@@ -114,28 +114,22 @@ class App extends Component {
                  animation={false}
                  id="controlled-tab-example"
                  className="headerTabs testRed">
-             <Tab eventKey={1}
-                  title="Online"
-                  className="singleTab">
+             <Tab eventKey={1} title="Online" className="singleTab">
                <SearchBarComponent />
                <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
              </Tab>
-             <Tab eventKey={2}
-                  title="Offline"
-                  className="singleTab">
+             <Tab eventKey={2} title="Offline" className="singleTab">
                <SearchBarComponent />
                <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
              </Tab>
-             <Tab eventKey={3}
-                  title="All"
-                  className="singleTab">
+             <Tab eventKey={3} title="All" className="singleTab">
                <SearchBarComponent />
                <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
              </Tab>
            </Tabs>
          </div>}
       </div>
-    );
+      );
   }
 }
 

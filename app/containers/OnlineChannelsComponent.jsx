@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 // import logo from './logo.svg';
 import './OnlineChannels.css';
 
@@ -15,20 +16,24 @@ class OnlineChannelsComponent extends Component {
   }
 
   render() {
-    // .stream.channel.logo, .stream.url , 
+    // .stream should be !==null , .stream.channel.logo, .stream.url
 
-    if (this.props.channelsStatusArray != undefined) {
+    if (this.props.channelsStatusArr !== undefined) {
 
-      for (var i = 0; i < this.props.channelsStatusArray.length; i++) {
-        this.props.channelsStatusArray[i]
+      for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
+        console.log(this.props.channelsStatusArr[i].status)
       }
     }
     return (
       <div>
         OnlineChannelsComponent
       </div>
-    );
+      );
   }
 }
+
+OnlineChannelsComponent.propTypes = {
+  channelsStatusArr: PropTypes.array.isRequired
+};
 
 export default OnlineChannelsComponent;

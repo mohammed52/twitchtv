@@ -5,8 +5,7 @@
 pink: #FFAA99
 orange: #FF8066
 */
-
-.testGreen{
+.testGreen {
   border: 1px solid green;
 }
 
@@ -17,54 +16,22 @@ body {
   background: #FFAA99;
 }
 
-
-
-
-
-
-@media(max-width : 380px){
-:global{
-& .myclass{
-  background-color: grey;
-}
-}
-}
 /* can also use :global(.class){background: red;} for global styles*/
-
-:global{ 
-  & .red{
+:global {
+  & .red {
     border: 1px solid yellow;
-  max-width: 380px;
-  min-width: 300px;
+    max-width: 380px;
+    min-width: 300px;
   }
-  & .App {
-  margin-top: 20px;
-  text-align: center;
-  width: 100%;
-  max-width: 380px;
-  min-width: 300px;
-  background: white;
+
 }
 
-& .headerTabs{
-  display: inline-block;
-  width: 100%;
-  /*padding: 0;*/
-}
+@media(max-width:380px) {
+  :global {
 
-& .singleTab{
-  width: 100%;
-}
-
-& .nav-tabs>li{
-  width: 33.33%;
-}
-}
-
-@media(max-width : 380px){
-  :global(.red2){
-  border: 1px solid red;
-  max-width: 380px;
-  min-width: 300px;
+    /*& .myclass{
+      background-color: grey;
+    }*/
   }
+
 }
