@@ -57,7 +57,8 @@ class App extends Component {
     }
     this.state = {
       key: 1,
-      channelsStatusArr: tmpChannelsStatusArr
+      channelsStatusArr: tmpChannelsStatusArr,
+      channelsLoaded: false
     }
   }
 
@@ -78,6 +79,12 @@ class App extends Component {
           this.setState({
             channelsStatusArr: tmpChannelsStatusArr
           });
+          if (i == this.state.channelsStatusArr.length - 1) {
+            this.setState({
+              channelsLoaded: true
+            });
+
+          }
         });
     }
 
@@ -104,32 +111,40 @@ class App extends Component {
 
     return (
       <div>
-        {!this.state.cssHasLoaded ? <div/> :
+        {this.state.channelsLoaded ? <div/> :
          <div className="App container red myclass red2">
            Twitch Tv
            <br/>
            <br/>
-           <Tabs activeKey={this.state.key}
-                 onSelect={this.handleSelect}
-                 animation={false}
-                 id="controlled-tab-example"
-                 className="headerTabs testRed">
-             <Tab eventKey={1} title="Online" className="singleTab">
-               <SearchBarComponent />
-               <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
-             </Tab>
-             <Tab eventKey={2} title="Offline" className="singleTab">
-               <SearchBarComponent />
-               <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
-             </Tab>
-             <Tab eventKey={3} title="All" className="singleTab">
-               <SearchBarComponent />
-               <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
-             </Tab>
-           </Tabs>
+           <div>
+             <Tabs activeKey={this.state.key}
+                   onSelect={this.handleSelect}
+                   animation={false}
+                   id="controlled-tab-example"
+                   className="headerTabs testRed">
+               <Tab eventKey={1}
+                    title="Online"
+                    className="singleTab">
+                 <SearchBarComponent />
+                 <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
+               </Tab>
+               <Tab eventKey={2}
+                    title="Offline"
+                    className="singleTab">
+                 <SearchBarComponent />
+                 <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
+               </Tab>
+               <Tab eventKey={3}
+                    title="All"
+                    className="singleTab">
+                 <SearchBarComponent />
+                 <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
+               </Tab>
+             </Tabs>
+           </div>
          </div>}
       </div>
-      );
+    );
   }
 }
 

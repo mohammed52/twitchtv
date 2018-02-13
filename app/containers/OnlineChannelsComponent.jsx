@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import logo from './logo.svg';
-import './OnlineChannels.css';
+import styles from './OnlineChannels.css';
+import OnlineChannelSingle from './OnlineChannelSingle'
 
 var ReactBootstrap = require('react-bootstrap');
 
@@ -16,19 +17,25 @@ class OnlineChannelsComponent extends Component {
   }
 
   render() {
-    // .stream should be !==null , .stream.channel.logo, .stream.url
+    // .status.stream should be !==null , .status.stream.channel.logo, .status.stream.url
 
+    let arrSingleChannels = [];
     if (this.props.channelsStatusArr !== undefined) {
 
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
         console.log(this.props.channelsStatusArr[i].status)
+if (this.props.channelsStatusArr !== null && this.props.channelsStatusArr[i].status.stream != null) {
+  arrSingleChannels.push(
+    <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} />
+  )
+}
       }
     }
     return (
       <div>
-        OnlineChannelsComponent
+        {arrSingleChannels}
       </div>
-      );
+    );
   }
 }
 
