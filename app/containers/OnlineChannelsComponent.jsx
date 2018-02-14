@@ -24,18 +24,20 @@ class OnlineChannelsComponent extends Component {
 
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
         console.log(this.props.channelsStatusArr[i].status)
-if (this.props.channelsStatusArr !== null && this.props.channelsStatusArr[i].status.stream != null) {
-  arrSingleChannels.push(
-    <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} />
-  )
-}
+        if (this.props.channelsStatusArr !== null && this.props.channelsStatusArr[i].status != null) {
+          if (this.props.channelsStatusArr[i].status.stream != undefined) {
+            arrSingleChannels.push(
+              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} />
+            )
+          }
+        }
       }
     }
     return (
       <div>
         {arrSingleChannels}
       </div>
-    );
+      );
   }
 }
 

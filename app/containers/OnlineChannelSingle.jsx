@@ -20,9 +20,11 @@ class OnlineChannelSingle extends Component {
 
     return (
       <div>
-        {this.props.channel.status.id}
+        {this.props.channel.id}
+        {this.props.channel.status.stream.game}
+        {this.props.channel.status.stream.viewers}
       </div>
-    );
+      );
   }
 }
 

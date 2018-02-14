@@ -57,8 +57,7 @@ class App extends Component {
     }
     this.state = {
       key: 1,
-      channelsStatusArr: tmpChannelsStatusArr,
-      channelsLoaded: false
+      channelsStatusArr: tmpChannelsStatusArr
     }
   }
 
@@ -79,12 +78,6 @@ class App extends Component {
           this.setState({
             channelsStatusArr: tmpChannelsStatusArr
           });
-          if (i == this.state.channelsStatusArr.length - 1) {
-            this.setState({
-              channelsLoaded: true
-            });
-
-          }
         });
     }
 
@@ -111,7 +104,7 @@ class App extends Component {
 
     return (
       <div>
-        {this.state.channelsLoaded ? <div/> :
+        {!this.state.cssHasLoaded ? <div/> :
          <div className="App container red myclass red2">
            Twitch Tv
            <br/>
@@ -122,21 +115,15 @@ class App extends Component {
                    animation={false}
                    id="controlled-tab-example"
                    className="headerTabs testRed">
-               <Tab eventKey={1}
-                    title="Online"
-                    className="singleTab">
+               <Tab eventKey={1} title="Online" className="singleTab">
                  <SearchBarComponent />
                  <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
                </Tab>
-               <Tab eventKey={2}
-                    title="Offline"
-                    className="singleTab">
+               <Tab eventKey={2} title="Offline" className="singleTab">
                  <SearchBarComponent />
                  <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
                </Tab>
-               <Tab eventKey={3}
-                    title="All"
-                    className="singleTab">
+               <Tab eventKey={3} title="All" className="singleTab">
                  <SearchBarComponent />
                  <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
                </Tab>
@@ -144,7 +131,7 @@ class App extends Component {
            </div>
          </div>}
       </div>
-    );
+      );
   }
 }
 
