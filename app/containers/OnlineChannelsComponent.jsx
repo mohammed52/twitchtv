@@ -22,13 +22,15 @@ class OnlineChannelsComponent extends Component {
 
     let arrSingleChannels = [];
     if (this.props.channelsStatusArr !== undefined) {
+      var snCount = 1;
 
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
         console.log(this.props.channelsStatusArr[i].status)
         if (this.props.channelsStatusArr !== null && this.props.channelsStatusArr[i].status != null) {
           if (this.props.channelsStatusArr[i].status.stream != undefined) {
             arrSingleChannels.push(
-              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} serial={i + 1} />
+              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]}
+                                   serial={snCount++} />
             )
           }
         }
@@ -42,7 +44,7 @@ class OnlineChannelsComponent extends Component {
           </tbody>
         </Table>
       </div>
-      );
+    );
   }
 }
 

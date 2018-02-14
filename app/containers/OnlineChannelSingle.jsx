@@ -23,20 +23,28 @@ class OnlineChannelSingle extends Component {
       <tr>
         <td>
           {this.props.serial}
+          <br/>
+<img src="http://www.clker.com/cliparts/4/t/n/Q/b/d/green-glossy-icon-hi.png"
+     alt=""
+     height="10px"
+     width="10px" />
         </td>
         <td>
           <img src={this.props.channel.status.stream.channel.logo}
                alt=""
-               height="20px"
-               width="20px" />
+               height="50px"
+               width="50px" />
         </td>
         <td>
           <div>
-            {this.props.channel.id}
+            <i className="fa fa-key" />
+            {" " + this.props.channel.id}
             <br/>
-            {this.props.channel.status.stream.game}
+            <i className="fa fa-id-badge" />
+            {" " + this.props.channel.status.stream.game}
             <br/>
-            {this.props.channel.status.stream.viewers}
+            <i className="fa fa-eye" />
+            {" " + this.props.channel.status.stream.viewers}
             <br/>
           </div>
         </td>
@@ -47,7 +55,7 @@ class OnlineChannelSingle extends Component {
                width="70px" />
         </td>
       </tr>
-      );
+    );
   }
 }
 
