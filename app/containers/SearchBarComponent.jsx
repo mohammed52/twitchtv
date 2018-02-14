@@ -20,11 +20,10 @@ class SearchBarComponent extends Component {
       <div>
         <div className="search">
           <span className="fa fa-search"></span>
-          <input placeholder="Search term"
-                 className="form-control searchInputBox" />
+          <input placeholder="Search game" className="form-control searchInputBox" />
         </div>
       </div>
-    );
+      );
   }
 }
 

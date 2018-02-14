@@ -6,6 +6,7 @@ import OnlineChannelSingle from './OnlineChannelSingle'
 
 var ReactBootstrap = require('react-bootstrap');
 
+var Table = ReactBootstrap.Table;
 var Button = ReactBootstrap.Button;
 var Tabs = ReactBootstrap.Tabs;
 var Tab = ReactBootstrap.Tab;
@@ -27,7 +28,7 @@ class OnlineChannelsComponent extends Component {
         if (this.props.channelsStatusArr !== null && this.props.channelsStatusArr[i].status != null) {
           if (this.props.channelsStatusArr[i].status.stream != undefined) {
             arrSingleChannels.push(
-              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} />
+              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} serial={i + 1} />
             )
           }
         }
@@ -35,7 +36,11 @@ class OnlineChannelsComponent extends Component {
     }
     return (
       <div>
-        {arrSingleChannels}
+        <Table>
+          <tbody>
+            {arrSingleChannels}
+          </tbody>
+        </Table>
       </div>
       );
   }

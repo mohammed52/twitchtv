@@ -46,7 +46,8 @@ class App extends Component {
     this.handleLoad = this.handleLoad.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
 
-    const channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+    // const channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+    const channels = ["playoverwatch_kr", "dreamhackdota2_ru", "dreamleague", "nickmercs", "yassuo", "aimbotcalvin", "gsl", "maximilian_dood", "hsdogdog"];
     const tmpChannelsStatusArr = [];
 
     for (var i = 0; i < channels.length; i++) {

@@ -17,19 +17,43 @@ class OnlineChannelSingle extends Component {
 
   render() {
     // .stream should be !==null , .stream.channel.logo, .stream.url
-
+    // sn logo id, game viewers preview
+    // logo {this.props.channel.status.stream.channel.url}
     return (
-      <div>
-        {this.props.channel.id}
-        {this.props.channel.status.stream.game}
-        {this.props.channel.status.stream.viewers}
-      </div>
+      <tr>
+        <td>
+          {this.props.serial}
+        </td>
+        <td>
+          <img src={this.props.channel.status.stream.channel.logo}
+               alt=""
+               height="20px"
+               width="20px" />
+        </td>
+        <td>
+          <div>
+            {this.props.channel.id}
+            <br/>
+            {this.props.channel.status.stream.game}
+            <br/>
+            {this.props.channel.status.stream.viewers}
+            <br/>
+          </div>
+        </td>
+        <td>
+          <img src={this.props.channel.status.stream.preview.small}
+               alt=""
+               height="70px"
+               width="70px" />
+        </td>
+      </tr>
       );
   }
 }
 
 OnlineChannelSingle.propTypes = {
-  channel: PropTypes.object.isRequired
+  channel: PropTypes.object.isRequired,
+  serial: PropTypes.number.isRequired
 };
 
 export default OnlineChannelSingle;
