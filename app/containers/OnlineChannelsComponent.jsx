@@ -21,16 +21,20 @@ class OnlineChannelsComponent extends Component {
   render() {
     // .status.stream should be !==null , .status.stream.channel.logo, .status.stream.url
 
-    let arrSingleChannels = [];
-    if (this.props.channelsStatusArr !== undefined) {
+    let arrSingleChannelsOnline = [];
+    if (this.props.channelsStatusArr) {
       var snCount = 1;
 
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
-        console.log(this.props.channelsStatusArr[i].status)
-        if (this.props.channelsStatusArr !== null && this.props.channelsStatusArr[i].status != null) {
-          if (this.props.channelsStatusArr[i].status.stream != undefined && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i].status.stream)) {
-            arrSingleChannels.push(
-              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} serial={snCount++} />
+        if (this.props.channelsStatusArr[i].id == "maximilian_dood") {
+          console.log("maximilian_dood");
+        }
+        if (this.props.channelsStatusArr[i] && this.props.channelsStatusArr[i].status != null) {
+          if (this.props.channelsStatusArr[i].status.stream && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i])) {
+            arrSingleChannelsOnline.push(
+              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]}
+                                   serial={snCount++}
+                                   key={"arrSingleChannelsOnline" + i} />
             )
           }
         }
@@ -40,11 +44,11 @@ class OnlineChannelsComponent extends Component {
       <div>
         <Table>
           <tbody>
-            {arrSingleChannels}
+            {arrSingleChannelsOnline}
           </tbody>
         </Table>
       </div>
-      );
+    );
   }
 }
 

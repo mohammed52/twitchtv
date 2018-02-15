@@ -27,13 +27,13 @@ class OfflineChannelSingle extends Component {
         <td>
           {this.props.serial}
           <br/>
-          <img src={no_image}
+          <img src={offline_icon}
                alt=""
                height="10px"
                width="10px" />
         </td>
         <td>
-          <img src={offline_icon}
+          <img src={no_image}
                alt=""
                height="50px"
                width="50px" />
@@ -47,7 +47,7 @@ class OfflineChannelSingle extends Component {
         <td>
         </td>
       </tr>
-      );
+    );
   }
 }
 
