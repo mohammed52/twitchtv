@@ -49,7 +49,7 @@ class App extends Component {
     this.onSearchInputChange = this.onSearchInputChange.bind(this);
 
     // const channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
-    const channels = ["playoverwatch_kr", "dreamhackdota2_ru", "dreamleague", "nickmercs", "yassuo", "aimbotcalvin", "gsl", "maximilian_dood", "hsdogdog"];
+    const channels = ["playoverwatch_kr", "RuneScape", "dreamleague", "nickmercs", "monstercat", "aimbotcalvin", "gsl", "maximilian_dood", "streamerhouse"];
     const tmpChannelsStatusArr = [];
 
     for (var i = 0; i < channels.length; i++) {
@@ -118,8 +118,6 @@ class App extends Component {
       <div>
         {!this.state.cssHasLoaded ? <div/> :
          <div className="App container red myclass red2">
-           Twitch Tv
-           <br/>
            <br/>
            <div>
              <Tabs activeKey={this.state.key}
