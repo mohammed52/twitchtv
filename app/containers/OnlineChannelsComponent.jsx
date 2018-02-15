@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 // import logo from './logo.svg';
 import styles from './OnlineChannels.css';
 import OnlineChannelSingle from './OnlineChannelSingle'
+import { matchesSearchInput } from './helpers/matchesSearchInput'
 
 var ReactBootstrap = require('react-bootstrap');
 
@@ -27,10 +28,9 @@ class OnlineChannelsComponent extends Component {
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
         console.log(this.props.channelsStatusArr[i].status)
         if (this.props.channelsStatusArr !== null && this.props.channelsStatusArr[i].status != null) {
-          if (this.props.channelsStatusArr[i].status.stream != undefined) {
+          if (this.props.channelsStatusArr[i].status.stream != undefined && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i].status.stream)) {
             arrSingleChannels.push(
-              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]}
-                                   serial={snCount++} />
+              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} serial={snCount++} />
             )
           }
         }
@@ -44,12 +44,13 @@ class OnlineChannelsComponent extends Component {
           </tbody>
         </Table>
       </div>
-    );
+      );
   }
 }
 
 OnlineChannelsComponent.propTypes = {
-  channelsStatusArr: PropTypes.array.isRequired
+  channelsStatusArr: PropTypes.array.isRequired,
+  searchInput: PropTypes.string
 };
 
 export default OnlineChannelsComponent;

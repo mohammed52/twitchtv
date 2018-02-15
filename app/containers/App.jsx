@@ -41,10 +41,12 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cssHasLoaded: false
+      cssHasLoaded: false,
+      searchInput: ""
     }
     this.handleLoad = this.handleLoad.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.onSearchInputChange = this.onSearchInputChange.bind(this);
 
     // const channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
     const channels = ["playoverwatch_kr", "dreamhackdota2_ru", "dreamleague", "nickmercs", "yassuo", "aimbotcalvin", "gsl", "maximilian_dood", "hsdogdog"];
@@ -58,7 +60,8 @@ class App extends Component {
     }
     this.state = {
       key: 1,
-      channelsStatusArr: tmpChannelsStatusArr
+      channelsStatusArr: tmpChannelsStatusArr,
+      searchInput: ""
     }
   }
 
@@ -95,6 +98,14 @@ class App extends Component {
       key
     });
   }
+
+  onSearchInputChange(event) {
+    console.log("onSearchInputChange");
+    this.setState({
+      searchInput: event.target.value
+    })
+  }
+
   componentDidUpdate() {
     console.log("AppContainer componentDidUpdate");
   // const ss = document.styleSheets
@@ -117,8 +128,8 @@ class App extends Component {
                    id="controlled-tab-example"
                    className="headerTabs testRed">
                <Tab eventKey={1} title="Online" className="singleTab">
-                 <SearchBarComponent />
-                 <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} />
+                 <SearchBarComponent searchInput={this.state.searchInput} onSearchInputChange={this.onSearchInputChange} />
+                 <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} searchInput={this.state.searchInput} />
                </Tab>
                <Tab eventKey={2} title="Offline" className="singleTab">
                  <SearchBarComponent />

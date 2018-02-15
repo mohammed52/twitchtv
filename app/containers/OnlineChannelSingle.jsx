@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import logo from './logo.svg';
 import styles from './OnlineChannels.css';
+import online_icon from '../images/online_icon.png';
 
 var ReactBootstrap = require('react-bootstrap');
 
@@ -13,6 +14,7 @@ class OnlineChannelSingle extends Component {
 
   constructor(props, context) {
     super(props, context);
+
   }
 
   render() {
@@ -24,10 +26,10 @@ class OnlineChannelSingle extends Component {
         <td>
           {this.props.serial}
           <br/>
-<img src="http://www.clker.com/cliparts/4/t/n/Q/b/d/green-glossy-icon-hi.png"
-     alt=""
-     height="10px"
-     width="10px" />
+          <img src={online_icon}
+               alt=""
+               height="10px"
+               width="10px" />
         </td>
         <td>
           <img src={this.props.channel.status.stream.channel.logo}
@@ -55,7 +57,7 @@ class OnlineChannelSingle extends Component {
                width="70px" />
         </td>
       </tr>
-    );
+      );
   }
 }
 
