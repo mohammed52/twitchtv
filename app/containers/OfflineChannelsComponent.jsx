@@ -26,9 +26,7 @@ class OfflineChannelsComponent extends Component {
       var snCount = 1;
 
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
-        if (this.props.channelsStatusArr[i].id == "maximilian_dood") {
-          console.log("maximilian_dood");
-        }
+
         if (this.props.channelsStatusArr[i] && this.props.channelsStatusArr[i].status != null) {
           if (!this.props.channelsStatusArr[i].status.stream && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i])) {
             arrSingleChannelsOffline.push(
