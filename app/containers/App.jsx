@@ -14,6 +14,7 @@ import styles from './main.css'
 import AppStyles from './App.css'
 
 import favicon from '../images/favicon.png';
+import twitchtv_logo from '../images/twitchtv_logo.png';
 // import MEK from '../images/MEK.png';
 
 
@@ -182,7 +183,8 @@ class App extends Component {
     return (
       <div>
         {!this.state.cssHasLoaded ? <div/> :
-         <div className="App container">
+         <div className="container App">
+           <img src={twitchtv_logo} alt="" width="100%" />
            <br/>
            <div>
              <Tabs activeKey={this.state.key}

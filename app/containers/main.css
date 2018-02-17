@@ -13,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;  /*background: #FFAA99;*/
-  background-image: url("../images/black_repeat_2.jpg");
+  background-image: url("http://silviahartmann.com/background-tile-art/images/black_woven_seamless_tile.jpg");
 }
 
 /* can also use :global(.class){background: red;} for global styles*/
