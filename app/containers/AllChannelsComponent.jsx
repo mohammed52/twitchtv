@@ -21,32 +21,30 @@ class AllChannelsComponent extends Component {
 
   render() {
     // .status.stream should be !==null , .status.stream.channel.logo, .status.stream.url
+    var snCount = 1;
 
     let arrSingleChannelsAll = [];
     if (this.props.channelsStatusArr) {
-      var snCount = 1;
 
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
 
         if (this.props.channelsStatusArr[i] && this.props.channelsStatusArr[i].status != null) {
           if (!this.props.channelsStatusArr[i].status.stream && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i])) {
             arrSingleChannelsAll.push(
-              <OfflineChannelSingle channel={this.props.channelsStatusArr[i]}
-                                    serial={snCount++}
-                                    key={"arrSingleChannelsAll" + i} />
+              <OfflineChannelSingle channel={this.props.channelsStatusArr[i]} serial={snCount++} key={"arrSingleChannelsAll" + i} />
             )
-          }
-        } else if (this.props.channelsStatusArr[i] && this.props.channelsStatusArr[i].status != null) {
-          if (this.props.channelsStatusArr[i].status.stream && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i])) {
-            arrSingleChannelsAll.push(
-              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]}
-                                   serial={snCount++}
-                                   key={"arrSingleChannelsAll" + i} />
-            )
+          } else if (this.props.channelsStatusArr[i] && this.props.channelsStatusArr[i].status != null) {
+            if (this.props.channelsStatusArr[i].status.stream && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i])) {
+              arrSingleChannelsAll.push(
+                <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} serial={snCount++} key={"arrSingleChannelsAll" + i} />
+              )
+            }
           }
         }
       }
     }
+// const setAllChannelsCount = this.props.setAllChannelsCount;
+// setAllChannelsCount(snCount - 1);
     return (
       <div>
         <Table>
@@ -55,13 +53,14 @@ class AllChannelsComponent extends Component {
           </tbody>
         </Table>
       </div>
-    );
+      );
   }
 }
 
 AllChannelsComponent.propTypes = {
   channelsStatusArr: PropTypes.array.isRequired,
-  searchInput: PropTypes.string
+  searchInput: PropTypes.string,
+  setAllChannelsCount: PropTypes.func
 };
 
 export default AllChannelsComponent;

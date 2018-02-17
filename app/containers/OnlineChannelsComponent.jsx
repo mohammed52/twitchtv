@@ -21,9 +21,9 @@ class OnlineChannelsComponent extends Component {
   render() {
     // .status.stream should be !==null , .status.stream.channel.logo, .status.stream.url
 
+    var snCount = 1;
     let arrSingleChannelsOnline = [];
     if (this.props.channelsStatusArr) {
-      var snCount = 1;
 
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
         if (this.props.channelsStatusArr[i].id == "maximilian_dood") {
@@ -32,14 +32,15 @@ class OnlineChannelsComponent extends Component {
         if (this.props.channelsStatusArr[i] && this.props.channelsStatusArr[i].status != null) {
           if (this.props.channelsStatusArr[i].status.stream && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i])) {
             arrSingleChannelsOnline.push(
-              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]}
-                                   serial={snCount++}
-                                   key={"arrSingleChannelsOnline" + i} />
+              <OnlineChannelSingle channel={this.props.channelsStatusArr[i]} serial={snCount++} key={"arrSingleChannelsOnline" + i} />
             )
+
           }
         }
       }
     }
+// const setOnlineCount = this.props.setOnlineCount - 1;
+// setOnlineCount(snCount);
     return (
       <div>
         <Table>
@@ -48,13 +49,14 @@ class OnlineChannelsComponent extends Component {
           </tbody>
         </Table>
       </div>
-    );
+      );
   }
 }
 
 OnlineChannelsComponent.propTypes = {
   channelsStatusArr: PropTypes.array.isRequired,
-  searchInput: PropTypes.string
+  searchInput: PropTypes.string,
+  setOnlineCount: PropTypes.func.isRequired
 };
 
 export default OnlineChannelsComponent;

@@ -47,6 +47,9 @@ class App extends Component {
     this.handleLoad = this.handleLoad.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.onSearchInputChange = this.onSearchInputChange.bind(this);
+    // this.setOnlineCount = this.setOnlineCount.bind(this);
+    // this.setOfflineCount = this.setOfflineCount.bind(this);
+    // this.setAllChannelsCount = this.setAllChannelsCount.bind(this);
 
     // const channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
     const channels = ["playoverwatch_kr", "RuneScape", "dreamleague", "nickmercs", "monstercat", "aimbotcalvin", "gsl", "maximilian_dood", "streamerhouse"];
@@ -62,7 +65,10 @@ class App extends Component {
       key: 1,
       channelsStatusArr: tmpChannelsStatusArr,
       searchInput: "",
-      allChannelsDataReceived: false
+      allChannelsDataReceived: false,
+      onlineCount: 0,
+      offlineCount: 0,
+      allChannelsCount: 0
     }
   }
 
@@ -87,14 +93,15 @@ class App extends Component {
           });
         });
     }
-
   }
+
   handleLoad() {
     console.log("handleLoad"); //  $ is available here
     this.setState({
       cssHasLoaded: true
     })
   }
+
   handleSelect(key) {
     // alert(`selected ${key}`);
     this.setState({
@@ -110,8 +117,8 @@ class App extends Component {
   }
   validateChannelsData() {
     var dataComplete = true;
-    for (var i = 0; i < this.state.channelsStatusArr.length; i++) {
-      if (!this.state.channelsStatusArr[i].status) {
+    for (var j = 0; j < this.state.channelsStatusArr.length; j++) {
+      if (!this.state.channelsStatusArr[j].status) {
         dataComplete = false;
         break;
       }
@@ -120,8 +127,49 @@ class App extends Component {
       this.setState({
         allChannelsDataReceived: true
       })
+
+      var tmpOnlineCount = 0;
+      var tmpOfflineCount = 0;
+      var tmpAllChannelsCount = 0;
+
+      for (var i = 0; i < this.state.channelsStatusArr.length; i++) {
+
+        if (this.state.channelsStatusArr[i] && this.state.channelsStatusArr[i].status != null) {
+          if (!this.state.channelsStatusArr[i].status.stream) {
+            tmpOfflineCount++;
+
+          } else if (this.state.channelsStatusArr[i].status.stream) {
+            tmpOnlineCount++;
+
+          }
+          tmpAllChannelsCount++;
+
+        }
+      }
+      this.setState({
+        onlineCount: tmpOnlineCount,
+        offlineCount: tmpOfflineCount,
+        allChannelsCount: tmpAllChannelsCount
+      })
     }
   }
+
+  // setOnlineCount(count) {
+  //   this.setState({
+  //     onlineCount: count
+  //   })
+  // }
+
+  // setOfflineCount(count) {
+  //   this.setState({
+  //     offlineCount: count
+  //   })
+  // }
+  // setAllChannelsCount(count) {
+  //   this.setState({
+  //     allChannelsCount: count
+  //   })
+  // }
 
   componentDidUpdate() {
     console.log("AppContainer componentDidUpdate");
@@ -133,8 +181,8 @@ class App extends Component {
 
     return (
       <div>
-        {!this.state.allChannelsDataReceived ? <div/> :
-         <div className="App container red myclass red2">
+        {!this.state.cssHasLoaded ? <div/> :
+         <div className="App container">
            <br/>
            <div>
              <Tabs activeKey={this.state.key}
@@ -142,31 +190,21 @@ class App extends Component {
                    animation={false}
                    id="controlled-tab-example"
                    className="headerTabs testRed">
-               <SearchBarComponent searchInput={this.state.searchInput}
-                                   onSearchInputChange={this.onSearchInputChange} />
-               <Tab eventKey={1}
-                    title="Online"
-                    className="singleTab">
-                 <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr}
-                                          searchInput={this.state.searchInput} />
+               <SearchBarComponent searchInput={this.state.searchInput} onSearchInputChange={this.onSearchInputChange} />
+               <Tab eventKey={1} title={"Online (" + this.state.onlineCount + ")"} className="singleTab">
+                 <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} searchInput={this.state.searchInput} setOnlineCount={this.setOnlineCount} />
                </Tab>
-               <Tab eventKey={2}
-                    title="Offline"
-                    className="singleTab">
-                 <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr}
-                                           searchInput={this.state.searchInput} />
+               <Tab eventKey={2} title={"Offline (" + this.state.offlineCount + ")"} className="singleTab">
+                 <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} searchInput={this.state.searchInput} setOfflineCount={this.setOfflineCount} />
                </Tab>
-               <Tab eventKey={3}
-                    title="All"
-                    className="singleTab">
-                 <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr}
-                                       searchInput={this.state.searchInput} />
+               <Tab eventKey={3} title={"All (" + this.state.allChannelsCount + ")"} className="singleTab">
+                 <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr} searchInput={this.state.searchInput} setAllChannelsCount={this.setAllChannelsCount} />
                </Tab>
              </Tabs>
            </div>
          </div>}
       </div>
-    );
+      );
   }
 }
 

@@ -21,23 +21,23 @@ class OfflineChannelsComponent extends Component {
   render() {
     // .status.stream should be !==null , .status.stream.channel.logo, .status.stream.url
 
+    var snCount = 1;
     let arrSingleChannelsOffline = [];
     if (this.props.channelsStatusArr) {
-      var snCount = 1;
 
       for (var i = 0; i < this.props.channelsStatusArr.length; i++) {
 
         if (this.props.channelsStatusArr[i] && this.props.channelsStatusArr[i].status != null) {
           if (!this.props.channelsStatusArr[i].status.stream && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i])) {
             arrSingleChannelsOffline.push(
-              <OfflineChannelSingle channel={this.props.channelsStatusArr[i]}
-                                    serial={snCount++}
-                                    key={"arrSingleChannelsOffline" + i} />
+              <OfflineChannelSingle channel={this.props.channelsStatusArr[i]} serial={snCount++} key={"arrSingleChannelsOffline" + i} />
             )
           }
         }
       }
     }
+// const setOfflineCount = this.props.setOfflineCount;
+// setOfflineCount(snCount - 1);
     return (
       <div>
         <Table>
@@ -46,13 +46,14 @@ class OfflineChannelsComponent extends Component {
           </tbody>
         </Table>
       </div>
-    );
+      );
   }
 }
 
 OfflineChannelsComponent.propTypes = {
   channelsStatusArr: PropTypes.array.isRequired,
-  searchInput: PropTypes.string
+  searchInput: PropTypes.string,
+  setOfflineCount: PropTypes.fund
 };
 
 export default OfflineChannelsComponent;

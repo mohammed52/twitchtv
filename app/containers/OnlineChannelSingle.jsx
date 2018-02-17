@@ -40,7 +40,9 @@ class OnlineChannelSingle extends Component {
         <td>
           <div>
             <i className="fa fa-key" />
-            {" " + this.props.channel.id}
+            <a href={this.props.channel.status.stream.channel.url} target="_blank">
+              {" " + this.props.channel.id}
+            </a>
             <br/>
             <i className="fa fa-id-badge" />
             {" " + this.props.channel.status.stream.game}

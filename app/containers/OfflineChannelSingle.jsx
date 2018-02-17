@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 // import logo from './logo.svg';
 import styles from './OnlineChannels.css';
 import no_image from '../images/no_image.png';
+import no_image_2 from '../images/no_image_2.png';
 import offline_icon from '../images/offline_icon.png';
 
 var ReactBootstrap = require('react-bootstrap');
@@ -45,9 +46,13 @@ class OfflineChannelSingle extends Component {
           </div>
         </td>
         <td>
+          <img src={no_image_2}
+               alt=""
+               height="20px"
+               width="20px" />
         </td>
       </tr>
-    );
+      );
   }
 }
 
