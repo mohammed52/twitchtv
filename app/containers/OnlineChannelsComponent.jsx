@@ -43,7 +43,7 @@ class OnlineChannelsComponent extends Component {
 // setOnlineCount(snCount);
     return (
       <div>
-        <Table>
+        <Table className="channelTable">
           <tbody>
             {arrSingleChannelsOnline}
           </tbody>

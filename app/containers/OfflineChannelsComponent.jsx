@@ -30,23 +30,25 @@ class OfflineChannelsComponent extends Component {
         if (this.props.channelsStatusArr[i] && this.props.channelsStatusArr[i].status != null) {
           if (!this.props.channelsStatusArr[i].status.stream && matchesSearchInput(this.props.searchInput, this.props.channelsStatusArr[i])) {
             arrSingleChannelsOffline.push(
-              <OfflineChannelSingle channel={this.props.channelsStatusArr[i]} serial={snCount++} key={"arrSingleChannelsOffline" + i} />
+              <OfflineChannelSingle channel={this.props.channelsStatusArr[i]}
+                                    serial={snCount++}
+                                    key={"arrSingleChannelsOffline" + i} />
             )
           }
         }
       }
     }
-// const setOfflineCount = this.props.setOfflineCount;
-// setOfflineCount(snCount - 1);
+    // const setOfflineCount = this.props.setOfflineCount;
+    // setOfflineCount(snCount - 1);
     return (
       <div>
-        <Table>
+        <Table className="channelTable">
           <tbody>
             {arrSingleChannelsOffline}
           </tbody>
         </Table>
       </div>
-      );
+    );
   }
 }
 

@@ -6,7 +6,7 @@
     max-width: 380px;
     min-width: 300px;
     background: white;
-    border: 5px solid #A381C0;
+    border: 5px solid red;
     border-radius: 10px;
     padding-right: 0;
     padding-left: 0;
@@ -23,6 +23,10 @@
 
   & .nav-tabs>li {
     width: 33.33%;
+  }
+
+  & .channelTable {
+    margin-bottom: 0;
   }
 
 }

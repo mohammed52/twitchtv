@@ -184,29 +184,38 @@ class App extends Component {
       <div>
         {!this.state.cssHasLoaded ? <div/> :
          <div className="container App">
-           <img src={twitchtv_logo} alt="" width="100%" />
-           <br/>
-           <div>
-             <Tabs activeKey={this.state.key}
-                   onSelect={this.handleSelect}
-                   animation={false}
-                   id="controlled-tab-example"
-                   className="headerTabs testRed">
-               <SearchBarComponent searchInput={this.state.searchInput} onSearchInputChange={this.onSearchInputChange} />
-               <Tab eventKey={1} title={"Online (" + this.state.onlineCount + ")"} className="singleTab">
-                 <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} searchInput={this.state.searchInput} setOnlineCount={this.setOnlineCount} />
-               </Tab>
-               <Tab eventKey={2} title={"Offline (" + this.state.offlineCount + ")"} className="singleTab">
-                 <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr} searchInput={this.state.searchInput} setOfflineCount={this.setOfflineCount} />
-               </Tab>
-               <Tab eventKey={3} title={"All (" + this.state.allChannelsCount + ")"} className="singleTab">
-                 <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr} searchInput={this.state.searchInput} setAllChannelsCount={this.setAllChannelsCount} />
-               </Tab>
-             </Tabs>
-           </div>
+           <Tabs activeKey={this.state.key}
+                 onSelect={this.handleSelect}
+                 animation={false}
+                 id="controlled-tab-example"
+                 className="headerTabs testRed">
+             <SearchBarComponent searchInput={this.state.searchInput}
+                                 onSearchInputChange={this.onSearchInputChange} />
+             <Tab eventKey={1}
+                  title={"Online (" + this.state.onlineCount + ")"}
+                  className="singleTab">
+               <OnlineChannelsComponent channelsStatusArr={this.state.channelsStatusArr}
+                                        searchInput={this.state.searchInput}
+                                        setOnlineCount={this.setOnlineCount} />
+             </Tab>
+             <Tab eventKey={2}
+                  title={"Offline (" + this.state.offlineCount + ")"}
+                  className="singleTab">
+               <OfflineChannelsComponent channelsStatusArr={this.state.channelsStatusArr}
+                                         searchInput={this.state.searchInput}
+                                         setOfflineCount={this.setOfflineCount} />
+             </Tab>
+             <Tab eventKey={3}
+                  title={"All (" + this.state.allChannelsCount + ")"}
+                  className="singleTab">
+               <AllChannelsComponent channelsStatusArr={this.state.channelsStatusArr}
+                                     searchInput={this.state.searchInput}
+                                     setAllChannelsCount={this.setAllChannelsCount} />
+             </Tab>
+           </Tabs>
          </div>}
       </div>
-      );
+    );
   }
 }
 
